@@ -24,12 +24,20 @@ main {
     display: inline-block;
 }
 
+section, a {
+    border-radius: 8px;
+}
+
 section {
     background-color:gainsboro;
     float: left;
     width: 30%;
     margin: 5px;
     padding: 5px;
+}
+
+section:hover {
+    background-color:rgb(194, 190, 190);
 }
 
 h3 {
@@ -40,4 +48,19 @@ p {
     text-align: left;
     font-family: verdana;
     font-size: 20px;
+}
+
+a:link, a:visited {
+    background-color: rgb(45, 101, 121);
+    color: white;
+    padding: 14px 25px;
+    margin: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+a:hover, a:active {
+    background-color: rgb(78, 132, 151);
 }
