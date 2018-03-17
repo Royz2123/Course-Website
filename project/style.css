@@ -18,11 +18,18 @@ footer {
 
 main {
     background-color: beige;
-
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 20px;
+    display: inline-block;
 }
 
 section {
     background-color:gainsboro;
+    float: left;
+    width: 30%;
+    margin: 5px;
+    padding: 5px;
 }
 
 h3 {
