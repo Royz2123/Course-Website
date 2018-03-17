@@ -8,6 +8,23 @@ h1 {
     color: white;
 }
 
+header {
+    background-color: navy;
+}
+
+footer {
+    background-color: navy;
+}
+
+main {
+    background-color: beige;
+
+}
+
+section {
+    background-color:gainsboro;
+}
+
 h3 {
     text-align: left;
 }
