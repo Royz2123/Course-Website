@@ -1,5 +1,5 @@
 body {
-    background-color: lightblue;
+    background-color: #8184a0;
     font-family: sans-serif;
     text-align: center;
 }
@@ -9,11 +9,11 @@ h1 {
 }
 
 header {
-    background-color: navy;
+    background-color: rgb(24, 54, 65);
 }
 
 footer {
-    background-color: navy;
+    background-color: rgb(24, 54, 65);
 }
 
 main {
@@ -30,6 +30,7 @@ h3 {
 }
 
 p {
+    text-align: left;
     font-family: verdana;
     font-size: 20px;
 }
