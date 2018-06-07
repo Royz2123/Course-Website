@@ -10,6 +10,15 @@
     </head>
 	
 	
+	var tags_to_change = ["mainPart", "dataPart", "right_part_show_html","left_part_edit_html"];
+
+	for (i = 0; i < tags_to_change.length; i++) { 
+    text += cars[i] + "<br>";
+	}
+	
+	
+	
+	
 	
 	
     <body>
@@ -72,8 +81,7 @@
 			<form method="GET" 
 			action="">
 			<p>Name: <input type="text" name="name"></p>
-			<p>Message: <textarea name="message"></textarea></p> 
-			<p><input type="submit" onclick="loadDoc()">Send</input></p
+			<p><button type="button" onclick="loadDoc()">Submit!</button></p
 			</form>
 
 		</div>
@@ -81,14 +89,14 @@
 		
 		
 		<!--left part-->
-		<div class="left_part_edit_html">
+		<div id="left_part_edit_html">
 			<h1>left part</h1>
 
 		</div>
 		
 		
 		<!--right part-->			
-		<div class="right_part_show_html">
+		<div id="right_part_show_html">
 			<h1>right part</h1>
 		</div>
 		

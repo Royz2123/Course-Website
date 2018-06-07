@@ -70,7 +70,7 @@ a:hover, a:active {
 }
 
 
-#data {
+#dataPart {
     display: inline-block;
 	margin-top:20px;
 	margin-bottom: 20px;
@@ -79,39 +79,37 @@ a:hover, a:active {
 	padding-right:100px;
 	padding-left:100px;
 	background-image: url("images/b7.jpg");
+}
 
+
+#mainPart{
+	background-color: beige;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 20px;
+    display: inline-block;
 	
-	
-	}
+}
 
-
-
-
-
-
-
-
-
-
-.left_part_edit_html{
+#left_part_edit_html{
     width: 40%;
     margin-left: 5%;
 	margin-right: 2.5%;
 	background-color:black;
 	border: gray 3px solid;
-    display: inline-block;
+    display: none;
 	height:600px;
 	text-align:center;
 }
 
 
-.right_part_show_html{
+#right_part_show_html{
     width: 40%;
     margin-left: 2.5%;
 	margin-right: 5%;
 	background-color:black;
 	border: gray 3px solid;
-    display: inline-block;
+    display: none;
 	height:600px;
 	text-align:center;
 

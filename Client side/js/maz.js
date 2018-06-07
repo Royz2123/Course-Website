@@ -16,7 +16,14 @@ function loadDoc(){
 
 
 
-
+function multi_toggle_visibility(){
+	var tags_to_change = ["mainPart", "dataPart", "right_part_show_html","left_part_edit_html"];
+	
+	for (i = 0; i < tags_to_change.length; i++) { 
+		toggle_visibility(tags_to_change[i]);
+	}
+	
+	
 
 function toggle_visibility(id) {
   var e = document.getElementById(id);
