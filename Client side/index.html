@@ -5,24 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>The Site</title>
         <link rel="stylesheet" href="style.css">
-		<script src="../js/maz.js"></script>
+		<script src="js/maz.js"></script>
 
     </head>
 	
-	
-	var tags_to_change = ["mainPart", "dataPart", "right_part_show_html","left_part_edit_html"];
-
-	for (i = 0; i < tags_to_change.length; i++) { 
-    text += cars[i] + "<br>";
-	}
-	
-	
-	
-	
-	
-	
-    <body>
-        <!--Top Bar-->
+    <body onload ="first_toggle_visibility()">
+        	
+		<!--Top Bar-->
         <header>
             <div>
                 <h1>
@@ -81,7 +70,8 @@
 			<form method="GET" 
 			action="">
 			<p>Name: <input type="text" name="name"></p>
-			<p><button type="button" onclick="loadDoc()">Submit!</button></p
+			
+			<p><button type="button" onclick="multi_toggle_visibility()">Submit!</button></p>
 			</form>
 
 		</div>
