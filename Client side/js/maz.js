@@ -1,3 +1,5 @@
+
+
 function loadDoc(){
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -12,6 +14,10 @@ function loadDoc(){
   xhttp.send();
 }
 
+
+
+
+
 function toggle_visibility(id) {
   var e = document.getElementById(id);
   if (e.style.display == 'block')
@@ -22,6 +28,11 @@ function toggle_visibility(id) {
 function toggle_editor(html){
   document.getElementById(left_part_edit_html) = html;
 }
+
+
+
+
+
 function toggle_veiwer(html){
   document.getElementById(right_part_show_html) = html;
 }

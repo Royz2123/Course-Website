@@ -87,3 +87,50 @@ a:hover, a:active {
 	height:20px;
 	width:250px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.left_part_edit_html{
+    width: 40%;
+    margin-left: 4%;
+	margin-right: 4%;
+	background-color:black;
+	border: gray 3px solid;
+    display: inline-block;
+	height:600px;
+}
+
+
+.right_part_show_html{
+    width: 40%;
+    margin-left: 4%;
+	margin-right: 4%;
+	background-color:black;
+	border: gray 3px solid;
+    display: inline-block;
+	height:600px;
+
+}
+
+
