@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <title>8.3 מילון</title>
+  <meta charset="utf-8">
+  <link href='https://fonts.googleapis.com/css?family=alef' rel='stylesheet'>
+  <link rel="stylesheet" type="text/css" href="../base/neo_css.css">
+  <script src="../base/python_js.js"></script>
+</head>
+
+<body class="python_body">
+  <script>
+    function toggle_visibility(id) {
+      var e = document.getElementById(id);
+      if (e.style.display == 'block')
+        e.style.display = 'none';
+      else
+        e.style.display = 'block';
+    }
+
+    function expand_code(codeid, buttonid) {
+      var c = document.getElementById(codeid);
+      var b = document.getElementById(buttonid);
+      c.style.display = 'block';
+      b.style.display = 'none';
+    }
+
+    function show_answer(id) {
+      var e = document.getElementById(id);
+      e.style.display = 'block';
+    }
+  </script>
+
+  <div class="toc_title">מה נלמד?</div>
+
+  <a name="topic1">
+    <button class="box_title" onclick="toggle_visibility('topic1')">מהו מילון?</button>
+    <div id="topic1" class="box_content">
+      <p>בחיי היומיום אנו נעזרים במילוני שפה: במילון עברי-עברי נוכל לחפש מילה בעברית שאיננו מכירים, ולמצוא ערך שהוא הפירוש שלה.
+        במילון אנגלי-עברי נוכל לחפש מילה באנגלית ולמצוא ערך שהוא התרגום שלה לעברית.
+      </p>
+      <p>כעת נלמד על <b>המילון הפייתוני</b> (באנגלית dictionary, או בקיצור dict): מבנה נתונים שקיים בשפת פייתון, שעובד באופן דומה למילונים
+        אותם הזכרנו. המילה אותה אנו מחפשים במילון היא <b>המפתח</b>, והפירוש או התרגום של המילה הוא <b>הערך</b>. למעשה, כל איבר במילון הוא
+        צמד של מפתח (key) וערך (value).
+      </p>
+      <p>המילון מכיל ערכים בדומה לרשימה, אך בניגוד אליה הערכים שבו מסודרים על פי מפתחות ולא כאיברים בסדר רציף. כאשר נפנה למילון
+        נציין מפתח ונקבל בעבורו ערך. היתרון בכך הוא שבמקום להשתמש במיקומים (כלומר לציין אינדקס, שהוא מספר שלא בהכרח אומר
+        לנו משהו), נוכל להשתמש במפתח שהוא מידע בעל משמעות.
+      </p>
+
+      <p style="text-align: center;"><b>גישה לאיברים ברשימה באמצעות מיקומים</b><br>
+      <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_8/graphics/img_8_2_1.png" alt="גישה לאיברים ברשימה באמצעות מיקומים"></p>
+      <p style="text-align: center;"><b>גישה לאיברים במילון באמצעות מפתחות</b><br>
+      <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_8/graphics/img_8_2_2.png" alt="גישה לאיברים במילון באמצעות מפתחות"></p>
+      <img class="box_content_close" onclick="toggle_visibility('topic1')">
+    </div>
+    <!-- Closing Topic 1 -->
+
+    <a name="topic2">
+      <button class="box_title" onclick="toggle_visibility('topic2')">יצירת מילון</button>
+      <div id="topic2" class="box_content">
+
+        <p>מילון מוגדר באמצעות <b>סוגריים מסולסלים</b> { }.
+        </p>
+        <p>אפשר ליצור מילון ריק, כלומר מילון ללא מפתחות וערכים, בשתי דרכים:
+          <br> דרך אחת ליצירת מילון היא על ידי כתיבת סוגריים מסולסלים:
+        </p>
+        <div class="code">
+          >>> new_dict = {}
+          <br>>>> type(new_dict)
+          <br>
+          <span class="code_answer">&lt;class 'dict'&gt;</span>
+          <br>>>> new_dict
+          <br>
+          <span class="code_answer">{}</span>
+        </div>
+        <p>דרך נוספת ליצירת מילון היא באמצעות הפונקציה ()dict:</p>
+        <div class="code">
+          >>> another_dict = dict()
+          <br>>>> type(another_dict)
+          <br>
+          <span class="code_answer">&lt;class 'dict'&gt;</span>
+          <br>>>> another_dict
+          <br>
+          <span class="code_answer">{}</span>
+
+        </div>
+        <p>אפשר לאתחל מילון עם <b>ערכים התחלתיים</b>: נכתוב סוגריים מסולסלים ובתוכם איברים שהם צמדים הבנויים ממפתח, לאחריו נקודתיים
+          ורווח, והערך המתאים למפתח. בין איברים נפריד בפסיקים.
+          <br> מבנה של צמד במילון המורכב ממפתח וערך:
+        </p>
+        <div class="code">key: value</div>
+        <p>דוגמה ליצירת מילון שבו המפתח (key) מייצג פעולת עריכה במחשב, והערך (value) מייצג את מקשי הקיצור במקלדת שמשמשים לביצוע
+          הפעולה:
+        </p>
+        <div class="code">
+          >>> keyboard_shortcuts = {"Copy": "Ctrl + C", "Paste": "Ctrl + V", "Undo": "Ctrl + Z"}
+          <br>
+          <span class="code_answer">{'Copy': 'Ctrl + C', 'Paste': 'Ctrl + V', 'Undo': 'Ctrl + Z'}</span>
+
+        </div>
+
+
+        <img class="box_content_close" onclick="toggle_visibility('topic2')">
+      </div>
+      <!-- Closing Topic 2 -->
+
+
+      <a name="topic3">
+        <button class="box_title" onclick="toggle_visibility('topic3')">גישה לערך באמצעות מפתח</button>
+        <div id="topic3" class="box_content">
+          <p>אפשר <b>לגשת לערכים במילון</b> באמצעות ציון המפתח שלהם בתוך סוגריים מרובעים [ ], בהתאם למבנה הבא:
+          </p>
+          <div class="code">dict[key]
+          </div>
+          <p>דוגמה לשליפת ערך מתוך מילון:
+          </p>
+          <div class="code">
+            >>> keyboard_shortcuts[<mark class="mark_code">"Paste"</mark>]
+            <br>
+            <span class="code_answer">'Ctrl + V'</span>
+
+          </div>
+          <p>שימו לב ש<b>בלתי אפשרי לגשת למפתחות</b> באמצעות הערכים שלהם.</p>
+          <!-- CORNER DEBUG -->
+          <br>
+          <span class="corner_title" onclick="toggle_visibility('corner_8_2_1')">
+            <img class="corner_debug-icon">
+            <span class="corner_debug-title">KeyError</span>
+            <span id="cont_8_2_1" class="corner_continue">להמשך קריאה</span>
+          </span>
+          <div id="corner_8_2_1" class="corner_debug-box">
+            <p>היזכרו במילון keyboard_shortcuts שיצרנו. מה לדעתכם יקרה אם נריץ את השורה הבאה?
+            </p>
+            <div class="code">
+              >>> keyboard_shortcuts = {"Copy": "Ctrl + C", "Paste": "Ctrl + V", "Undo": "Ctrl + Z"}
+              <br>>>> keyboard_shortcuts[<mark class="mark_code">"Cut"</mark>]
+              <button id="button_8_2_1" class="expand" onclick="expand_code('code_8_2_1', 'button_8_2_1'), show_answer('code_8_2_1a')">
+                <img class="enterbutton">
+              </button>
+              <div class="hiddencode" id="code_8_2_1">
+                <span class="code_error">
+                  Traceback (most recent call last):
+                  <br>&nbsp;&nbsp; File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+                  <br>KeyError: 'Cut'
+              </div>
+            </div>
+            <div id="code_8_2_1a" style="display: none;">
+              <p>לא מאוד מפתיע… קיבלנו הודעת שגיאה מסוג <b>KeyError</b> כיוון שהמפתח שנקרא "Cut" אינו קיים במילון.
+              </p>
+              <p>כיצד נימנע מקריסה של תוכנית עקב קריאה למפתח שאינו קיים?
+                <br> נוכל להקדים ולבדוק האם המפתח קיים, לדוגמה:
+              </p>
+              <div class="code">
+                >>> <mark class="mark_code">if</mark> "Cut" <mark class="mark_code">in</mark> keyboard_shortcuts:
+                <br>. . . # &lt;do something&gt;
+              </div>
+            </div>
+            <img class="corner_debug-x" onclick="toggle_visibility('corner_8_2_1')">
+          </div>
+          <br>
+          <!-- END CORNER DEBUG -->
+
+
+
+          <img class="box_content_close" onclick="toggle_visibility('topic3')">
+        </div>
+        <!-- Closing Topic 3 -->
+
+
+        <a name="topic4">
+          <button class="box_title" onclick="toggle_visibility('topic4')">שינוי מילון - מילון הוא mutable </button>
+          <div id="topic4" class="box_content">
+
+            <p>המילון הוא מבנה נתונים שניתן לשינוי, כלומר <b>mutable</b>. המשמעות היא שאפשר לבצע בו פעולות הוספה, עדכון, מחיקה ועוד.
+            </p>
+            <h3 class="bold_title">הוספת איבר למילון</h3>
+            <p>הוספת איבר למילון מתבצעת במבנה הבא:
+            </p>
+            <div class="code">dict[key] = value
+            </div>
+            <p>דוגמה להוספת הפעולה "Cut" ומקשי הקיצור שלה במקלדת למילון:
+            </p>
+            <div class="code">
+              >>> keyboard_shortcuts["Cut"] = "Ctrl + X"
+              <br>>>> keyboard_shortcuts
+              <br>
+              <span class="code_answer">{'Copy': 'Ctrl + C', 'Paste': 'Ctrl + V', 'Undo': 'Ctrl + Z', <mark class="mark_code">'Cut': 'Ctrl + X'</mark>}</span>
+            </div>
+            <h3 class="bold_title">עדכון איבר במילון</h3>
+            <p>מתכנת כלשהו מעדיף את מקשי הקיצור Ctrl + Insert עבור פעולת ההעתקה ("Copy"). מה לדעתכם יקרה אם ינסה לעדכן את מקשי
+              הקיצור עבור הפעולה באמצעות הפקודה שלמדנו זה עתה (להוספת איבר)? במילים אחרות, מה יקרה אם ננסה להוסיף מפתח אשר
+              קיים כבר במילון?
+            </p>
+            <div class="code">
+              >>> keyboard_shortcuts
+              <br>
+              <span class="code_answer">{'Copy': 'Ctrl + C', 'Paste': 'Ctrl + V', 'Undo': 'Ctrl + Z', 'Cut': 'Ctrl + X'}</span>
+              <br>>>> keyboard_shortcuts["Copy"] = "Ctrl + Insert"
+              <br>
+              <div class="hiddencode" id="code_8_2_1-a2">
+                {<mark class="mark_code_answer">'Copy': 'Ctrl + Insert'</mark>, 'Paste': 'Ctrl + V', 'Undo': 'Ctrl + Z', 'Cut': 'Ctrl + X'}
+              </div>
+            </div>
+
+            <!-- Interactive Question 8_2_1 -->
+            <img class="corner_iquestion-icon">
+            <div class="corner_iquestion-box" dir="rtl">
+              <div class="corner_iquestion-title" dir="rtl">חשבו ובחרו תשובה:</div>
+
+              <label class="corner_iquestion-option" onclick="show_answer('iquestion_8_2_1-a1')">
+                <input type="radio" name="iquestion_8_2_1" class="corner_iquestion-radio">יודפס {'Copy': 'Ctrl + C', 'Paste': 'Ctrl + V', 'Undo': 'Ctrl + Z', 'Cut': 'Ctrl + X'}.
+              </label>
+              <div class="corner_iquestion-feedback" dir="rtl">
+                <span id="iquestion_8_2_1-a1" class="corner_iquestion-i_answer">התשובה אינה נכונה. האיברים במילון ישתנו בעקבות הפעולה, חשבו כיצד ונסו שוב.
+                </span>
+              </div>
+
+
+              <label class="corner_iquestion-option" onclick="show_answer('iquestion_8_2_1-a2'),show_answer('code_8_2_1-a2'), show_answer('iquestion_8_2_1-a2a')">
+                <input type="radio" name="iquestion_8_2_1" class="corner_iquestion-radio">יודפס {'Copy': 'Ctrl + Insert', 'Paste': 'Ctrl + V', 'Undo': 'Ctrl + Z', 'Cut': 'Ctrl + X'}.
+              </label>
+              <div class="corner_iquestion-feedback" dir="rtl">
+                <span id="iquestion_8_2_1-a2" class="corner_iquestion-c_answer">תשובה נכונה!</span>
+                <div id="iquestion_8_2_1-a2a" style="display:none;">
+                  <p>כפי שראיתם, בפייתון כל מפתח הוא <b>ייחודי</b> ואין אפשרות לחזור על מפתח קיים. במקרה זה, פייתון לא זורקת הודעת
+                    שגיאה אלא <b>מעדכנת</b> ערך חדש למפתח.
+                  </p>
+                </div>
+              </div>
+
+              <label class="corner_iquestion-option" onclick="show_answer('iquestion_8_2_1-a3')">
+                <input type="radio" name="iquestion_8_2_1" class="corner_iquestion-radio">יודפס {'Copy': 'Ctrl + C', 'Paste': 'Ctrl + V', 'Undo': 'Ctrl + Z', 'Cut': 'Ctrl + X', 'Copy': 'Ctrl + Insert'}.
+              </label>
+              <div class="corner_iquestion-feedback" dir="rtl">
+                <span id="iquestion_8_2_1-a3" class="corner_iquestion-i_answer">התשובה אינה נכונה כיוון שכל מפתח במילון הוא ייחודי, נסו שוב.
+                </span>
+              </div>
+
+              <label class="corner_iquestion-option" onclick="show_answer('iquestion_8_2_1-a4')">
+                <input type="radio" name="iquestion_8_2_1" class="corner_iquestion-radio">תודפס הודעת שגיאה כיוון שאי אפשר להוסיף מפתח שכבר קיים.
+              </label>
+              <div class="corner_iquestion-feedback" dir="rtl">
+                <span id="iquestion_8_2_1-a4" class="corner_iquestion-i_answer">תשובה אינה נכונה. אמנם אי אפשר להוסיף מפתח שכבר קיים אך לא תתקבל הודעת שגיאה. נסו שוב.
+                </span>
+              </div>
+
+
+              <img class="corner_iquestion-x">
+            </div>
+            <br>
+
+
+            <!-- CORNER ENRICHMENT -->
+            <br>
+            <span class="corner_title" onclick="toggle_visibility('corner_8_2_2')">
+              <img class="corner_enrichment-icon">
+              <span class="corner_enrichment-title">טיפוסי מפתחות וערכים</span>
+              <span id="cont_8_2_2" class="corner_continue">להמשך קריאה</span>
+            </span>
+            <div id="corner_8_2_2" class="corner_enrichment-box">
+
+              <p>עד כה ראינו במילון מפתחות וערכים שכולם מטיפוס מחרוזת.
+              </p>
+              <p><b>ערכים במילון</b> יכולים להיות <b>מטיפוסים שונים</b>, כגון מחרוזת, רשימה, טאפל, מספר שלם ועוד. דוגמה למילון keyboard_info
+                שמכיל ערכים מטיפוסים שונים:
+              </p>
+              <div class="code">
+                >>> keyboard_info = {"Company": "<mark class="mark_code">Logitech</mark>", "Number of keys": <mark class="mark_code">101</mark>, "Are emoji included?": <mark class="mark_code">True</mark>, "Language": "<mark class="mark_code">Hebrew</mark>"}
+              </div>
+              <p>
+                <b>מפתחות במילון</b> יכולים להיות רק מ<b>טיפוסים שהם בלתי ניתנים לשינוי</b> (immutable). לדוגמה, אם ננסה להגדיר כמפתח אובייקט מטיפוס רשימה,
+                נקבל הודעת שגיאה מסוג TypeError. סקרנים לגלות מדוע? לחצו על
+                <a class="link" target="_blank" href="http://effbot.org/pyfaq/why-must-dictionary-keys-be-immutable.htm">הקישור הזה</a>.
+              </p>
+
+              <img class="corner_enrichment-x" onclick="toggle_visibility('corner_8_2_2')">
+            </div>
+            <br><br>
+            <!-- END CORNER ENRICHMENT -->
+
+            <h3 class="bold_title">מחיקה של איבר ממילון</h3>
+            <p>נכיר שתי דרכים ל<b>מחיקה של איברים</b> ממילון. </p>
+            <p>דרך אחת למחיקת איבר ממילון היא באמצעות <b>הפעולה del</b>:
+            </p>
+            <div class="code">
+              >>> keyboard_info
+              <br>
+              <span class="code_answer">{'Company': 'Logitech', 'Number of keys': 101, 'Are emoji included?': True, 'Language': 'Hebrew'}</span>
+              <br> >>> <mark class="mark_code">del</mark> keyboard_info["Number of keys"]
+              <br> >>> keyboard_info
+              <br>
+              <span class="code_answer">{'Company': 'Logitech', 'Are emoji included?': True, 'Language': 'Hebrew'}</span>
+
+            </div>
+            <p>דרך אחרת היא באמצעות <b>המתודה ()pop</b>. המתודה מחזירה את הערך המתאים למפתח שהועבר כפרמטר ולאחר מכן מסירה את האיבר:
+
+            </p>
+            <div class="code">
+              >>> keyboard_info.<mark class="mark_code">pop(</mark>"Company"<mark class="mark_code">)</mark>
+              <br>
+              <span class="code_answer"> 'Logitech'</span>
+              <br>>>> keyboard_info
+              <br>
+              <span class="code_answer">{'Are emoji included?': True, 'Language': 'Hebrew'}</span>
+
+            </div>
+
+            <img class="box_content_close" onclick="toggle_visibility('topic4')">
+          </div>
+          <!-- Closing Topic 4 -->
+
+          <a name="topic5">
+            <button class="box_title" onclick="toggle_visibility('topic5')">הצגה של מפתחות ו/או ערכים ממילון</button>
+            <div id="topic5" class="box_content">
+
+              <p>כשעובדים עם מילון קיימת אפשרות <b>הצגה</b> (view) של המפתחות ושל הערכים של המילון בדרך נוחה וחסכונית (מבחינת מקום
+                בזיכרון המחשב).
+              </p>
+              <br>
+              <h3 class="bold_title">הצגת מפתחות או ערכים</h3>
+              <p>בכדי להציג את כל המפתחות <b>או</b> את כל הערכים במילון נוכל להשתמש במתודה ()keys ובמתודה ()values בהתאמה.
+              </p>
+              <p>דוגמה להצגת המפתחות במילון keyboard_info:
+              </p>
+              <div class="code">
+                >>> keyboard_info
+                <br>
+                <span class="code_answer">{'Are emoji included?': True, 'Language': 'Hebrew'}</span>
+                <br> >>> keyboard_info.<mark class="mark_code">keys()</mark>
+                <br>
+                <button id="button_8_2_2" class="expand" onclick="expand_code('code_8_2_2', 'button_8_2_2')">
+                  <img class="enterbutton">
+                </button>
+                <div class="hiddencode" id="code_8_2_2">
+                  <span class="code_answer">dict_keys(['Are emoji included?', 'Language'])</span>
+                </div>
+              </div>
+              <p>דוגמה להצגת הערכים במילון keyboard_info:
+              </p>
+              <div class="code">
+                >>> keyboard_info.<mark class="mark_code">values()</mark>
+                <br>
+                <button id="button_8_2_3" class="expand" onclick="expand_code('code_8_2_3', 'button_8_2_3')">
+                  <img class="enterbutton">
+                </button>
+                <div class="hiddencode" id="code_8_2_3">
+                  <span class="code_answer">dict_values([True, 'Hebrew'])</span>
+                </div>
+              </div>
+              <p>כיוון שמילון הוא אוסף של איברים, אפשר להשתמש במתודות לעיל ולעבור על המפתחות או על הערכים באמצעות לולאת for.
+                <br> דוגמה להדפסת כל המפתחות במילון ולהדפסת כל הערכים במילון בעזרת לולאת for:
+              </p>
+              <div class="code">
+                >>> <mark class="mark_code">for</mark> key <mark class="mark_code">in</mark> keyboard_info.keys():
+                <br> . . . print(key)
+                <br>. . .
+                <br>
+                <button id="button_8_2_4" class="expand" onclick="expand_code('code_8_2_4', 'button_8_2_4')">
+                  <img class="enterbutton">
+                </button>
+                <div class="hiddencode" id="code_8_2_4">
+                  <span class="code_answer"> Are emoji included?
+                    <br>Language</span>
+                  <br>
+
+                  <br>>>> <mark class="mark_code">for</mark> value <mark class="mark_code">in</mark> keyboard_info.values():
+                  <br> . . . print(value)
+                  <br>. . .
+                  <br>
+                  <button id="button_8_2_5" class="expand" onclick="expand_code('code_8_2_5', 'button_8_2_5')">
+                    <img class="enterbutton">
+                  </button>
+                  <div class="hiddencode" id="code_8_2_5">
+                    <span class="code_answer">True
+                      <br>Hebrew</span>
+                  </div>
+                </div>
+              </div>
+              <h3 class="bold_title">הצגת מפתחות וגם ערכים</h3>
+              <p>בכדי להציג את כל ה<b>צמדים</b> במילון: המפתחות <b>וגם</b> הערכים שלהם, נוכל להשתמש במתודה ()items. באופן זה כל צמד מיוצג
+                כטאפל.
+              </p>
+              <p>דוגמה להצגה של צמדי המפתחות והערכים שלהם במילון:
+              </p>
+              <div class="code">
+                <br> >>> keyboard_info
+                <br>
+                <span class="code_answer">{'Are emoji included?': True, 'Language': 'Hebrew'}</span>
+                <br>>>> keyboard_info.<mark class="mark_code">items()</mark>
+                <br>
+                <button id="button_8_2_6" class="expand" onclick="expand_code('code_8_2_6', 'button_8_2_6')">
+                  <img class="enterbutton">
+                </button>
+                <div class="hiddencode" id="code_8_2_6">
+                  <span class="code_answer">dict_items([('Are emoji included?', True), ('Language', 'Hebrew')])</span>
+                </div>
+              </div>
+              <p>בכדי להדפיס את כל הצמדים במילון בצורה מעוצבת, נוכל להיעזר בשיטת string formatting, לדוגמה:</p>
+              <div class="code">
+                >>> <mark class="mark_code">for</mark> info <mark class="mark_code">in</mark> keyboard_info.items():
+                <br>. . . print(<mark class="mark_code">"%s -> %s" % info</mark>)
+                <br>. . .
+                <br>
+                <button id="button_8_2_7" class="expand" onclick="expand_code('code_8_2_7', 'button_8_2_7')">
+                  <img class="enterbutton">
+                </button>
+                <div class="hiddencode" id="code_8_2_7">
+                  <span class="code_answer">Are emoji included? -> True
+                    <br>Language -> Hebrew</span>
+                </div>
+              </div>
+              <p></p>
+
+
+              <!-- CORNER ENRICHMENT -->
+              <br>
+              <span class="corner_title" onclick="toggle_visibility('corner_8_2_3')">
+                <img class="corner_enrichment-icon">
+                <span class="corner_enrichment-title">הצגה של מילון</span>
+                <span id="cont_8_2_3" class="corner_continue">להמשך קריאה</span>
+              </span>
+              <div id="corner_8_2_3" class="corner_enrichment-box">
+
+                <p>
+                  בכדי להציג מפתחות, ערכים וצמדים שלהם הכרנו את המתודות values, keys ו-items. האובייקטים המוחזרים ממתודות אלה נקראים בפייתון
+                  <b>view objects</b>. אובייקטים אלו מספקים תצוגה דינמית על המפתחות, הערכים והצמדים, כך שכל שינוי במילון משוקף גם
+                  באובייקטים. לקריאה מעמיקה יותר על view objects
+                  <a class="link" target="_blank" href="https://docs.python.org/2/library/stdtypes.html#dictionary-view-objects">לחצו על הקישור הזה</a>
+                </p>
+
+                <img class="corner_enrichment-x" onclick="toggle_visibility('corner_8_2_3')">
+              </div>
+              <br>
+              <!-- END CORNER ENRICHMENT -->
+
+
+              <img class="box_content_close" onclick="toggle_visibility('topic5')">
+            </div>
+            <!-- Closing Topic 5 -->
+
+</body>
+
+</html>

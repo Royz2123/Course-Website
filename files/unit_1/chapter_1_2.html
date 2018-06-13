@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <title>סביבת העבודה הפייתונית 1.2</title>
+  <meta charset="utf-8">
+  <link href='https://fonts.googleapis.com/css?family=alef' rel='stylesheet'>
+  <link rel="stylesheet" type="text/css" href="../base/neo_css.css">
+  <script src="../base/python_js.js"></script>
+</head>
+<body class="python_body">
+  <script>
+    function toggle_visibility(id) {
+          var e = document.getElementById(id);
+          if (e.style.display == 'block')
+                e.style.display = 'none';
+          else
+                e.style.display = 'block';}
+
+    function expand_code(codeid, buttonid) {
+          var c = document.getElementById(codeid);
+          var b = document.getElementById(buttonid);
+          c.style.display = 'block';
+          b.style.display = 'none';}
+  </script>
+  <div class="toc_title">מה נלמד?</div>
+    <button class="box_title" onclick="toggle_visibility('topic1')">האינטרפרטר</button>
+    <div id="topic1" class="box_content">
+      <p>רגע לפני שנוכל להתחיל לכתוב קוד בפייתון, נכיר את סביבת העבודה שלנו. איפה נכתוב את הקוד? כיצד נריץ אותו? איך ייראה הפלט?
+      </p>
+      <p>אחד היתרונות הבולטים של פייתון כשפה עילית הוא נוחות העבודה עם ה<b>אינטרפרטר</b>.
+        <br> האינטרפרטר (interpreter, מפרש) הוא התוכנה שמפרשת את הקוד שלנו וממירה אותו לקוד מכונה שמורץ על ידי התוכנה python.exe.
+        בקיצור, זהו חלון קטן בו רצה שפת פייתון.
+        <br> האינטרפרטר מיוחד בכך שכתיבת הקוד בו
+        <b>אינטראקטיבית</b>: באינטרפרטר נכתוב בכל פעם שורת קוד אחת, נלחץ Enter, ונקבל את הפלט בשורה הבאה. קלי קלות!</p>
+      <p>כך ייראו דוגמאות קוד בקורס, שמדגימות הרצה באינטרפרטר. בכל פעם שתראו את הכפתור
+        <img src="http://e-learn.cyber.org.il/python/base_graphics/enter.png" height="11px"> בתחתית המסגרת, חשבו מה יקרה בעקבות הרצת השורה, ולחצו בכדי לחשוף את התשובה.</p>
+
+      <div class="code">>>> "Welcome to Python!"
+        <br>
+        <button id="button_1_2_1" class="expand" onclick="expand_code('code_1_2_1', 'button_1_2_1')">
+          <img class="enterbutton">
+        </button>
+        <div class="hiddencode" id="code_1_2_1">
+          <span class="code_answer">'Welcome to Python!'</span>
+        </div>
+      </div>
+
+        <p>האינטראקטיביות הופכת את האינטרפרטר לכלי מצוין ללמידת השפה. נשתמש בו כדי לבדוק כיצד עובדות פקודות ושורות קוד ובכדי
+          לבצע חישובים קטנים ומהירים.
+        </p>
+        <p>מעוניינים גם אתם לכתוב קוד באינטרפרטר?</p>
+
+        <img class="box_content_close" onclick="toggle_visibility('topic1')">
+      </div>
+      <!-- Closing Topic 1 -->
+
+	  
+	  
+	  
+      <a name="topic2">
+        <button class="box_title" onclick="toggle_visibility('topic2')">הוראות הורדה והתקנה של תוכנת Python</button>
+        <div id="topic2" class="box_content">
+
+          <p>בכדי לכתוב בעצמכם קוד באינטרפרטר, עליכם להוריד את תוכנת Python ולהתקין אותה במחשב שלכם.
+          </p>
+          <p>בקורס זה נלמד תכנות בגרסת פייתון-3. הקורס נכתב עבור הגרסה 3.6.3 אך תוכלו להתקין גם גרסאות מעודכנות יותר של פייתון-3, כאשר יהיו. </p>
+
+          <h3 class="bold_title">הוראות הורדה לתוכנת פייתון</h3>
+          <p>
+            <a class="link" href="https://www.python.org/downloads/" target="_blank">להורדת פייתון למחשב שלכם לחצו כאן</a>
+            והמשיכו על פי ההוראות:
+          </p>
+          <p>בדף שנפתח לכם העבירו את העכבר על כפתור "Downloads" (הורדות) ולאחר מכן לחצו על "Windows".
+          </p>
+          <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_1/graphics/img_1_2_1.png" alt="התקנה 1"><br>
+          <p>חפשו ברשימה שתוצג בפניכם את גרסת Python 3.6.3 ולאחר מכן לחצו על הכיתוב
+            "Download Windows x86-64 executable installer".
+          </p>
+          <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_1/graphics/img_1_2_2.png" alt="התקנה 2"><br>
+          <p>ההורדה תחל כעת באופן אוטומטי. אם אינכם יודעים היכן למצוא את הקובץ, הוא ככל הנראה יוצג כך בתיקיית ההורדות שלכם:</p>
+          <img src="http://e-learn.cyber.org.il/python/unit_1/graphics/img_1_2_3.png" alt="התקנה 3"><br>
+          <p>לאחר שתסתיים הורדת הקובץ, הריצו אותו על ידי לחיצה כפולה עליו.
+          </p>
+          <h3 class="bold_title">הוראות התקנה לתוכנת פייתון</h3>
+          <p>לחיצה כפולה על הקובץ שהורדתם פותחת חלון ובו הנחיות להתקנה. </p>
+          <p>עקבו אחר הוראות ההתקנה הבאות:</p>
+          <ol>
+            <li>במסך הפתיחה לחצו על האפשרות Customize installation.
+              <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_1/graphics/img_1_2_4.png" alt="התקנה 4"></li>
+            <li>לחצו על Next.
+              <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_1/graphics/img_1_2_5.png" alt="התקנה 5"></li>
+            <li>
+              <ol style="list-style-type: hebrew;">
+                <li>סמנו את האפשרות Add Python to environment variables.</li>
+                <li>לחצו על Install.
+                  <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_1/graphics/img_1_2_6.png" alt="התקנה 6">
+                </li>
+              </ol>
+            </li>
+            <li>המתינו כמה דקות עד שההתקנה תסיים ולאחר מכן לחצו על Close.
+            <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_1/graphics/img_1_2_7.png" alt="התקנה 7"></li>
+          </ol>
+          <p>זהו זה, אתם מוכנים לעבודה!</p>
+
+          <!-- CORNER -->
+          <br>
+          <span class="corner_title" onclick="toggle_visibility('corner_1_2_1')">
+            <img class="corner_enrichment-icon">
+            <span class="corner_enrichment-title">פייתון-2 מול פייתון-3</span>
+            <span id="cont_1_2_1" class="corner_continue">להמשך קריאה</span>
+          </span>
+          <div id="corner_1_2_1" class="corner_enrichment-box">
+            <p>פייתון-3 היא הגרסה העדכנית של פייתון והיא צפויה להישאר הגרסה הראשית לאורך זמן. עם זאת, מערכות רבות כתובות בפייתון-2
+              והתכנות בה עדיין נפוץ. <br>
+               כיוון שפייתון-2 שימשה לאורך זמן, ועודנה משמשת בפועל, ייתכן שתיתקלו באינטרנט או במקורות
+              אחרים בדוגמאות קוד שאינן תואמות בדיוק למה שנלמד בקורס. <br>
+               לקריאה על ההבדלים העיקריים בין פייתון-2 לבין פייתון-3
+              לחצו
+              <a class="link" target="_blank" href="http://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html">כאן</a>.
+            </p>
+            <img class="corner_enrichment-x" onclick="toggle_visibility('corner_1_2_1')">
+          </div>
+          <br>
+          <br>
+          <!-- END CORNER -->
+          <img class="box_content_close" onclick="toggle_visibility('topic2')">
+        </div>
+        <!-- Closing Topic 2 -->
+
+        <a name="topic3">
+          <button class="box_title" onclick="toggle_visibility('topic3')">עבודה עם האינטרפרטר</button>
+          <div id="topic3" class="box_content">
+            <p> בכדי לכתוב קוד באינטרפרטר, ראשית נפתח את <b>שורת הפקודה </b> (החלון הקטן שמאפשר לכתוב בו שורות קוד).<br>
+            לחצו עם מקש ימני על התחלה (Start) ולאחר מכן על הפעל (Run), או בקיצור Winkey+R. כתבו "python" בשורת ההרצה שנפתחה ולחצו OK:</p>
+            <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_1/graphics/img_1_2_8.png" alt="התקנה 8"><br>
+            <p>נפתח חלון ובו שורה הפותחת ב-
+              <<< </p>
+              <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_1/graphics/img_1_2_9.png" alt="התקנה 9"><br>
+                <p>מזל טוב! האינטרפרטר של פייתון פתוח, ואתם יכולים להתחיל לתכנת!</p>
+                <p>כאמור, השימוש באינטרפרטר הוא אינטראקטיבי: בכל פעם מריצים שורת פקודה אחת ולאחר לחיצה על Enter מוצג הפלט שחזר
+                  מן ההרצה. נוכל להיעזר בחיצי המקלדת למעלה ולמטה כדי "לדפדף" בין פקודות קודמות שכתבנו. אם נרצה לעצור פקודה
+                  כלשהי או לסגור את חלון שורת הפקודה נלחץ על Ctrl+C.
+                </p>
+                <p><b>האינטרפרטר הוא כלי עבודה נהדר!</b> החל מהפרק הבא נתנסה בו. אנו ממליצים להשאיר את האינטרפרטר פתוח לכל אורך הקורס
+                  גם כאשר תעבדו עם קבצי קוד, ובכלל כאשר תתכנתו בעתיד, כך שיהיה זמין להרצות ולבדיקות.
+                </p>
+                <img class="box_content_close" onclick="toggle_visibility('topic3')">
+          </div>
+          <!-- Closing Topic 3 -->
+
+</body>
+
+</html>

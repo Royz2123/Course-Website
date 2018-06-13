@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <title>3.4 עבודה עם אובייקטים</title>
+  <meta charset="utf-8">
+  <link href='https://fonts.googleapis.com/css?family=alef' rel='stylesheet'>
+  <link rel="stylesheet" type="text/css" href="../base/neo_css.css">
+  <script src="../base/python_js.js"></script>
+</head>
+
+<body class="python_body">
+  <script>
+    function toggle_visibility(id) {
+          var e = document.getElementById(id);
+          if (e.style.display == 'block')
+                e.style.display = 'none';
+          else
+                e.style.display = 'block';}
+
+    function expand_code(codeid, buttonid) {
+          var c = document.getElementById(codeid);
+          var b = document.getElementById(buttonid);
+          c.style.display = 'block';
+          b.style.display = 'none';}
+
+    function show_answer(id) {
+          var e = document.getElementById(id);
+          e.style.display = 'block';}
+  </script>
+  <div class="toc_title">מה נלמד?</div>
+
+  <a name="topic1">
+    <button class="box_title" onclick="toggle_visibility('topic1')">ביצוע פעולות עם אובייקטים</button>
+    <div id="topic1" class="box_content">
+      <p>בכתיבת תוכניות ניתקל באינספור מקרים בהם נרצה לבצע פעולות על אובייקטים. עד סוף הפרק נכיר שלל פעולות שימושיות בעבודה
+        עם אובייקטים מטיפוסים שונים ועם מחרוזות בפרט.</p>
+      <p>למה הכוונה? נדגים בעזרת הפעולה "שורש ריבועי". נניח שמימשנו קטע קוד באורך שבע שורות, שמחשב שורש ריבועי של משתנה ומדפיס
+        אותו. כאשר נרצה לחשב בתוכנית את שורש 9&radic; נוסיף לה את קטע הקוד שמימשנו, וכך תודפס התוצאה 3.
+      </p>
+      <p>מה נעשה אם נרצה לחשב את הביטוי הבא?
+        <img class="illustration" width="350px" src="http://e-learn.cyber.org.il/python/unit_3/graphics/img_3_4_1.png">
+      </p>
+      <p>נצטרך להעתיק את קטע הקוד שש פעמים ובכל פעם להזין לו מספר אחר, כלומר - התוכנית שלנו תכלול 42 שורות קוד כמעט זהות! ורק
+        לחשוב מה יקרה אם נפלה טעות באחת השורות ונרצה לתקן בכל קטעי הקוד, או אם נרצה להוסיף משהו קטן לכל אחד מהחישובים...
+        <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_3/graphics/img_3_4_2.png">
+      </p>
+      <p>כדי להימנע מכתיבת קוד מיותרת, נשתמש ב<b>פונקציות</b> (functions) וב<b>מתודות</b> (methods).<br>
+        לדוגמה, נכתוב פעם אחת פונקציה לחישוב שורש ריבועי ונקרא לה כמה פעמים שנרצה.
+        <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_3/graphics/img_3_4_3.png">
+      </p>
+      <p>כן, נוכל להשתמש בפונקציות ומתודות רבות ה<b>המובנות</b> בשפת פייתון, כלומר כאלה שמישהו כתב לפנינו והן זמינות לשימושנו.</p>
+      <p>נכיר מהן פונקציות ומתודות וכמה הבדלים ביניהן.</p>
+      <img class="box_content_close" onclick="toggle_visibility('topic1')">
+    </div>
+    <!-- Closing Topic 1 -->
+
+    <a name="topic2">
+      <button class="box_title" onclick="toggle_visibility('topic2')">פונקציות</button>
+      <div id="topic2" class="box_content">
+
+        <p>
+          <b>פונקציה</b> היא כינוי לבלוק של קוד המבצע פעולה מסוימת. בכדי לבצע את הפעולה אפשר להשתמש בשם השמור של הפונקציה במקום
+          לכתוב בכל פעם מחדש קוד המבצע זאת.
+        </p>
+        <p>אופן השימוש בפונקציה - נכתוב את
+          <b>שם הפונקציה</b> ולאחר מכן סוגריים. בתוך הסוגריים יופיע אובייקט, אחד או יותר, הדרושים לביצוע הפעולה. אובייקטים שונים
+          נפריד בפסיקים. האובייקטים שדרושים לביצוע הפעולה נקראים
+          <b>פרמטרים</b>.
+        </p>
+
+        <div class="code">
+          function_name(parameter1, parameter2...)
+        </div>
+        <p>דוגמה לפונקציה - הפונקציה המתמטית
+          <b>sqrt</b> המוגדרת בספרייה math מחשבת שורש ריבועי (square root):
+        </p>
+
+        <div class="code">
+          >>> import math
+          <br> >>> math.sqrt(9)
+          <br>
+          <span class="code_answer">3</span>
+          <br> >>> math.sqrt(25) + math.sqrt(14) + math.sqrt(9) + math.sqrt(900) + math.sqrt(210) + math.sqrt(12)
+          <br>
+          <span class="code_answer"> 49.49296727141385</span>
+        </div>
+
+        <p>ראיתם באיזו קלות חישבנו את הביטוי? פשוט על ידי קריאה חוזרת לאותה פונקציה. במקרה זה, קראנו לפונקציה sqrt מתוך הספרייה
+          math. לשמחתנו הפונקציה sqrt היא פונקציה מובנית בשפה, כלומר היא מגיעה מוכנה לשימוש. <br>
+           בנוסף, כבר ביחידה חמש תוכלו
+          לכתוב פונקציות משלכם!
+        </p>
+
+
+        <img class="box_content_close" onclick="toggle_visibility('topic2')">
+      </div>
+      <!-- Closing Topic 2 -->
+
+      <a name="topic3">
+        <button class="box_title" onclick="toggle_visibility('topic3')">מתודות</button>
+        <div id="topic3" class="box_content">
+          <p>
+            <b>מתודה</b> היא פונקציה אשר מוגדרת עבור אובייקט מטיפוס מסוים, ומבצעת פעולות עליו או באמצעותו.
+          </p>
+          <p>אופן השימוש במתודה - נכתוב מהו
+            <b>האובייקט</b> עליו תפעל המתודה, נקודה,
+            <b>שם המתודה</b> ולבסוף סוגריים. גם מתודות יכולות לקבל
+            <b>פרמטרים</b> בסוגריים, ממש כמו פונקציות.
+          </p>
+          <div class="code">object.method_name(parameter1, parameter2...)</div>
+
+
+          <p>השימוש בנקודה מייצג קריאה למתודה עבור אובייקט, בשונה מקריאה לפונקציה מתוך ספרייה כפי שהכרנו.
+          </p>
+          <p>מעניין לציין, גם שם האובייקט שכותבים (object) הוא פרמטר. כלומר, מאחורי הקלעים פייתון מעבירה למתודה את object בתור
+            הפרמטר הראשון, ואחריו את הפרמטרים הנוספים שבסוגריים.
+          </p>
+          <p>דוגמה למתודה שאינה מקבלת פרמטרים בסוגריים - המתודה
+            <b>upper</b> מבצעת את פעולתה על אובייקט מטיפוס מחרוזת. כיוון שאין צורך בפרמטרים נוספים הסוגריים נשארים ריקים (אך
+            נכתבים):
+          </p>
+
+          <div class="code">>>> "print me in UPPERCASE".upper()
+            <br>
+            <span class="code_answer">'PRINT ME IN UPPERCASE'</span>
+          </div>
+
+          <p>בדוגמה זו האובייקט עליו מתבצעת הפעולה upper הוא המחרוזת "print me in UPPERCASE".
+          </p>
+          <p>דוגמה למתודה אשר מקבלת פרמטר בסוגריים - המתודה
+            <b>zfill</b> מרפדת מחרוזת (טיפוס האובייקט עליו היא פועלת) באפסים משמאל למחרוזת, עד לרוחב כלשהו (width). הרוחב הרצוי
+            הוא מספר שלם שמועבר כפרמטר:
+          </p>
+          <div class="code">>>> "1".zfill(5)
+            <br>
+            <span class="code_answer">'00001'</span>
+          </div>
+
+          <p>הביטו על דוגמה נוספת לשימוש במתודה zfill ועצרו לרגע קט כדי לענות ולוודא שהבנתם:
+          </p>
+          <div class="code">>>> "234".zfill(5)
+            <br>
+            <span class="code_answer">'00234'</span>
+          </div>
+
+          <!-- Interactive Question 3_4_1 -->
+          <img class="corner_iquestion-icon">
+          <div class="corner_iquestion-box" dir="rtl">
+            <div class="corner_iquestion-title" dir="rtl">מתוך הדוגמה האחרונה, מה מהבאים נכון לומר על zfill?</div>
+
+            <label class="corner_iquestion-option" onclick="show_answer('iquestion_3_4_1-a1')">
+              <input type="radio" name="iquestion_3_4_1" class="corner_iquestion-radio">בהרצת המתודה zfill מקבלים מספר, מרופד באפסים, ברוחב הפרמטר שהועבר לה</label>
+              <div class="corner_iquestion-feedback" dir="rtl">
+                <span id="iquestion_3_4_1-a1" class="corner_iquestion-i_answer">כמעט... בהרצת המתודה מקבלים <b>מחרוזת </b>('00234') ולא מספר. נסו שוב.</span>
+              </div>
+            <label class="corner_iquestion-option" onclick="show_answer('iquestion_3_4_1-a2')">
+              <input type="radio" name="iquestion_3_4_1" class="corner_iquestion-radio">האובייקט 5 הוא ערך עבור הפרמטר עליו פועלת המתודה zfill</label>
+              <div class="corner_iquestion-feedback" dir="rtl">
+                <span id="iquestion_3_4_1-a2" class="corner_iquestion-i_answer">לא בדיוק. האובייקט 5 הוא אכן ערך עבור פרמטר, אך היא אינה פועלת <b>עליו </b>אלא הוא דרוש לפעולתה. נסו שוב.</span>
+              </div>
+            <label class="corner_iquestion-option" onclick="show_answer('iquestion_3_4_1-a3')">
+              <input type="radio" name="iquestion_3_4_1" class="corner_iquestion-radio">המתודה zfill פועלת על אובייקט מטיפוס מחרוזת</label>
+              <div class="corner_iquestion-feedback" dir="rtl">
+                <span id="iquestion_3_4_1-a3" class="corner_iquestion-c_answer">נכון! המשיכו בכדי להכיר מתודות נוספות בעבודה עם מחרוזות.</span>
+              </div>
+            <label class="corner_iquestion-option" onclick="show_answer('iquestion_3_4_1-a4')">
+              <input type="radio" name="iquestion_3_4_1" class="corner_iquestion-radio">המתודה zfill פועלת על אובייקט מטיפוס מספר</label>
+              <div class="corner_iquestion-feedback" dir="rtl">
+                <span id="iquestion_3_4_1-a4" class="corner_iquestion-i_answer">לא מדויק. המתודה פועלת על <b>מחרוזת</b>, בדוגמה זו המחרוזת "234" אשר מוקפת במרכאות. נסו שוב.</span>
+              </div>
+
+            <img class="corner_iquestion-x">
+          </div><br>
+
+          <p>בפייתון קיימות פונקציות ומתודות רבות. במסגרת הקורס נכיר כמה מהן אך לא נוכל לפרט על כולן.
+          </p>
+
+          <!-- CORNER -->
+          <br>
+          <span class="corner_title" onclick="toggle_visibility('corner_3_4_1')">
+            <img class="corner_enrichment-icon">
+            <span class="corner_enrichment-title">פונקציות ומתודות בפייתון</span>
+            <span id="cont_3_4_1" class="corner_continue">להמשך קריאה</span>
+          </span>
+          <div id="corner_3_4_1" class="corner_enrichment-box">
+
+            <p>אם אתם סקרנים להכיר פונקציות ומתודות נוספות תוכלו להיעזר בשיטות הבאות:</p>
+            <p>פירוט על
+              <b>פונקציות</b>:
+              <br> תיעוד על הפונקציות המובנות בפייתון -
+              <a class="link" target="_blank" href="https://docs.python.org/3/library/functions.html">https://docs.python.org/3/library/functions.html</a>
+
+            </p>
+            <p>פירוט על
+              <b>מתודות</b>:
+              <br> תיעוד על מתודות עבור טיפוסים כלשהם תוכלו למצוא בחיפוש בתיעוד ברשת
+              <a class="link" target="_blank" href="https://docs.python.org/3/library/index.html">זה הקישור הכללי</a>, לדוגמה
+              <a class="link" target="_blank" href="https://docs.python.org/3/library/stdtypes.html#string-methods">מתודות עבור מחרוזות</a>. <br>
+               כמו כן, תוכלו להשתמש בפונקציה
+              <b>dir</b>. הפונקציה dir מקבלת כפרמטר כל טיפוס או אובייקט בפייתון ומחזירה כפלט רשימה של המתודות הזמינות עבורו.
+            </p>
+            <p>דוגמה לשימוש בפונקציה dir עבור הטיפוס מחרוזת:</p>
+
+            <div class="code">
+              >>> dir(str)
+              <br>
+              <button id="button_3_4_1" class="expand" onclick="expand_code('codebutton_3_4_1', 'button_3_4_1')">
+                <img class="enterbutton">
+              </button>
+              <div class="hiddencode" id="codebutton_3_4_1">
+              <span class="code_answer">['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__',
+                '__getattribute__', '__getitem__', '__getnewargs__', '__gt__', '__hash__', '__init__', '__init_subclass__',
+                '__iter__', '__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__',
+                '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'capitalize',
+                'casefold', 'center', 'count', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'format_map', 'index',
+                'isalnum', 'isalpha', 'isdecimal', 'isdigit', 'isidentifier', 'islower', 'isnumeric', 'isprintable', 'isspace',
+                'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'maketrans', 'partition', 'replace', 'rfind', 'rindex',
+                'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title',
+                'translate', '<mark class="mark_code_answer">upper</mark>', '<mark class="mark_code_answer">zfill</mark>']</span>
+              </div>
+            </div>
+            <p>דוגמה נוספת לשימוש בפונקציה dir, הפעם עבור הטיפוס int:
+            </p>
+            <div class="code">
+              >>> dir(int)
+              <br>
+              <button id="button_3_4_2" class="expand" onclick="expand_code('codebutton_3_4_2', 'button_3_4_2')">
+                <img class="enterbutton">
+              </button>
+              <div class="hiddencode" id="codebutton_3_4_2">
+              <span class="code_answer">['__abs__', '__add__', '__and__', '__bool__', '__ceil__', '__class__', '__delattr__', '__dir__', '__divmod__',
+                '__doc__', '__eq__', '__float__', '__floor__', '__floordiv__', '__format__', '__ge__', '__getattribute__',
+                '__getnewargs__', '__gt__', '__hash__', '__index__', '__init__', '__init_subclass__', '__int__', '__invert__',
+                '__le__', '__lshift__', '__lt__', '__mod__', '__mul__', '__ne__', '__neg__', '__new__', '__or__', '__pos__',
+                '__pow__', '__radd__', '__rand__', '__rdivmod__', '__reduce__', '__reduce_ex__', '__repr__', '__rfloordiv__',
+                '__rlshift__', '__rmod__', '__rmul__', '__ror__', '__round__', '__rpow__', '__rrshift__', '__rshift__', '__rsub__',
+                '__rtruediv__', '__rxor__', '__setattr__', '__sizeof__', '__str__', '__sub__', '__subclasshook__', '__truediv__',
+                '__trunc__', '__xor__', 'bit_length', 'conjugate', 'denominator', 'from_bytes', 'imag', 'numerator', 'real',
+                'to_bytes']
+              </span>
+              </div>
+            </div>
+            <img class="corner_enrichment-x" onclick="toggle_visibility('corner_3_4_1')">
+          </div>
+          <br>
+          <br>
+          <!-- END CORNER -->
+
+          <img class="box_content_close" onclick="toggle_visibility('topic3')">
+        </div>
+        <!-- Closing Topic 3 -->
+
+        <a name="topic4">
+          <button class="box_title" onclick="toggle_visibility('topic4')">קונבנציות - רווחים</button>
+          <div id="topic4" class="box_content">
+
+            <p>לאחר שהכרנו פונקציות ומתודות, עם או בלי פרמטרים בסוגריים, נתעכב מעט על קונבנציות כתיבה שקשורות בהן.
+            </p>
+
+            <!-- CORNER -->
+            <br>
+            <span class="corner_title" onclick="toggle_visibility('corner_3_4_2')">
+              <img class="corner_goodwrite-icon">
+              <span class="corner_goodwrite-title">רווחים</span>
+              <span id="cont_3_4_2" class="corner_continue">להמשך קריאה</span>
+            </span>
+            <div id="corner_3_4_2" class="corner_goodwrite-box">
+
+              <p>קיימות קונבנציות עבור
+                <b>ריווח</b> (הוספת רווחים) בסביבת פרמטרים, סוגריים ואופרטורים. נכיר אותן בקצרה.</p>
+              <p>כאשר אנחנו מעבירים לפונקציה או למתודה
+                <b>יותר מפרמטר אחד</b> בסוגריים, יש לכתוב רווח אחד אחרי כל פסיק שמפריד בין הערכים. אם מעבירים
+                <b>פרמטר אחד</b> לא יהיו רווחים כלל. לדוגמה:
+              </p>
+
+              <div class="code">
+                >>> function_with_one_parameter(5) &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+                <span class="code_comment"># Wrong: ( 5 )</span>
+                <br> >>> function_with_three_parameters(1, 2, 3)&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+                <span class="code_comment"> # Wrong: ( 1,2,3 )
+                </span>
+              </div>
+              <p>בנוסף, שימו לב שכאשר כותבים קוד שכולל
+                <b>אופרטורים</b> (כגון +, -, *, =,
+                <,>) נדאג להכניס רווחים משני הצדדים שלהם. לדוגמה:
+              </p>
+
+              <div class="code">
+                >>> x = 1 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+                <span class="code_comment"># Wrong: x=1</span>
+                <br> >>> x = x * 5 + 1&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                <span class="code_comment"> # Wrong: x=x*5+1</span>
+                <br> >>> x = a > 5&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+                <span class="code_comment"> # Wrong: a>5
+                </span>
+              </div>
+
+              <img class="corner_goodwrite-x" onclick="toggle_visibility('corner_3_4_2')">
+            </div>
+            <br>
+            <!-- END CORNER -->
+
+            <!-- CORNER -->
+            <br>
+            <span class="corner_title" onclick="toggle_visibility('corner_3_4_3')">
+              <img class="corner_enrichment-icon">
+              <span class="corner_enrichment-title">קונבנציות ריווח</span>
+              <span id="cont_3_4_3" class="corner_continue">להמשך קריאה</span>
+            </span>
+            <div id="corner_3_4_3" class="corner_enrichment-box">
+
+              <p>פירוט על קונבנציות ריווח תוכלו לקרוא בקישור הבא:
+                <br>
+                <a class="link" target="_blank" href="https://www.python.org/dev/peps/pep-0008/#whitespace-in-expressions-and-statements">https://www.python.org/dev/peps/pep-0008/#whitespace-in-expressions-and-statements</a>
+              </p>
+              <img class="corner_enrichment-x" onclick="toggle_visibility('corner_3_4_3')">
+            </div>
+            <br>
+            <!-- END CORNER -->
+
+            <img class="box_content_close" onclick="toggle_visibility('topic4')">
+          </div>
+          <!-- Closing Topic 4 -->
+
+</body>
+
+</html>

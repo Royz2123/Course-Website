@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <title>2.4 קונבנציות בשמות משתנים</title>
+    <meta charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=alef' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="../base/neo_css.css">
+    <script src="../base/python_js.js"></script>
+</head>
+
+<body class="python_body">
+  <script>
+    function toggle_visibility(id) {
+          var e = document.getElementById(id);
+          if (e.style.display == 'block')
+                e.style.display = 'none';
+          else
+                e.style.display = 'block';}
+
+    function expand_code(codeid, buttonid) {
+          var c = document.getElementById(codeid);
+          var b = document.getElementById(buttonid);
+          c.style.display = 'block';
+          b.style.display = 'none';}
+
+    function show_answer(id) {
+          var e = document.getElementById(id);
+          e.style.display = 'block';}
+  </script>
+  <div class="toc_title">מה נלמד?</div>
+
+    <a name="topic1">
+        <button class="box_title" onclick="toggle_visibility('topic1')">מהן קונבנציות?</button>
+        <div id="topic1" class="box_content">
+            <p>למדנו מהם משתנים וכיצד להגדיר אותם. אבל אילו שמות ניתן להם? הגיע הזמן להתחיל ולהכיר לעומק את
+                <b>קונבנציות הכתיבה בפייתון</b>
+                שהופכות את החיים התכנותיים שלנו לברורים וקריאים יותר.</p>
+            <p>קונבנציות כתיבה הן סט מוסכמות שנוגע לעיצוב ולנראות של הקוד, עליו מקפידים בכתיבת קוד. חשוב להדגיש, קונבנציות אינן
+                נאכפות ברמת השפה, והתוכנית שלנו תרוץ גם בלעדיהן. למרות זאת, הן חשובות מאוד כיוון שהן מאפשרות גם לנו וגם לאחרים
+                להבין ולהתמצא בקוד שלנו, או של מישהו אחר, בקלות. </p>
+            <p>עבור פייתון קיים סט כללים שנקרא PEP8. אנו מקפידים לכתוב על פיו בקורס זה, ומבקשים מכם להקפיד על סטנדרט זה גם בתרגילים
+                שלכם וגם בהמשך חייכם כמתכנתים בפייתון. </p>
+
+            <!-- CORNER ENRICHMENT -->
+            <br>
+            <span class="corner_title" onclick="toggle_visibility('corner_2_4_1')">
+                <img class="corner_enrichment-icon">
+                <span class="corner_enrichment-title">PEP</span>
+                <span id="cont_2_4_1" class="corner_continue">להמשך קריאה</span>
+            </span>
+            <div id="corner_2_4_1" class="corner_enrichment-box">
+                <p>המונח PEP הוא קיצור של Python Enhancement Proposals. אחד מתוך ה-PEPs הוא PEP8 שעוסק בקונבנציות כתיבה. את
+                    הקונבנציות תוכלו להכיר
+                    <a target="_blank" href="https://www.python.org/dev/peps/pep-0008" class="link">בקישור זה</a>.</p>
+
+                <img class="corner_enrichment-x" onclick="toggle_visibility('corner_2_4_1')">
+            </div>
+            <br>
+            <!-- END CORNER ENRICHMENT -->
+
+            <img class="box_content_close" onclick="toggle_visibility('topic1')">
+        </div>
+        <!-- closing topic 1 -->
+
+		
+		
+		
+        <a name="topic2">
+            <button class="box_title" onclick="toggle_visibility('topic2')">מתן שמות למשתנים</button>
+            <div id="topic2" class="box_content">
+
+                <p>בכתיבת תוכנית על פינוקיו קבענו שאורך האף שלו 4 סנטימטרים:</p>
+                <div class="code">
+                    >>> nose_length = 4
+                    <br>
+                </div>
+                <p>לאחר שפינוקיו שיקר התארך לו האף:</p>
+                <div class="code">
+                    >>> NOSE_LENGTH = 6
+                </div>
+
+                <!-- Interactive Question 2_4_1 -->
+                <img class="corner_iquestion-icon">
+                <div class="corner_iquestion-box" dir="rtl">
+                  <div class="corner_iquestion-title" dir="rtl">האם אפשר לחשב בכמה התארך האף?<br>
+                    מה לדעתכם יודפס על המסך אם נקליד באינטרפרטר את השורה הבאה ונלחץ אנטר?
+                    <div class="code">
+                        >>> NOSE_LENGTH - nose_length<br>
+                        <span class="code_answer" id="iquestion_2_4_1-a2a" style="display:none;">2</span>
+                    </div>
+                  </div>
+                  <label class="corner_iquestion-option" onclick="show_answer('iquestion_2_4_1-a1')">
+                    <input type="radio" name="iquestion_2_4_1" class="corner_iquestion-radio">0</label>
+                    <div class="corner_iquestion-feedback" dir="rtl">
+                      <span id="iquestion_2_4_1-a1" class="corner_iquestion-i_answer">התשובה אינה נכונה, קיימים <b>שני </b>משתנים עם שמות שונים, נסו שוב.</span>
+                    </div>
+
+                  <label class="corner_iquestion-option" onclick="show_answer('iquestion_2_4_1-a2'), show_answer('iquestion_2_4_1-a2a'), show_answer('iquestion_2_4_1-a2b')">
+                    <input type="radio" name="iquestion_2_4_1" class="corner_iquestion-radio">2</label>
+                    <div class="corner_iquestion-feedback" dir="rtl">
+                      <span id="iquestion_2_4_1-a2" class="corner_iquestion-c_answer">נכון מאוד, מה נוכל ללמוד מכך? המשיכו לקרוא כדי לגלות<br></span>
+                    </div>
+
+                  <label class="corner_iquestion-option" onclick="show_answer('iquestion_2_4_1-a3')">
+                    <input type="radio" name="iquestion_2_4_1" class="corner_iquestion-radio">2-</label>
+                    <div class="corner_iquestion-feedback" dir="rtl">
+                      <span id="iquestion_2_4_1-a3" class="corner_iquestion-i_answer">התשובה אינה נכונה, שימו לב לסדר המשתנים ונסו שוב.</span>
+                    </div>
+
+                  <label class="corner_iquestion-option" onclick="show_answer('iquestion_2_4_1-a4')">
+                    <input type="radio" name="iquestion_2_4_1" class="corner_iquestion-radio">תתקבל שגיאה בביצוע פעולת החיסור בשל הגדרה כפולה.</label>
+                    <div class="corner_iquestion-feedback" dir="rtl">
+                      <span id="iquestion_2_4_1-a4" class="corner_iquestion-i_answer">במקרה זה לא תתקבל שגיאה, נסו שוב.</span>
+                    </div>
+
+                  <img class="corner_iquestion-x">
+                </div><br>
+
+                <div id="iquestion_2_4_1-a2b" style="display:none">
+                  <p>קטע הקוד הזה מעיד על כך שלמרות שיש לנו שני משתנים עם אותו שם כביכול, nose_length, הם מצביעים לערכים שונים. מה שיוצר את ההבדל בין המשתנים הוא כתיבת השם - באותיות גדולות או קטנות. מכך אנו מסיקים שפייתון היא שפת תכנות שרגישה לגודל האות, או באנגלית - case sensitive.</p>
+                  <p>נכיר כמה כללים ל<b>כתיבת שמות משתנים</b> בפייתון:</p>
+                  <ul>
+                     <li> שמות של משתנים נקפיד לכתוב ב<b>אותיות קטנות</b>. קיים שימוש גם באותיות גדולות, נכיר אותו בקרוב.</li>
+                     <li> אם נרצה לתת שם בעל שתי מילים או יותר - נפריד בין המילים בעזרת <b>קו תחתון</b>.</li>
+                  </ul>
+                  <p>דוגמה לשם משתנה:</p>
+                  <div class="code">
+                      >>> current_book_sales = 5000
+                  </div>
+                </div>
+
+                <h3 class="bold_title">קבועים</h3>
+                  <p>מתי כן נשתמש באותיות גדולות?<br>
+                     נרצה להגדיר ערך שאינו עתיד להשתנות במהלך ריצת התוכנית, משתנה מסוג זה נקרא <b>קבוע</b>.</p>
+                  <ul>
+                      <li> שמות קבועים נרשום ב<b>אותיות גדולות</b> בלבד, עם מילים מופרדות בקווים תחתונים.</li>
+                      </ul>
+                  <p>דוגמאות לשמות קבועים, אחת עבור קבוע אבסולוטי (הערך פאי), והשנייה עבור קבוע שאינו עתיד להשתנות בתוכנית על אגדות ילדים מאת הסופר הנס כריסטיאן-אנדרסן:</p>
+                  <div class="code">
+                    >>> PI = 3.14<br>
+                    >>> BOOK_AUTHOR = "Christian Andersen"
+                  </div>
+                  <p>שימו לב: השימוש בקבועים בפייתון הוא בגדר המלצה. אם נגדיר קבוע וננסה לשנות את ערכו לא נקבל הודעת שגיאה. כשאנו כותבים קוד עלינו להקפיד על הקונבנציות ולכבד אותן גם בקוד של אחרים.</p>
+
+                <h3 class="bold_title">שמות משמעותיים</h3>
+                  <p>בכדי שהתוכנית שלנו תהיה קריאה ובהירה, נרצה ששמות המשתנים ישקפו את המהות או המשמעות של הערך שהמשתנה
+                      מחזיק. הכוונה לשמות שאינם סתמיים כמו number או name, אפילו אם זה יצא מעט ארוך.</p>
+                  <ul>
+                       <li> נבחר למשתנים <b>שמות משמעותיים</b> וברורים.</li>
+                  </ul>
+
+                  <p>לדוגמה, במקום שם משתנה סתמי:</p>
+                  <div class="code">
+                          >>> xyz = "TheUglyDuckling.docx"
+                  </div>
+
+                  <p>נעדיף לתת שם משתנה ברור ומפורט:</p>
+                  <div class="code">
+                          >>> filename_with_extension = "TheUglyDuckling.docx"
+                  </div>
+
+                <img class="box_content_close" onclick="toggle_visibility('topic2')">
+            </div>
+            <!-- closing topic 2 -->
+
+</body>
+
+</html>

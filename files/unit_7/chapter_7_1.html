@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <title>7.1 לולאת while</title>
+  <meta charset="utf-8">
+  <link href='https://fonts.googleapis.com/css?family=alef' rel='stylesheet'>
+  <link rel="stylesheet" type="text/css" href="../base/neo_css.css">
+  <script src="../base/python_js.js"></script>
+</head>
+
+<body class="python_body">
+  <script>
+    function toggle_visibility(id) {
+          var e = document.getElementById(id);
+          if (e.style.display == 'block')
+                e.style.display = 'none';
+          else
+                e.style.display = 'block';}
+
+    function expand_code(codeid, buttonid) {
+          var c = document.getElementById(codeid);
+          var b = document.getElementById(buttonid);
+          c.style.display = 'block';
+          b.style.display = 'none';}
+  </script>
+    <div class="toc_title">מה נלמד?</div>
+
+    <a name="topic1">
+        <button class="box_title" onclick="toggle_visibility('topic1')">שימוש בלולאת while</button>
+        <div id="topic1" class="box_content">
+
+        <p>ביחידה הזאת נלמד על לולאות, כלומר על פעולות שחוזרות שוב ושוב, ובכל פרק נכיר לולאה מסוג אחר. </p>
+        <p>כדי להכיר את הלולאה הראשונה, דמיינו דוב שנכנס לתרדמת חורף. הוא ישן כל עוד מזג האוויר חורפי ומתעורר רק כאשר מזג האוויר
+          משתנה והטמפרטורות עולות.
+          <br> כיצד נוכל לתאר בצורה פורמלית את פעולת הדוב? למעשה, הדוב שרוי בפעולת שינה אשר ממשיכה (בלולאה) כל עוד מתקיים (התנאי)
+          מזג אוויר חורפי. הוא יוכל לצאת ממצבו רק כאשר ישתנה מזג האוויר.</p>
+
+        <div class="code code_heb">
+          <span class="code_function_heb">כל-עוד</span> מזג_אוויר_חורפי:
+          <br>דוב.לישון()
+        </div>
+
+        <p>כמו בדוגמת הדוב, לפעמים נרצה לחזור על פעולה או פעולות
+          <b>כל עוד</b> מתקיים תנאי כלשהו, כלומר מספר פעמים ש<b>אינו בהכרח קבוע</b> מראש.
+          <b>הלולאה while</b> מאפשרת לבצע זאת בקלות. </p>
+
+        <h3 class="bold_title">כיצד כותבים לולאת while בפייתון</h3>
+        <p>לאחר המילה while יש לכתוב ביטוי תנאי ולאחריו נקודתיים. הפעולות לביצוע כתובות כבלוק מוזח.
+          <br> צורת הכתיבה הכללית של לולאת while:</p>
+
+        <div class="code">
+          <span class="code_function">while</span> &lt;condition&gt;:<br>
+          &nbsp;&nbsp;&nbsp;&lt;do something&gt;
+        </div>
+        <p>
+          כל סבב של הלולאה מכונה
+          <b>איטרציה</b> (iteration). בכל איטרציה של הלולאה פייתון בודקת האם ה<b>תנאי</b> מתקיים. <br>
+          <b>אם לא</b>, כלומר הביטוי שבתנאי הוא שקר (False), הלולאה מסתיימת.<br>
+          <b>אם כן</b>, כלומר הביטוי שבתנאי הוא אמת (True), פייתון עוברת לביצוע הפקודות בבלוק הקוד המוזח, ולאחר מכן חוזרת לבדיקת
+          התנאי באיטרציה נוספת.
+        </p>
+        <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_7/graphics/img_7_1_1.png">
+
+        <p>בואו נראה כיצד אפשר להדפיס את המספרים מ-0 עד 4 בעזרת לולאת while:</p>
+
+        <div class="code">
+            >>>  i = 0<br>
+            >>> while i &lt; 5: <br>
+            . . .&nbsp;&nbsp;&nbsp;&nbsp;print(i)
+            <br> . . .&nbsp;&nbsp;&nbsp;&nbsp;i += 1
+            <br> . . .
+            <br>
+            <button id="button_7_1_1" class="expand" onclick="expand_code('code_7_1_1', 'button_7_1_1')">
+              <img class="enterbutton">
+            </button>
+            <div class="hiddencode" id="code_7_1_1">
+              <span class="code_answer">0
+                <br> 1
+                <br> 2
+                <br> 3
+                <br> 4
+              </span>
+            </div>
+        </div>
+
+        <img class="box_content_close" onclick="toggle_visibility('topic1')">
+      </div>
+
+  <!-- Closing Topic 1 -->
+
+  <a name="topic2">
+      <button class="box_title" onclick="toggle_visibility('topic2')">לולאת while אינסופית</button>
+      <div id="topic2" class="box_content">
+        <p>הפקודות בלולאת while מתבצעות שוב ושוב עד שהתנאי שהוגדר אינו מתקיים. לכן, אם התנאי מתקיים
+          <b>תמיד</b> נוצרת
+          <b>לולאה אינסופית</b>. </p>
+        <p>דוגמה לשימוש בלולאה אינסופית יכולה להיות בעבודה עם שרתים, כאשר מעוניינים להמשיך את העבודה באופן קבוע:</p>
+
+        <div class="code">
+          <span class="code_function">while</span> <mark class="mark_code_function">True</mark>: <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="code_function">Pass</span>            <span class="code_comment"> &nbsp;&nbsp;# &lt;Keep on working!&gt;</span>
+        </div>
+
+        <p>אבל, מומלץ להיזהר מיצירת לולאה אינסופית בטעות. לעיתים היא נוצרת ללא כוונה, עקב כשל לוגי או חוסר תשומת לב. </p>
+
+        <!-- CORNER -->
+        <br>
+        <span class="corner_title" onclick="toggle_visibility('corner_7_1_1')">
+          <img class="corner_debug-icon">
+          <span class="corner_debug-title">שגיאה לוגית: לולאה אינסופית</span>
+          <span id="cont_7_1_1" class="corner_continue">להמשך קריאה</span>
+        </span>
+        <div id="corner_7_1_1" class="corner_debug-box">
+            <p>קראו את קטע הקוד הבא. על פי הקוד פייתון מצפה לקלט מהמשתמש כתשובה לשאלה: כמה חודשים בשנה שוהים דובי גריזלי בתרדמת
+                חורף? (התשובה היא בין 5 ל-7 חודשים)</p>
+
+              <div class="code">
+                user_input = 0
+                <br>
+                <span class="code_function">while</span> user_input
+                <span class="code_function">not in</span> [5, 6, 7]:<br>
+                &nbsp;&nbsp; user_input = input("How many months a year do grizzly bears hibernate?")
+                  <br>&nbsp;&nbsp; <span class="code_function">print</span>("You entered: ", user_input)
+                </ul>
+              </div>
+
+              <p>נראה שהמשתמש מתבקש להקליד מספר עד אשר יקליד אחד מן המספרים 5, 6 או 7. בואו ננסה להריץ את הקוד: </p>
+
+              <div class="code">
+                <span class="code_answer">
+                  How many months a year do grizzly bears hibernate?<span class="code_input"> 1</span>
+                  <br> You entered: 1
+                  <br> How many months a year do grizzly bears hibernate?<span class="code_input"> 3</span>
+                  <br> You entered: 3
+                  <br> How many months a year do grizzly bears hibernate?<span class="code_input"> 5</span>
+                  <br> You entered: 5
+                  <br> How many months a year do grizzly bears hibernate?<span class="code_input"> 5</span>
+                  <br> You entered: 5
+                  <br> How many months a year do grizzly bears hibernate?<span class="code_input"> 7</span>
+                  <br> You entered: 7
+                  <br> How many months a year do grizzly bears hibernate?
+                </span>
+              </div>
+
+              <p>שימו לב להרצת הקוד, מתקבלת לולאה אינסופית! <br>
+                חשבו, מדוע הלולאה לא מסתיימת כאשר המשתמש מקליד 5 או 6 או 7? כיצד אפשר
+                לפתור את הבעיה?</p>
+              <p>כפי שלמדנו ביחידה שעסקה במשתנים, קלט מהמשתמש נשמר כאובייקט מטיפוס
+                <b>מחרוזת</b>. לכן תנאי שבודק את ערכו
+                <b>המספרי</b> לעולם לא יתקיים. </p>
+              <p>בכדי לפתור את הבעיה אפשר לבצע הסבה (casting) של הקלט למספר (int), על ידי שינוי שורה 3:</p>
+
+              <div class="code">
+                user_input = 0
+                <br>
+                <span class="code_function">while</span> user_input
+                <span class="code_function">not in</span> [5, 6, 7]:<br>
+                &nbsp;&nbsp; user_input =
+                  <mark class="mark_code">int</mark>(input("How many months a year do grizzly bears hibernate?"))
+                  <br>&nbsp;&nbsp; <span class="code_function">print</span>("You entered: ", user_input)
+                </ul>
+              </div>
+              <p>שגיאה זו היא דוגמה ל<b>שגיאה לוגית</b>, שאינה גורמת לקריסת התוכנית אלא לתוצאות שגויות. שגיאות לוגיות עלולות להיווצר מסיבות מגוונות וקשה
+                מאוד לאתר אותן.
+                <br> מה אפשר לעשות? כפי שאמר אלברט איינשטיין: "המקור היחיד לידע הוא הניסיון".</p>
+
+          <img class="corner_debug-x" onclick="toggle_visibility('corner_7_1_1')">
+        </div>
+        <br>
+        <!-- END CORNER -->
+
+        <img class="box_content_close" onclick="toggle_visibility('topic2')">
+      </div>
+  </div>
+  <!-- Closing Topic 2 -->
+
+
+  <a name="topic3">
+      <button class="box_title" onclick="toggle_visibility('topic3')">בקרת זרימה בלולאות</button>
+      <div id="topic3" class="box_content">
+        <p>לפעמים נרצה <b>לצאת מלולאה</b> או <b>מאיטרציה מסוימת</b> בלולאה כאשר מתקיים תנאי אחר מזה שהוגדר בהתחלה. <br>
+           לצורך כך נכיר שתי פקודות שמאפשרות בקרת זרימה עבור בלוקים של לולאות: הפקודה break והפקודה continue.
+           פקודות אלה משמשות בלולאת while או בלולאת for שנכיר בפרק הבאה.
+          </p>
+
+        <h3 class="bold_title">הפקודה break</h3>
+        <p>כאשר נרצה לצאת מיידית מהבלוק של הלולאה (במקרה זה לולאת while), ללא איטרציות נוספות, נשתמש בפקודה <b>break</b>.</p>
+        <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_7/graphics/img_7_1_2.png">
+
+        <p>דוגמה לשימוש בפקודה break בלולאת while: </p>
+
+        <div class="code">
+          <span class="code_function">while</span> i &lt; 10:
+          <br>
+          &nbsp;&nbsp;
+              i += 1 <br>
+              &nbsp;&nbsp;&nbsp;<span class="code_function">if</span> i % 2 == 0:<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark class="mark_code_function">break</mark><br>
+              &nbsp;&nbsp;&nbsp;<span class="code_function">print</span>(i)<br>
+
+          <button id="button_7_2_1" class="expand" onclick="expand_code('code_7_2_1', 'button_7_2_1')">
+            <img class="enterbutton">
+          </button>
+          <div class="hiddencode" id="code_7_2_1">
+            <span class="code_answer">1
+            </span>
+          </div>
+        </div>
+
+        <h3 class="bold_title">הפקודה continue</h3>
+        <p>כאשר נרצה לעצור מייד את האיטרציה הנוכחית של הלולאה ולהתחיל את האיטרציה הבאה נשתמש בפקודה <b>continue</b>. </p>
+        <img class="illustration" src=" http://e-learn.cyber.org.il/python/unit_7/graphics/img_7_1_3.png">
+
+        <p>דוגמה לשימוש בפקודה continue בלולאת while:</p>
+        <div class="code">
+          i = 0 <br>
+            <span class="code_function">while</span> i &lt; 10:
+            <br>
+            &nbsp;&nbsp;
+                i += 1 <br>
+                &nbsp;&nbsp;&nbsp;<span class="code_function">if</span> i % 2 == 0:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark class="mark_code_function">continue</mark><br>
+                &nbsp;&nbsp;&nbsp;<span class="code_function">print</span>(i)<br>
+
+            <button id="button_7_3_1" class="expand" onclick="expand_code('code_7_3_1', 'button_7_3_1')">
+              <img class="enterbutton">
+            </button>
+            <div class="hiddencode" id="code_7_3_1">
+                <span class="code_answer">
+                    <br> 1
+                    <br> 3
+                    <br> 5
+                    <br> 7
+                    <br> 9
+                  </span>
+            </div>
+          </div>
+
+          <img class="box_content_close" onclick="toggle_visibility('topic3')">
+      </div>
+
+  <!-- Closing Topic 3 -->
+</div>
+</body>
+
+</html>

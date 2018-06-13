@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <title>3.1 יצירת מחרוזות</title>
+  <meta charset="utf-8">
+  <link href='https://fonts.googleapis.com/css?family=alef' rel='stylesheet'>
+  <link rel="stylesheet" type="text/css" href="../base/neo_css.css">
+  <script src="../base/python_js.js"></script>
+</head>
+
+<body class="python_body">
+  <script>
+    function toggle_visibility(id) {
+          var e = document.getElementById(id);
+          if (e.style.display == 'block')
+                e.style.display = 'none';
+          else
+                e.style.display = 'block';}
+
+    function expand_code(codeid, buttonid) {
+          var c = document.getElementById(codeid);
+          var b = document.getElementById(buttonid);
+          c.style.display = 'block';
+          b.style.display = 'none';}
+
+    function show_answer(id) {
+          var e = document.getElementById(id);
+          e.style.display = 'block';}
+  </script>
+  <div class="toc_title">מה נלמד?</div>
+  <a name="topic1">
+    <button class="box_title" onclick="toggle_visibility('topic1')">הגדרת מחרוזת</button>
+    <div id="topic1" class="box_content">
+      <p>ביחידה הקודמת נתקלנו במשתנה מטיפוס מחרוזת. ביחידה זו נכיר את המחרוזות יותר לעומק.
+        <br> להזכירכם, מחרוזת הנה טיפוס נתונים מובנה בשפה שנקרא string, או בקיצור str. בפייתון כל רצף של תו אחד או יותר הנו מחרוזת,
+        וכדי להגדירו עלינו להקיף את הטקסט שאנו רושמים ב<b>מרכאות כפולות</b> (" ") או ב<b>מרכאות יחידות</b> (' ').
+        <br> המרכאות מסמנות לפייתון שמדובר באובייקט מטיפוס מחרוזת ולא בשם של פקודה או משתנה כלשהו. </p>
+
+      <!-- CORNER -->
+      <br>
+      <span class="corner_title" onclick="toggle_visibility('corner_3_1_1')">
+        <img class="corner_debug-icon">
+        <span class="corner_debug-title">SyntaxError</span>
+        <span id="cont_3_1_1" class="corner_continue">להמשך קריאה</span>
+      </span>
+      <div id="corner_3_1_1" class="corner_debug-box">
+        <p>מתכנת בתחילת דרכו כתב תוכנית פשוטה עם המחרוזת הבאה, מה לדעתכם יקרה בעת הגדרתה?</p>
+        <div class="code">
+          >>> wish = 'I really hope defining this string will work!"
+        </div>
+
+        <!-- Interactive Question 3_1_1 -->
+        <img class="corner_iquestion-icon">
+        <div class="corner_iquestion-box" dir="rtl">
+          <div class="corner_iquestion-title" dir="rtl">האם המשאלה תתגשם?</div>
+
+          <label class="corner_iquestion-option" onclick="show_answer('iquestion_3_1_1-a1')">
+            <input type="radio" name="iquestion_3_1_1" class="corner_iquestion-radio">כן, המחרוזת תוגדר</label>
+            <div class="corner_iquestion-feedback" dir="rtl">
+              <span id="iquestion_3_1_1-a1" class="corner_iquestion-i_answer">לצערנו לא, בעת ההרצה מתקבלת הודעת שגיאה.</span>
+            </div>
+
+          <label class="corner_iquestion-option" onclick="show_answer('iquestion_3_1_1-a2'), show_answer('iquestion_3_1_1-a2a'), show_answer('iquestion_3_1_1-a2b'), show_answer('iquestion_3_1_1-a2c')">
+            <input type="radio" name="iquestion_3_1_1" class="corner_iquestion-radio">לא, המחרוזת לא תוגדר</label>
+            <div class="corner_iquestion-feedback" dir="rtl">
+              <span id="iquestion_3_1_1-a2" class="corner_iquestion-c_answer">אכן, בעת ההרצה מתקבלת הודעת שגיאה.</span>
+                <span id="iquestion_3_1_1-a2a" style="display:none">הבה נביט ב-Traceback שמתקבל וננתח אותו.</span>
+                <div id="iquestion_3_1_1-a2b" class="code" style="display:none; text-indent:0">
+                  >>> wish = 'I really hope defining this string will work!"<br>
+                    <span class="code_error">
+                      File "&lt;stdin&gt;", line 1
+                      <br> wish = 'I really hope defining this string will work!"
+                      <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^
+                      <br> SyntaxError: EOL while scanning string literal</span>
+                </div>
+                <div id="iquestion_3_1_1-a2c" style="display:none; text-indent:0">
+                  <p>הפלט מרמז לנו שמקור הבעיה בקוד הוא בשורה מספר 1, והסמן ^ מראה לנו את מיקום הבעיה בשורה זו.</p>
+                  <p>
+                    <b>SyntaxError </b>זוהי שגיאה תחבירית, מהנפוצות בפייתון, וסביר להניח שתיתקלו בה לא מעט במהלך לימוד השפה. שגיאת תחביר
+                    מתייחסת לאופן שבו הקוד מסודר, בדגש על מבנה השפה וחוקיה: הזחות, סוגריים מתאימים ועוד. במצב של שגיאה כזו, בלתי אפשרי
+                    לתרגם את הקוד לפקודות פייתון חוקיות.</p>
+                  <p>השגיאה שקיבלנו היא: EOL while scanning string literal.</p>
+                  <p>
+                    <b>EOL </b>הנו קיצור ל-"end of line". שגיאת EOL משמעותה שפייתון הגיעה לסוף השורה במהלך סריקת המחרוזת. שגיאה זו עלולה
+                    להיגרם מסיבות שונות ביניהן: מרכאות או סוגריים שנשכחו, או ניסיון לכתוב מחרוזת ביותר משורה אחת.
+                    <br> במקרה שלנו השגיאה נגרמה בשל חוסר תאימות: המחרוזת הוגדרה בתחילתה עם מרכאות יחידות ולאחר סריקת המחרוזת פייתון הגיעה
+                    לסוף השורה וטרם מצאה מרכאות יחידות שסוגרות את המחרוזת. נוכל לתקן ולהחליף את המרכאות בתחילת המחרוזת או בסופה, על
+                    מנת לשמור על תאימות.</p>
+                </div>
+            </div>
+
+          <img class="corner_iquestion-x">
+        </div><br>
+
+        <img class="corner_debug-x" onclick="toggle_visibility('corner_3_1_1')">
+      </div>
+      <br><br>
+      <!-- END CORNER -->
+
+
+      <p>אל תשכחו, אפשר לבחור את אחת משתי הצורות להגדרת מחרוזת כל עוד אנחנו עקביים עבור מחרוזת מסוימת.
+        <br> דוגמאות להגדרת מחרוזת בעזרת מרכאות (שתי הצורות אפשריות):</p>
+
+      <div class="code">
+        >>> message = "I am a good string"
+        <br> >>> message
+        <br>
+        <span class="code_answer">'I am a good string'</span>
+        <br> >>> message_two = 'I am a good string too!'
+        <br> >>> message_two
+        <br>
+        <span class="code_answer">'I am a good string too!'</span>
+      </div>
+
+      <!-- CORNER -->
+      <br>
+      <span class="corner_title" onclick="toggle_visibility('corner_3_1_2')">
+        <img class="corner_debug-icon">
+        <span class="corner_debug-title">SyntaxError: invalid syntax</span>
+        <span id="cont_3_1_2" class="corner_continue">להמשך קריאה</span>
+      </span>
+      <div id="corner_3_1_2" class="corner_debug-box">
+          <p>מה לדעתכם יקרה בעת הרצת קטע הקוד הבא?</p>
+
+          <div class="code">
+            >>> i_am_confused = 'I can't figure out what is wrong here'
+            <br>
+            <button id="button_3_1_2" class="expand" onclick="expand_code('code_3_1_2', 'button_3_1_2'), show_answer('code_3_1_2a')">
+              <img class="enterbutton">
+            </button>
+            <div class="hiddencode" id="code_3_1_2">
+              <span class="code_error">
+                File "&lt;stdin&gt;", line 1
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i_am_confused = 'I can<mark class="mark_code_error">'</mark>t figure out what is wrong here'
+                <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^
+                <br> SyntaxError: invalid syntax</span>
+            </div>
+          </div>
+          <div id="code_3_1_2a" style="display: none;">
+              <p>בהרצת התוכנית התקבלה הודעת שגיאה מסוג
+                  <b>SyntaxError</b>.
+                  <br> הבה נביט ב-Traceback וננתח אותו:</p>
+                <p>מיקום הסמן (^) הנו לאחר גרש הכתוב באמצע המחרוזת. נבחין בכך שהטקסט מוקף במרכאות יחידות משני צידיו ובנוסף אליהן קיים
+                  גרש בתוכו. למעשה המחרוזת שפייתון קוראת היא 'I can', ואז מסתיימת המחרוזת באופן רשמי ופייתון נתקעת באות t שמופיעה
+                  בהמשך השורה.
+                  <br> שגיאה מסוג זה היא שגיאת תחביר ומכונה invalid syntax.</p>
+          </div>
+         <br>
+          <p>שגיאה זו מעלה את השאלה: מה עושים כאשר מעוניינים שהמחרוזת עצמה תכלול גרש או מרכאות?</p>
+          <p>הפתרונות הבאים אפשריים:</p>
+          <ul>
+            <li>אם המחרוזת מכילה מרכאות כפולות, נתחום אותה במרכאות יחידות.
+              <br> דוגמה למחרוזת שמכילה מרכאות כפולות:
+              <br><br>
+              <div class="code">
+                >>> '<mark class="mark_code">"</mark>All in!<mark class="mark_code">"</mark>, she said happily.'
+                <br>
+                <span class="code_answer">'"All in!", she said happily.'</span>
+              </div>
+
+              <li>אם המחרוזת מכילה גרש, נתחום אותה במרכאות כפולות.
+                <br>דוגמה למחרוזת שמכילה גרש:
+                <br><br>
+                <div class="code">
+                  >>> "Don<mark class="mark_code">'</mark>t do it. You will lose the poker game."<br>
+                  <span class="code_answer">'Don't do it. You will lose the poker game.'</span>
+                </div>
+
+                <li>אם המחרוזת מכילה גם מרכאות וגם גרש, נוכל להיעזר בתו מיוחד שמסמן לפייתון להתייחס למרכאות/לגרש בתוך המחרוזת כאל
+                  תווי טקסט רגילים.
+                  <br> התו המיוחד נקרא
+                  <b>לוכסן הפוך</b>, או
+                  <b>backslash</b> ומכונה גם ה-<b>Escape character</b>. הלוכסן ההפוך נראה כך \ ונכתוב אותו לפני כל מרכאות או גרש שבתוך המחרוזת. שימושים נוספים של הלוכסן ההפוך נפרט בהמשך.
+                  <br>דוגמאות לשימוש בלוכסן הפוך בהדפסת מחרוזות:
+                  <br> <br>
+
+                  <div class="code">
+                    >>> print("<mark class="mark_code">\"</mark>Play with me<mark class="mark_code">\"</mark>, she said.<mark class="mark_code">\"</mark>It will be SO hilarious when you will lose!<mark class="mark_code">\"</mark>")
+                    <br>
+                    <span class="code_answer">
+                      <mark class="mark_code_answer">"</mark>Play with me<mark class="mark_code_answer">"</mark>, she said.<mark class="mark_code_answer">"</mark>
+                      It will be SO hilarious when you will lose!<mark class="mark_code_answer">"</mark>
+                    </span>
+                  </div>
+                  <br>
+                  <div class="code">
+                    >>> '<mark class="mark_code">\'</mark>She is so tough!<mark class="mark_code">\'</mark>, he thought to himself.'
+                    <br><span class="code_answer">"<mark class="mark_code_answer">'</mark>She is so tough!<mark class="mark_code_answer">'</mark>, he thought to himself."</span>
+                  </div>
+          </ul>
+        <img class="corner_debug-x" onclick="toggle_visibility('corner_3_1_2')">
+      </div>
+      <br>
+      <!-- END CORNER -->
+      <img class="box_content_close" onclick="toggle_visibility('topic1')">
+    </div>
+    <!-- Closing Topic 1 -->
+
+    <a name="topic2">
+      <button class="box_title" onclick="toggle_visibility('topic2')">דרכים נוספות ליצור מחרוזת</button>
+      <div id="topic2" class="box_content">
+        <p>אפשר ליצור מחרוזות על ידי
+          <b>שרשור</b> מחרוזות קיימות, באמצעות סימן החיבור (הסימן +).
+          <br> דוגמה לשרשור מחרוזות: </p>
+        <div class="code">
+          >>> str1 = "We "
+          <br> >>> str2 = "belong "
+          <br> >>> str3 = "together"
+          <br> >>> print(str1 + str2 + str3)
+          <br>
+          <button id="button_3_1_3" class="expand" onclick="expand_code('code_3_1_3', 'button_3_1_3')">
+              <img class="enterbutton">
+            </button>
+            <div class="hiddencode" id="code_3_1_3">
+          <span class="code_answer">We belong together</span>
+        </div>
+      </div>
+
+        <p>אפשר
+          <b>להכפיל</b> מחרוזת באמצעות סימן הכפל (הסימן *) ובכך ליצור מחרוזת חדשה.
+          <br> דוגמה להכפלת מחרוזת:
+        </p>
+        <div class="code">
+          >>> duplicate_me = ":-) "
+          <br> >>> print(duplicate_me
+          <mark class="mark_code">* 8</mark>)
+          <br>
+          <button id="button_3_1_4" class="expand" onclick="expand_code('code_3_1_4', 'button_3_1_4')">
+              <img class="enterbutton">
+            </button>
+            <div class="hiddencode" id="code_3_1_4">
+          <span class="code_answer"> :-) :-) :-) :-) :-) :-) :-) :-) </span>
+        </div>
+      </div>
+
+        <p>
+          אפשר
+          <b>להסב</b> משתנה שאינו מטיפוס מחרוזת בעזרת הפקודה ()str, כלומר להפוך אותו לטיפוס מחרוזת.
+          <br> דוגמה להסבת משתנה למחרוזת:
+        </p>
+        <div class="code">
+          >>> x = 3
+          <br> >>> type(x)
+          <br>
+          <button id="button_3_1_5" class="expand" onclick="expand_code('code_3_1_5', 'button_3_1_5')">
+            <img class="enterbutton">
+          </button>
+          <div class="hiddencode" id="code_3_1_5">
+            <span class="code_answer">&lt;class 'int'&gt;</span>
+            <br> >>> x + x
+            <br>
+            <button id="button_3_1_6" class="expand" onclick="expand_code('code_3_1_6', 'button_3_1_6')">
+              <img class="enterbutton">
+            </button>
+            <div class="hiddencode" id="code_3_1_6">
+              <span class="code_answer">6</span>
+              <br> >>> x = str(x)
+              <br> >>> x
+              <br>
+              <button id="button_3_1_7" class="expand" onclick="expand_code('code_3_1_7', 'button_3_1_7')">
+                <img class="enterbutton">
+              </button>
+              <div class="hiddencode" id="code_3_1_7">
+                <span class="code_answer">'3'</span>
+                <br> >>> type(x)
+                <br>
+                <button id="button_3_1_8" class="expand" onclick="expand_code('code_3_1_8', 'button_3_1_8')">
+                  <img class="enterbutton">
+                </button>
+                <div class="hiddencode" id="code_3_1_8">
+                  <span class="code_answer">&lt;class 'str'&gt;</span>
+                  <br> >>> x + x
+                  <br>
+                  <button id="button_3_1_9" class="expand" onclick="expand_code('code_3_1_9', 'button_3_1_9')">
+                    <img class="enterbutton">
+                  </button>
+                  <div class="hiddencode" id="code_3_1_9">
+                    <span class="code_answer">'33'</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <img class="box_content_close" onclick="toggle_visibility('topic2')">
+      </div>
+        <!-- Closing Topic 2 -->
+
+</body>
+
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <title>9.2 תבניות של קבצים</title>
+  <meta charset="utf-8">
+  <link href='https://fonts.googleapis.com/css?family=alef' rel='stylesheet'>
+  <link rel="stylesheet" type="text/css" href="../base/neo_css.css">
+  <script src="../base/python_js.js"></script>
+</head>
+
+<body class="python_body">
+  <script>
+    function toggle_visibility(id) {
+      var e = document.getElementById(id);
+      if (e.style.display == 'block')
+        e.style.display = 'none';
+      else
+        e.style.display = 'block';
+    }
+
+    function expand_code(codeid, buttonid) {
+      var c = document.getElementById(codeid);
+      var b = document.getElementById(buttonid);
+      c.style.display = 'block';
+      b.style.display = 'none';
+    }
+
+    function show_answer(id) {
+      var e = document.getElementById(id);
+      e.style.display = 'block';
+    }
+  </script>
+
+  <div class="toc_title">מה נלמד?</div>
+  <a name="topic1">
+    <button class="box_title" onclick="toggle_visibility('topic1')">תבנית הקובץ - file format</button>
+    <div id="topic1" class="box_content">
+      <p>פורמט (תבנית) של קובץ הוא תקן אשר מפרט את המבנה בו שמור המידע שבקובץ. קיימים פורמטים רבים של קבצים המיועדים לשימושים שונים, חלקם פתוחים ומוכרים לכולם וחלקם סגורים ושייכים לחברות מסחריות. לרוב נוכל לזהות פורמטים מוכרים על פי הסיומת שלהם, למשל: mp4, zip, pptx.</p>
+      <p>דוגמה לפורמט טקסטואלי הוא פורמט שנקרא srt, המשמש עבור כתוביות בסרטים. פורמט זה נמצא כיום בשימוש רחב, ולמעשה אנו עושים בו שימוש גם בסרטוני הווידאו בקורס שלנו!<br>
+        בואו ננסה לפתור את הבעיה הבאה: נפלה טעות באחת הכתוביות בסרטון שביחידת המבוא ואנו רוצים לתקן אותה. השגיאה נמצאת בערך ב-00:17. כיצד נוכל לתקן את הטעות מבלי להשתמש בתוכנת עריכת וידאו ייעודית? כיצד נפתח ונבין קובץ בפורמט srt?
+      </p>
+      <p>פורמטים של קבצים מאופיינים ב<b>מבנה קבוע</b>. לפיכך, נפתח את קובץ הכתוביות בעורך טקסט כלשהו וננסה להבין כיצד הוא בנוי:</p>
+      <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_9/graphics/img_9_2_1.png">
+      <p>אפשר להבחין שזהו קובץ טקסט בעל מבנה קבוע שחוזר על עצמו:</p>
+      <div class="code_heb" style="text-align:left">
+        &lt;מונה כתובית&gt;<br>
+        &lt;זמן היעלמות הטקסט &rarr; זמן הופעת הטקסט&gt;<br>
+        &lt;תוכן הכתובית&gt;<br>
+        &lt;שורה ריקה המציינת התחלה של כתובית חדשה&gt;<br>
+      </div>
+      <p>לאחר שהבנו מהו מבנה הקובץ, נוכל להתייחס ל<b>מידע </b>שהוא מכיל.<br>
+        נבחין בקלות שבטווח הזמנים בו נפלה הטעות בסרטון (00:18 - 00:15) מופיעה על המסך כתובית מספר 6. בעזרת צפייה בסרטון נגלה שאכן נשמטה בכתובית זו מילה (המילה מאסטרים) ונוכל לתקן זאת בקובץ (מבלי לשכוח לשמור).
+      </p>
+      <p>הקובץ לאחר תיקון הטעות:
+      <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_9/graphics/img_9_2_2.png">
+        ובכך למעשה פתרנו את הבעיה!
+      </p>
+      <p>שימו לב, קיימת דרך אלגנטית אף יותר לפתרון הבעיה:
+        כיוון שכולנו מתכנתים מנוסים בפייתון שכבר נמצאים בשלבי סיום הקורס, נוכל לממש פונקציה שמסייעת לנו בתהליך התיקון! לדוגמה: נממש פונקציה שמקבלת כארגומנט מחרוזת זמן ומחזירה את הכתובית המופיעה בזמן זה. אותה פונקציה אף יכולה לאפשר עריכה של הכתובית הרלוונטית. נסו לכתוב פונקציה כזו בעצמכם!</p>
+      <br>
+      <p>מימוש של פונקציה כזו, או אף תיקון ידני של הכתובית, לא היו מתאפשרים ללא <b>היכרות עם הפורמט </b>של הקובץ.<br>
+        כאשר אנו עובדים עם קבצים אנו חייבים להכיר את הפורמט של הקובץ ממנו אנו קוראים או שאליו אנו כותבים. </p>
+
+      <img class="box_content_close" onclick="toggle_visibility('topic1')">
+    </div>
+    <!-- Closing Topic 1 -->
+
+  <a name="topic2">
+    <button class="box_title" onclick="toggle_visibility('topic2')">אחסון ושליפת נתונים בקבצים</button>
+    <div id="topic2" class="box_content">
+      <p>כאשר אנו כותבים תוכנית בפייתון אנו עובדים עם אובייקטים, משתנים ומבני נתונים של פייתון. במהלך העבודה נרצה לשמור תוצאות ביניים, או את התוצר הסופי, לתוך קובץ.</p>
+      <p><b>סריאליזציה </b>(בעברית סִדרוּת) היא תהליך של תרגום האובייקטים לפורמט שאפשר לשמור בקובץ ואף להעבירו ברשת מחשבים. נוכל גם לבצע תהליך הפוך, של קריאת המידע מהקובץ, בתהליך שנקרא <b>דה-סריאליזציה</b>.</p>
+      <br>
+      <p>גם בתהליך סריאליזציה וגם בתהליך דה-סריאליזציה חשוב מאוד להכיר ולהקפיד על פורמט קבוע של הקובץ.<br>
+        אם איננו עובדים עם פורמט מוכר, הפורמט שבו נשמור את הנתונים נתון להחלטתנו.</p>
+      <p>נדגים את <b>השלבים לביצוע סריאליזציה ודה-סריאליזציה </b>עבור מידע השמור בטיפוס מילון.<br>
+        לדוגמה, הביטו במילון הבא:</p>
+      <div class="code">
+        >>> cd_details = {"song": "I believe I can fly", "name": "Robert Kelly", "year": 1998}
+      </div>
+
+      <h3 class="bold_title">בחירת פורמט (תבנית)</h3>
+      <p>נניח שאנו מעוניינים לשמור לקובץ את תוכן המילון cd_details כך שנוכל להמשיך לעבוד עליו בהמשך. כדי לשמור את האיברים של המילון, עלינו לשמור צמדים של מפתח וערך.<br>
+        נוכל ליצור <b>פורמטים שונים </b>(תבניות שונות) לייצוג צמדים של מפתח וערך. נבחן כמה דוגמאות.</p>
+      <p>דוגמה לתבנית בה המפתח מלווה בנקודתיים, אחריהן טאב ולבסוף הערך. האיברים מופרדים בירידת שורה:
+        <div class="code">
+          song:	I believe I can fly<br>
+          name:	Robert Kelly<br>
+          year:	1998<br>
+        </div>
+      </p>
+
+      <p>דוגמה נוספת לתבנית, בה המפתח והערך מופרדים במקף, וכל איבר מופרד בפסיק ורווח:
+        <div class="code">
+          song-I believe I can fly, name-Robert Kelly, year-1998,
+        </div>
+      </p>
+
+      <p>דוגמה שלישית לתבנית, בה מפתח וערך מופרדים בפסיק, והאיברים מופרדים בירידת שורה:
+        <div class="code">
+          song,I believe I can fly<br>
+          name,Robert Kelly<br>
+          year,1998<br>
+        </div>
+      </p>
+
+      <p>ודאי הבנתם שיש אינסוף אפשרויות ליצירת פורמט שמייצג מילון. בסך הכל צריך <b>להחליט על תבנית </b>בכדי לשמור צמדים של מפתח וערך, ו<b>להיות עקביים </b>כך שנוכל גם לפרק אותם בחזרה.</p>
+
+      <h3 class="bold_title">סריאליזציה</h3>
+      <p>נניח שבחרנו את התבנית מהדוגמה הראשונה עבור שמירת המילון cd_details לקובץ. בתהליך ה<b>סריאליזציה</b>, נשמור את המילון כמחרוזת בפורמט זה לתוך קובץ שנקרא my_cd.txt.</p>
+      <p>דוגמה לסריאליזציה, כלומר שמירת המילון לקובץ בפורמט קבוע:</p>
+      <div class="code">
+        <span class="code_function">with</span> open("c:\my_cd.txt", "w") <span class="code_function">as</span> input_file:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code_function">for</span> key, value <span class="code_function">in</span> cd_details.items():<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;input_file.write("<mark class="mark_code">%s:\t%s\n</mark>" % (key, value))
+      </div>
+
+      <h3 class="bold_title">דה-סריאליזציה</h3>
+      <p>בתהליך ה<b>דה-סריאליזציה</b>, נקרא את המידע מן הקובץ my_cd.txt ונהפוך אותו חזרה למילון. נעקוב אחר שלבי התהליך.<br>
+        תחילה נקרא את תוכן הקובץ my_cd.txt ונבצע השמה שלו למשתנה שנקרא cd_data:</p>
+      <div class="code">
+        <span class="code_function">with</span> open(r"c:\my_cd.txt", "r") <span class="code_function">as</span> f:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;cd_data = f.read()<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code_function">print</span>(cd_data)<br>
+        <button id="button_9_2_1" class="expand" onclick="expand_code('code_9_2_1', 'button_9_2_1')">
+          <img class="enterbutton">
+        </button>
+        <div class="hiddencode" id="code_9_2_1">
+          <span class="code_answer">
+            song:	I believe I can fly<br>
+            name:	Robert Kelly<br>
+            year:	1998<br>
+          </span>
+        </div>
+      </div>
+
+      <p>לאחר מכן נפצל את השורות ונשמור כל אחת כאיבר נפרד (מטיפוס מחרוזת) ברשימה שנקראת cd_splitted_lines:</p>
+      <div class="code">
+        cd_splitted_lines = cd_data.split("\n")<br>
+        <span class="code_function">print</span>(cd_splitted_lines)<br>
+        <button id="button_9_2_2" class="expand" onclick="expand_code('code_9_2_2', 'button_9_2_2')">
+          <img class="enterbutton">
+        </button>
+        <div class="hiddencode" id="code_9_2_2">
+          <span class="code_answer">
+            ['song:    I believe I can fly'<mark class="mark_code_answer">, </mark>'name:    Robert Kelly'<mark class="mark_code_answer">, </mark>'year:    1998']
+          </span>
+        </div>
+      </div>
+
+      <p>עתה ניצור רשימה חדשה שנקראת cd_items, ונכניס לתוכה באמצעות לולאה איברים שהם רשימות, כאשר כל אחת מורכבת משני איברים - ערך ומפתח. ניצור רשימה כזו באמצעות פיצול השורות לפי התבנית שקבענו - נקודתיים וטאב:</p>
+      <div class="code">
+        cd_items = []<br>
+        <span class="code_function">for</span> element <span class="code_function">in</span> cd_splitted_lines:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;cd_items.append(element.split(":\t"))<br>
+        <span class="code_function">print</span>(cd_items)<br>
+        <button id="button_9_2_3" class="expand" onclick="expand_code('code_9_2_3', 'button_9_2_3')">
+          <img class="enterbutton">
+        </button>
+        <div class="hiddencode" id="code_9_2_3">
+          <span class="code_answer">
+            [['song', 'I believe I can fly'], ['name', 'Robert Kelly'], ['year', '1998']]
+          </span>
+        </div>
+      </div>
+
+      <p>לסיום נמיר את המידע מהרשימה cd_items למילון my_cd_dict שניצור:</p>
+      <div class="code">
+        my_cd_dict = {}<br>
+        <span class="code_function">for</span> item <span class="code_function">in</span> cd_items:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;my_cd_dict[item[0]] = item[1]<br>
+        <span class="code_function">print</span>(my_cd_dict)<br>
+        <button id="button_9_2_4" class="expand" onclick="expand_code('code_9_2_4', 'button_9_2_4')">
+          <img class="enterbutton">
+        </button>
+        <div class="hiddencode" id="code_9_2_4">
+          <span class="code_answer">
+            {'song': 'I believe I can fly', 'name': 'Robert Kelly', 'year': '1998'}
+          </span>
+        </div>
+      </div>
+
+      <img class="box_content_close" onclick="toggle_visibility('topic2')">
+    </div>
+    <!-- Closing Topic 2 -->
+
+</body>
+</html>

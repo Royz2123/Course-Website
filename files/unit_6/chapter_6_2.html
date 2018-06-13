@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <title>6.2 רשימות ומחרוזות הן רצפים</title>
+  <meta charset="utf-8">
+  <link href='https://fonts.googleapis.com/css?family=alef' rel='stylesheet'>
+  <link rel="stylesheet" type="text/css" href="../base/neo_css.css">
+  <script src="../base/neo_js.js"></script>
+</head>
+<body class="python_body">
+  <script>
+    function toggle_visibility(id) {
+          var e = document.getElementById(id);
+          if (e.style.display == 'block')
+                e.style.display = 'none';
+          else
+                e.style.display = 'block';}
+
+    function expand_code(codeid, buttonid) {
+          var c = document.getElementById(codeid);
+          var b = document.getElementById(buttonid);
+          c.style.display = 'block';
+          b.style.display = 'none';}
+
+    function show_answer(id) {
+          var e = document.getElementById(id);
+          e.style.display = 'block';}
+  </script>
+  <div class="video_box">
+    <iframe width="300" height="150" class="tscplayer_inline" id="embeddedSmartPlayerInstance" src="http://videos.cyber.org.il.s3-website.eu-west-2.amazonaws.com/6.2/6.2_player.html?embedIFrameId=embeddedSmartPlayerInstance" scrolling="no" frameborder="0" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen"></iframe>
+  </div>
+
+    <button class="box_title" onclick="toggle_visibility('topic1')">דמיון בין מחרוזת לבין לרשימה</button>
+    <div id="topic1" class="box_content">
+      <p>כפי שראינו, קיים דמיון בין מחרוזת לבין רשימה - התווים במחרוזות כמו גם האיברים ברשימה ממוספרים ואפשר לגשת אליהם באמצעות
+        המיקום שלהם.
+        <br> דמיון זה נובע בשל היותן
+        <b>רצפים</b> (sequences). </p>
+      <p>הכרנו פעולות של רצפים שאפשר לבצע על מחרוזת (כגון גישה, חיתוך, שרשור והכפלה), וגם רשימה תומכת בפעולות דומות. </p>
+      <p>נדגים את הדמיון בעזרת השוואה בין עבודה עם
+        <b>המחרוזת</b> my_subject שתצביע לערך chemestry (המקצוע "כימיה"), לבין עבודה עם
+        <b>הרשימה</b> chemical_elements שתכיל יסודות כימיים.</p>
+      <p>הגדרת המחרוזת my_subject והרשימה chemical_elements:</p>
+
+      <div class="code">
+        >>> my_subject = "chemistry"<br>
+        >>> chemical_elements = ["hydrogen", "helium", "lithium", "beryllium"]<br>
+      </div>
+
+      <p>נשווה פקודות ופעולות בעבודה עם המחרוזת והרשימה שהגדרנו.</p>
+
+      <img class="box_content_close" onclick="toggle_visibility('topic1')">
+    </div>
+    <!-- Closing Topic 1 -->
+
+      <button class="box_title" onclick="toggle_visibility('topic2')">גישה וחיתוך בעזרת מיקום</button>
+      <div id="topic2" class="box_content">
+
+        <p>ניגש לתו/איבר של המחרוזת my_subject ושל הרשימה chemical_elements בעזרת ציון המיקום שלו:</p>
+
+        <table class="comparison">
+          <thead class="comparison">
+            <tr>
+              <th class="comparison">רשימה</th>
+              <th class="comparison">מחרוזת</th>
+            </tr>
+          </thead>
+          <tbody class="comparison">
+            <tr>
+              <td>
+                <div class="code">
+                  >>> chemical_elements<br>
+                  <span class="code_answer">['hydrogen', 'helium', 'lithium', 'beryllium']</span>
+                  <br>>>> chemical_elements[3]<br>
+                  <button id="button_6_1_2" class="expand" onclick="expand_code('code_6_1_2', 'button_6_1_2')">
+                    <img class="enterbutton">
+                  </button>
+                  <div class="hiddencode" id="code_6_1_2">
+                    <span class="code_answer">beryllium</span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="code">
+                  >>> my_subject<br>
+                  <span class="code_answer">'chemistry'</span>
+                  <br>>>> my_subject[3]<br>
+                  <button id="button_6_1_1" class="expand" onclick="expand_code('code_6_1_1', 'button_6_1_1')">
+                    <img class="enterbutton">
+                  </button>
+                  <div class="hiddencode" id="code_6_1_1">
+                    <span class="code_answer">'m'</span>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+
+
+        <p>אפשר לגשת לתו/איבר גם באמצעות
+          <b>מיקום שלילי</b>:</p>
+
+          <table class="comparison">
+            <tr>
+              <th class="comparison">רשימה</th>
+              <th class="comparison">מחרוזת</th>
+            </tr>
+            <tr>
+              <td class="comparison">
+                <div class="code">
+                  >>> chemical_elements<br>
+                  <span class="code_answer">['hydrogen', 'helium', 'lithium', 'beryllium']</span>
+                  <br>>>> chemical_elements[-1]<br>
+                  <button id="button_6_2_2" class="expand" onclick="expand_code('code_6_2_2', 'button_6_2_2')">
+                    <img class="enterbutton">
+                  </button>
+                  <div class="hiddencode" id="code_6_2_2">
+                    <span class="code_answer">beryllium</span>
+                  </div>
+                </div>
+              </td>
+              <td class="comparison">
+                <div class="code">
+                  >>> my_subject<br>
+                  <span class="code_answer">'chemistry'</span>
+                  <br>>>> my_subject[-1]<br>
+                  <button id="button_6_2_1" class="expand" onclick="expand_code('code_6_2_1', 'button_6_2_1')">
+                    <img class="enterbutton">
+                  </button>
+                  <div class="hiddencode" id="code_6_2_1">
+                    <span class="code_answer">'y'</span>
+                  </div>
+                </div>
+
+              </td>
+          </table>
+        <p>באופן דומה בו מבצעים
+          <b>חיתוך</b> (slicing) של מחרוזת, נוכל גם לגשת ל
+          <b>מקטע</b>, כלומר לכמה איברים, ברשימה.
+          <br> דוגמה לחיתוך של מחרוזת ושל רשימה: </p>
+
+          <table class="comparison">
+            <tr>
+              <th class="comparison">רשימה</th>
+              <th class="comparison">מחרוזת</th>
+            </tr>
+            <tr>
+              <td class="comparison">
+                <div class="code">
+                  >>> chemical_elements<br>
+                  <span class="code_answer">['hydrogen', 'helium', 'lithium', 'beryllium']</span>
+                  <br>>>> chemical_elements[1:3]<br>
+                  <button id="button_6_3_2" class="expand" onclick="expand_code('code_6_3_2', 'button_6_3_2')">
+                    <img class="enterbutton">
+                  </button>
+                  <div class="hiddencode" id="code_6_3_2">
+                    <span class="code_answer">['helium', 'lithium']</span>
+                  </div>
+                </div>
+              </td>
+              <td class="comparison">
+                <div class="code">
+                  >>> my_subject<br>
+                  <span class="code_answer">'chemistry'</span>
+                  <br>>>> my_subject[1:3]<br>
+                  <button id="button_6_3_1" class="expand" onclick="expand_code('code_6_3_1', 'button_6_3_1')">
+                    <img class="enterbutton">
+                  </button>
+                  <div class="hiddencode" id="code_6_3_1">
+                    <span class="code_answer">'he'</span>
+                  </div>
+                </div>
+
+              </td>
+          </table>
+
+
+
+        <img class="box_content_close" onclick="toggle_visibility('topic2')">
+      </div>
+      <!-- Closing Topic 2 -->
+
+        <button class="box_title" onclick="toggle_visibility('topic3')">שרשור והכפלה</button>
+        <div id="topic3" class="box_content">
+
+          <p>כמו מחרוזות, אפשר
+            <b>לשרשר</b> רשימות באמצעות סימן החיבור (הסימן +).
+            <br> דוגמה לשרשור מחרוזות ולשרשור רשימות: </p>
+
+          <div class="code">
+            >>> my_subject + " is awesome!"<br>
+            <button id="button_6_4_1" class="expand" onclick="expand_code('code_6_4_1', 'button_6_4_1')">
+              <img class="enterbutton">
+            </button>
+            <div class="hiddencode" id="code_6_4_1">
+              <span class="code_answer">'chemistry is awesome!'</span>
+              <br>>>> chemical_elements + chemical_elements<br>
+              <button id="button_6_4_2" class="expand" onclick="expand_code('code_6_4_2', 'button_6_4_2')">
+                <img class="enterbutton">
+              </button>
+              <div class="hiddencode" id="code_6_4_2">
+                <span class="code_answer">['hydrogen', 'helium', 'lithium', 'beryllium', 'hydrogen', 'helium', 'lithium', 'beryllium']</span>
+                <br>>>> chemical_elements + ["boron"]<br>
+                <button id="button_6_4_3" class="expand" onclick="expand_code('code_6_4_3', 'button_6_4_3')">
+                  <img class="enterbutton">
+                </button>
+                <div class="hiddencode" id="code_6_4_3">
+                  <span class="code_answer">['hydrogen', 'helium', 'lithium', 'beryllium', ‘boron']</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p>שימו לב שכאשר מעוניינים לשרשר אפילו ערך אחד הוא צריך להיכתב בצורת
+            <b>איבר ברשימה</b>, כלומר תחום בסוגריים מרובעים [ ].
+            <br>הדבר מקביל לכך שלמחרוזת משרשרים תווים בתוך מרכאות (ולא מספר לדוגמה).</p>
+
+            <span class="corner_title" onclick="toggle_visibility('corner_6_2_1')">
+              <img class="corner_debug-icon">
+              <span class="corner_debug-title">TypeError: שרשור רשימה ומחרוזת</span>
+              <span class="corner_continue">להמשך קריאה</span>
+            </span>
+            <div id="corner_6_2_1" class="corner_debug-box">
+              <p>מה יקרה לדעתכם כשנרצה להוסיף לרשימה איבר וננסה לשרשר אותו באופן הבא?</p>
+              <div class="code">
+                >>> chemical_elements + "boron"<br>
+                <button id="button_6_5_1" class="expand" onclick="expand_code('code_6_5_1', 'button_6_5_1')">
+                  <img class="enterbutton">
+                </button>
+                <div class="hiddencode" id="code_6_5_1">
+                  <span class="code_answer">
+                    <span class="code_error">
+                      Traceback (most recent call last):
+                      <br> &nbsp;&nbsp;File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+                      <br> TypeError: can only concatenate list (not "str") to list
+                    </span>
+                  </span>
+                </div>
+              </div>
+            <p>קיבלנו שגיאה מסוג
+              <b>TypeError</b>, כיוון שאי אפשר לשרשר לרשימה ערך מטיפוס כלשהו שאינו איבר ברשימה.</p>
+            <img class="corner_debug-x" onclick="toggle_visibility('corner_6_2_1')">
+          </div>
+          <br><br>
+          <p>להזכירכם, למדנו שאפשר
+            <b>להכפיל</b> מחרוזות, לדוגמה:</p>
+          <div class="code">
+            >>> my_subject * 4<br>
+            <span class="code_answer">'chemistrychemistrychemistrychemistry'</span>
+          </div>
+
+          <p>בהתאמה, גם אפשר להכפיל גם רשימות ליצירת רשימה חדשה ארוכה.</p>
+
+
+                <!-- Interactive Question 6_2_1 -->
+                <img class="corner_iquestion-icon">
+                <div class="corner_iquestion-box" dir="ltr">
+                  <div class="corner_iquestion-title" dir="rtl">מה לדעתכם תדפיס הפקודה הבאה?
+                    <div class="code">
+                      >>> chemical_elements * 2<br>
+                      <div class="hiddencode" id="code_6_7_1">
+                        <span class="code_answer">['hydrogen', 'helium', 'lithium', 'beryllium', 'hydrogen', 'helium', 'lithium', 'beryllium']</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <label class="corner_iquestion-option" onclick="show_answer('iquestion_6_2_1-a1')">
+                    <input type="radio" name="iquestion_6_2_1" class="corner_iquestion-radio"><span class="code">['hydrogen', 'helium', 'lithium', 'beryllium'], ['hydrogen', 'helium', 'lithium', 'beryllium']</span></label>
+                    <div class="corner_iquestion-feedback" dir="rtl">
+                      <span id="iquestion_6_2_1-a1" class="corner_iquestion-i_answer">שימו לב, הרשימה החדשה אינה מורכבת משתי רשימות, נסו שוב.</span>
+                    </div>
+                  <label class="corner_iquestion-option" onclick="show_answer('code_6_7_1'), show_answer('iquestion_6_2_1-a2')">
+                    <input type="radio" name="iquestion_6_2_1" class="corner_iquestion-radio"><span class="code">['hydrogen', 'helium', 'lithium', 'beryllium', 'hydrogen', 'helium', 'lithium', 'beryllium']</span></label>
+                    <div class="corner_iquestion-feedback" dir="rtl">
+                      <span id="iquestion_6_2_1-a2" class="corner_iquestion-c_answer">נכון מאוד!</span>
+                    </div>
+                  <label class="corner_iquestion-option" onclick="show_answer('iquestion_6_2_1-a3')">
+                    <input type="radio" name="iquestion_6_2_1" class="corner_iquestion-radio"><span class="code">['hydrogenhydrogen', 'heliumhelium', 'lithiumlithium', 'berylliumberyllium']</span></label>
+                    <div class="corner_iquestion-feedback" dir="rtl">
+                      <span id="iquestion_6_2_1-a3" class="corner_iquestion-i_answer">לא ממש, ההכפלה אינה עבור כל מחרוזת ברשימה, נסו שוב.</span>
+                    </div>
+                  <label class="corner_iquestion-option" onclick="show_answer('iquestion_6_2_1-a4')">
+                    <input type="radio" name="iquestion_6_2_1" class="corner_iquestion-radio"><span class="code">['hydrogen', 'hydrogen', 'helium', 'helium', 'lithium', 'lithium', 'beryllium', 'beryllium']</span></label>
+                    <div class="corner_iquestion-feedback" dir="rtl">
+                      <span id="iquestion_6_2_1-a4" class="corner_iquestion-i_answer">לא ממש, ההכפלה היא עבור הרשימה כולה, לא עבור כל איבר בנפרד. נסו שוב.</span>
+                    </div>
+
+                  <img class="corner_iquestion-x">
+                </div><br>
+
+          <img class="box_content_close" onclick="toggle_visibility('topic3')">
+        </div>
+        <!-- Closing Topic 3 -->
+
+          <button class="box_title" onclick="toggle_visibility('topic4')">בדיקת אורך</button>
+          <div id="topic4" class="box_content">
+
+            <p>לסיום, ישנן פעולות ופקודות רבות שהכרנו בעבודה עם מחרוזות שמשמשות גם בעבודה עם רשימות.
+              <br> פונקציה שימושית היא הפונקציה
+              <b>len</b>, שמאפשרת לקבל
+              <b>אורך</b> של רשימה (כלומר את מספר האיברים שהיא מכילה).
+              <br> דוגמה לשימוש בפונקציה len לקבלת אורך מחרוזת ומספר האיברים ברשימה:</p>
+
+            <div class="code">
+              >>> len(my_subject)<br>
+              <button id="button_6_8_1" class="expand" onclick="expand_code('code_6_8_1', 'button_6_8_1')">
+                <img class="enterbutton">
+              </button>
+              <div class="hiddencode" id="code_6_8_1">
+                <span class="code_answer">9</span><br>
+                >>> len(chemical_elements)<br>
+                <button id="button_6_8_2" class="expand" onclick="expand_code('code_6_8_2', 'button_6_8_2')">
+                  <img class="enterbutton">
+                </button>
+                <div class="hiddencode" id="code_6_8_2">
+                  <span class="code_answer">4</span>
+                </div>
+              </div>
+
+            </div>
+            <p>בהמשך עבודתכם ובתרגילים, תיתקלו ותיעזרו בפעולות נוספות.</p>
+
+            <img class="box_content_close" onclick="toggle_visibility('topic4')">
+          </div>
+          <!-- Closing Topic 4 -->
+<br>
+</body>
+
+</html>

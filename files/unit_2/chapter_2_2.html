@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <title>2.2 משתנים בפייתון - חלק ב'</title>
+  <meta charset="utf-8">
+  <link href='https://fonts.googleapis.com/css?family=alef' rel='stylesheet'>
+  <link rel="stylesheet" type="text/css" href="../base/neo_css.css">
+  <script src="../base/python_js.js"></script>
+</head>
+
+<body class="python_body">
+  <script>
+    function toggle_visibility(id) {
+          var e = document.getElementById(id);
+          if (e.style.display == 'block')
+                e.style.display = 'none';
+          else
+                e.style.display = 'block';}
+
+    function expand_code(codeid, buttonid) {
+          var c = document.getElementById(codeid);
+          var b = document.getElementById(buttonid);
+          c.style.display = 'block';
+          b.style.display = 'none';}
+  </script>
+  <div class="toc_title">מה נלמד?</div>
+  <a name="topic1">
+    <button class="box_title" onclick="toggle_visibility('topic1')">טיפוס בוליאני</button>
+    <div id="topic1" class="box_content">
+      <p>טיפוס חשוב ושימושי מאוד בפייתון הוא
+        <b>טיפוס בוליאני </b>(באנגלית boolean, ובקיצור bool). משתנה מטיפוס בוליאני הוא משתנה שמקבל את הערכים
+        <b>אמת או שקר </b>(True/False)
+        <u>בלבד</u>.</p>
+      <p>דוגמאות למשתנים בוליאניים:</p>
+      <div class="code">
+        the_sun_will_rise_tomorrow = True
+        <br> i_am_hungry = False
+      </div>
+      <img class="box_content_close" onclick="toggle_visibility('topic1')">
+    </div>
+    <!-- Closing Topic 1 -->
+
+    <a name="topic2">
+      <button class="box_title" onclick="toggle_visibility('topic2')">ביטויים לוגיים</button>
+      <div id="topic2" class="box_content">
+        <p>משתנים בוליאניים משמשים הרבה לשמירת תוצאות של
+          <b>ביטויים לוגיים</b>. ביטוי לוגי הוא ביטוי שהתוצאה שלו היא חד משמעית - אמת או שקר.
+          <br> דוגמה להשמת תוצאה של ביטוי לוגי למשתנה בוליאני (להזכירכם, בפרק הקודם הגדרנו: 4 = brothers_num):</p>
+        <div class="code">
+          is_big_family = brothers_num > 20
+          <br>
+        </div>
+        <p>בדוגמה זו המשתנה is_big_family מקבל ערך בהתאם לאמיתות הביטוי הלוגי "מספר האחים גדול מ-20". במקרה שלנו מספר האחים
+          אינו גדול מ-20 ולכן המשתנה יצביע על הערך False.</p>
+        <div class="code">
+          >>> is_big_family
+          <br>
+          <button id="button_2_2_1" class="expand" onclick="expand_code('code_2_2_1', 'button_2_2_1')">
+            <img class="enterbutton">
+          </button>
+          <div class="hiddencode" id="code_2_2_1">
+            <span class="code_answer">False</span>
+          </div>
+        </div>
+        <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_2/graphics/img_2_2_1.png"><br>
+        
+
+		
+				<p>שימו לב, פייתון תתייחס  		<b>לכל מספר</b> שאינו המספר 0 (אפס) בתור הערך הבוליאני <b>True</b>, ואילו המספר 0 תמיד מייצג את הערך הבוליאני <b>False.</b>
+		</p>
+<p>לצורך כתיבת ביטויים לוגיים משתמשים ב<b>אופרטורים לוגיים</b>.
+          <br> לפניכם טבלה עם דוגמאות לאופרטורים לוגיים ולאופן השימוש בהם. בדוגמאות הניחו שהגדרנו את המשתנים:</p>
+        <div class="code">
+          >>> a = 2
+          <br> >>> b = 5
+          <br>
+        </div>
+        <table class="general_table">
+          <tr>
+            <th class="general_th" style="background-color: #023852; text-align: center; text-color: #ffffff; font-weight:bold;">אופרטור</th>
+            <th class="general_th" style="background-color: #023852; text-align: center; text-color: #ffffff; font-weight:bold;">תיאור</th>
+            <th class="general_th" style="background-color: #023852; text-align: center; text-color: #ffffff; font-weight:bold;">דוגמה לביטוי לוגי</th>
+            <th class="general_th" style="background-color: #023852; text-align: center; text-color: #ffffff; font-weight:bold;">תוצאת הביטוי לדוגמה</td>
+          </tr>
+          <tr>
+            <td class="general_td marked_column" style="background-color: #d7dadb; text-align: center;">==</td>
+            <td class="general_td" dir="ltr" style="text-align:center;">שווה</td>
+            <td class="general_td" dir="ltr" style="text-align:center;">a == 2</td>
+            <td class="general_td" dir="ltr" style="text-align:center;">True</td>
+          </tr>
+          <tr>
+            <td class="general_td marked_column" dir="ltr" style="background-color: #d7dadb; text-align: center;">!=</td>
+            <td class="general_td" style="text-align:center;">לא שווה</td>
+            <td class="general_td" dir="ltr" style="text-align:center;">b != 5</td>
+            <td class="general_td" dir="ltr" style="text-align:center;">False</td>
+          </tr>
+          <tr>
+            <td class="general_td marked_column"dir="ltr" style="background-color: #d7dadb; text-align: center;">&gt;</td>
+            <td class="general_td" style="text-align:center;">גדול מ-</td>
+            <td class="general_td" dir="ltr" style="text-align:center;">a &gt; 4</td>
+            <td class="general_td" dir="ltr" style="text-align:center;">False</td>
+          </tr>
+          <tr>
+            <td class="general_td marked_column"dir="ltr" style="background-color: #d7dadb; text-align: center;" >&lt;</td>
+            <td class="general_td" style="text-align:center;">קטן מ-</td>
+            <td class="general_td" dir="ltr" style="text-align:center;">a &lt; 4</td>
+            <td class="general_td" dir="ltr" style="text-align:center;">True</td>
+          </tr>
+          <tr>
+            <td class="general_td marked_column" style="background-color: #d7dadb; text-align: center;">and</td>
+            <td class="general_td" style="text-align:center;">True אם תוצאת שני הביטויים היא True</td>
+            <td class="general_td" dir="ltr" style="text-align:center;">a &gt; 3 and b &gt; 4</td>
+            <td class="general_td" style="text-align:center;">False</td>
+          </tr>
+          <tr>
+            <td class="general_td marked_column" style="background-color: #d7dadb; text-align: center;">or</td>
+            <td class="general_td" style="text-align:center;">True אם תוצאת אחד מהביטויים (או שניהם) היא True</td>
+            <td class="general_td" dir="ltr" style="text-align:center;">a &gt; 3 or b &gt; 4</td>
+            <td class="general_td" style="text-align:center;">True</td>
+          </tr>
+          <tr>
+            <td class="general_td marked_column" style="background-color: #d7dadb; text-align: center;">not</td>
+            <td class="general_td" style="text-align:center;">הופך מ-True ל-False, ולהיפך</td>
+            <td class="general_td" dir="ltr" style="text-align:center;">not(a &gt; 4)</td>
+            <td class="general_td" style="text-align:center;">True</td>
+          </tr>
+          <tr>
+            <td class="general_td marked_column" style="background-color: #d7dadb; text-align: center;">in</td>
+            <td class="general_td" style="text-align:center;">בדיקת הכלה במחרוזות (ובהמשך בטיפוסים נוספים)</td>
+            <td class="general_td" dir="ltr" style="text-align:center;">
+              <div style="line-height:1.7;">
+                "duck" in "duckling"<br>
+                "s" in "duckling"
+              </div>
+            </td>
+            <td class="general_td" dir="ltr" style="text-align:center;">
+              <div style="line-height:1.7;">
+                True<br>
+                False
+              </div>
+            </td>
+          </tr>
+        </table>
+        <br>
+        <p>אפשר גם לשלב ביטויים לוגיים פשוטים ליצירת
+          <b>ביטויים לוגיים מורכבים</b>.
+          <br> דוגמאות לביטויים לוגיים מורכבים (להזכירכם, הגדרנו 2 = a):</p>
+
+        <table class="general_table">
+          <tr>
+            <th class="general_th" style="background-color: #023852; text-align: center; text-color: #ffffff; font-weight:bold;">דוגמה לביטוי לוגי</th>
+            <th class="general_th" style="background-color: #023852; text-align: center; text-color: #ffffff; font-weight:bold;">תוצאת הביטוי לדוגמה</td>
+          </tr>
+          <tr>
+            <td class="general_td" dir="ltr" style="text-align:center;">a == 2 or a &lt; 7</td>
+            <td class="general_td" dir="ltr" style="text-align:center;">True</td>
+          </tr>
+          <tr>
+            <td class="general_td" dir="ltr" style="text-align:center;">(a == 2) and (a &lt; 7) and (a &gt; 0)</td>
+            <td class="general_td" dir="ltr" style="text-align:center;">True</td>
+          </tr>
+          <tr>
+            <td class="general_td" dir="ltr" style="text-align:center;">0 &lt;= a &lt;= 1</td>
+            <td class="general_td" dir="ltr" style="text-align:center;">False</td>
+          </tr>
+          <tr>
+            <td class="general_td" dir="ltr" style="text-align:center;">1 &lt; a &lt; 7 &lt; 1</td>
+            <td class="general_td" dir="ltr" style="text-align:center;">False</td>
+          </tr>
+        </table>
+
+        <!-- CORNER -->
+        <br>
+        <span class="corner_title" onclick="toggle_visibility('corner_2_2_1')">
+          <img class="corner_goodwrite-icon">
+          <span class="corner_goodwrite-title">ביטויים לוגיים</span>
+          <span id="cont_2_2_1" class="corner_continue">להמשך קריאה</span>
+        </span>
+        <div id="corner_2_2_1" class="corner_goodwrite-box">
+          <p>הביטו על הטבלה עם הדוגמאות לעיל ושימו לב לשני דגשים בצורת הכתיבה.
+            <br> דגשים אלה נועדו בעיקר להקל על הקריאה:
+            <br>&nbsp; א. נכתוב רווחים משני צידי האופרטורים.
+            <br>&nbsp; ב. בביטויים מורכבים נתחום את חלקיו של הביטוי הלוגי בסוגריים.</p>
+
+          <img class="corner_goodwrite-x" onclick="toggle_visibility('corner_2_2_1')">
+        </div>
+        <br>
+        <!-- END CORNER -->
+
+        <!-- CORNER -->
+        <br>
+        <span class="corner_title" onclick="toggle_visibility('corner_2_2_2')">
+          <img class="corner_enrichment-icon">
+          <span class="corner_enrichment-title"> תיעוד והפקודה help</span>
+          <span id="cont_2_2_2" class="corner_continue">להמשך קריאה</span>
+        </span>
+        <div id="corner_2_2_2" class="corner_enrichment-box" style="display: block;">
+          <p>בהמשך הקורס ניתקל בפקודות רבות שאיננו יודעים מה הן מבצעות ואין עליהן פירוט בקורס. נוכל לבקש תיעוד (כלומר הסבר,
+            פירוט) על פקודה מסוימת בעזרת הפקודה
+            <b>help</b>.</p>
+          <p>נסו לכתוב באינטרפרטר help ותיכנסו לממשק עזרה אינטראקטיבי:</p>
+          <div class="code">
+            >>> help
+            <br>
+          </div>
+          <p>תוכלו גם לבקש עזרה עבור פקודה, ספרייה או מילות מפתח בפייתון אם תוסיפו אותו לפקודת help בסוגריים ומוקף במרכאות.</p>
+          <p>דוגמה לקבלת תיעוד על האופרטור הלוגי in:</p>
+          <div class="code">
+            >>> help("in")
+            <br>
+          </div>
+          <p>נקבל את הפירוט הבא:</p>
+          <div dir="ltr">The operators "in" and "not in" test for membership.
+            <br> "x in s" evaluates to true if *x* is a member of *s*, and false otherwise.</div>
+            <p>בהמשך התיעוד, נמצא גם הסבר רלוונטי לטיפוס מחרוזת:</p>
+          <div dir="ltr">For the string and bytes types, "x in y" is true if and only if *x* is a substring of *y*</div>
+          <p>* טיפ לקריאת תעוד בעזרת הפקודה ()help: תוכלו לדפדף קדימה בעזרת מקש רווח, או לצאת באמצע מן התיעוד בלחיצה על q.</p>
+          <p>בנוסף, קיים <b>תיעוד</b> רב באינטרנט אשר יכול לסייע בהבנת פקודות שאנו לא מכירים. התיעוד כתוב לרוב בפורמט סטנדרטי שתלמדו
+            להכיר עם הזמן. תוכלו למצוא תיעוד גם עבור פעולות בסיסיות של שפת פייתון וגם עבור חבילות הרחבה בהן תיתקלו בהמשך.
+            דוגמה לתיעוד מפורט תוכלו למצוא באתר הבא:
+            <a class="link" href="https://docs.python.org/3/contents.html" target="_blank">https://docs.python.org/3/contents.html</a>.</p>
+          <p>מומלץ להיעזר באינטרנט על מנת למצוא תיעוד נוסף, אך חשוב לשים לב שהוא כתוב עבור גרסת הפייתון הרלוונטית.</p>
+
+          <img class="corner_enrichment-x" onclick="toggle_visibility('corner_2_2_2')">
+        </div>
+        <br>
+        <!-- END CORNER -->
+
+
+
+</body>
+
+</html>

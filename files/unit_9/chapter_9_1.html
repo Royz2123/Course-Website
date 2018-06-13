@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <title>9.1 עבודה עם קבצים בפייתון</title>
+  <meta charset="utf-8">
+  <link href='https://fonts.googleapis.com/css?family=alef' rel='stylesheet'>
+  <link rel="stylesheet" type="text/css" href="../base/neo_css.css">
+  <script src="../base/python_js.js"></script>
+</head>
+
+<body class="python_body">
+  <script>
+    function toggle_visibility(id) {
+      var e = document.getElementById(id);
+      if (e.style.display == 'block')
+        e.style.display = 'none';
+      else
+        e.style.display = 'block';
+    }
+
+    function expand_code(codeid, buttonid) {
+      var c = document.getElementById(codeid);
+      var b = document.getElementById(buttonid);
+      c.style.display = 'block';
+      b.style.display = 'none';
+    }
+
+    function show_answer(id) {
+      var e = document.getElementById(id);
+      e.style.display = 'block';
+    }
+  </script>
+
+  <div class="toc_title">מה נלמד?</div>
+  <a name="topic1">
+    <button class="box_title" onclick="toggle_visibility('topic1')">שימוש בקבצים עבור קלט ופלט</button>
+    <div id="topic1" class="box_content">
+
+      <p>עד כה נהגנו לקבל לתוכנית קלט (input) שהוא הקלדה מהמשתמש, באמצעות הפקודה input. כאשר רצינו להציג פלט של התוכנית (output) עשינו זאת בעזרת הפקודה print.</p>
+      <p>דרך נוספת בעבודה עם קלט ופלט היא באמצעות <b>קבצים </b>המוכרים לנו מהשימוש היומיומי שלנו במחשב.<br>
+        דוגמאות לקבצים הן: מסמכים, תמונות, קבצי מוזיקה, קבצי וידאו או קבצי הרצה. למעשה רוב התוכנות היום משתמשות בקבצים, לדוגמה: תוכנות לעריכת תמונות או וידאו, תוכנות אנטי-וירוס שמקבלות עדכוני תוכנה באמצעות קבצים שהן מורידות, דפדפנים ששומרים את היסטוריית הגלישה שלנו על המחשב ועוד.<br>
+        קבצים מאפשרים לנו לקבל קלט ולהחזיר פלט בצורה נוחה, במיוחד כאשר מדובר ב<b>כמויות גדולות </b>של מידע.
+      </p>
+      <p>ביחידה זו נלמד לעבוד עם <b>קבצי טקסט</b>. אלה קבצים עם סיומת txt המכילים תווים קריאים כגון מספרים, אותיות וסמלים. נכיר דרכים לפתוח קבצי טקסט, לערוך אותם ולבצע עליהם פעולות נוספות.</p>
+      <p>דוגמה לקובץ טקסט שנקרא spells.txt ומכיל לחשי-קסמים מהסרט "הארי פוטר":</p>
+      <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_9/graphics/img_9_1_1.png">
+      <p>שימו לב, קיים סוג נוסף של קבצים הנקרא <b>קבצים בינאריים</b>, לדוגמה: קבצי תמונה או קבצי וורד (word).<br>
+        במסגרת קורס זה לא נעבוד עם קבצים בינאריים ופעולות שנבצע על קבצי טקסט לא בהכרח יעבדו גם על קבצים בינאריים.</p>
+      <img class="box_content_close" onclick="toggle_visibility('topic1')">
+    </div>
+    <!-- Closing Topic 1 -->
+
+  <a name="topic2">
+    <button class="box_title" onclick="toggle_visibility('topic2')">פתיחת קובץ</button>
+    <div id="topic2" class="box_content">
+      <p>עבודה עם קבצים בפייתון מתחילה בהיכרות עם <b>אובייקט מטיפוס קובץ </b>שמשמש לייצוג הקובץ איתו עובדים בקוד. לאחר שניצור את האובייקט נוכל לבצע עליו פעולות כגון קבלת מידע ומניפולציות נוספות.</p>
+      <p>כדי ליצור אובייקט מטיפוס קובץ יש לפתוח קובץ עם הפונקציה המובנית <b>()open </b>שמקבלת כפרמטר נתיב לקובץ.</p>
+      <p>לפניכם דוגמה ליצירת אובייקט מטיפוס קובץ שנקרא spells_input_file. בדוגמה נפתח את הקובץ שנקרא spells.txt:</p>
+      <div class="code">
+        >>> spells_input_file = <mark class="mark_code">open(</mark>r"c:\harry_potter\spells.txt"<mark class="mark_code">)</mark>
+      </div>
+      <p>בכדי ליצור את האובייקט ולפתוח את הקובץ העברנו כארגומנט את הנתיב המלא לקובץ, כלומר את המחרוזת "c:\harry_potter\spells.txt".</p>
+      <p><b>טיפ</b>: שימו לב ל<b>תחילית r </b>שמופיעה לפני המחרוזת של נתיב הקובץ.<br>
+        זהו סימן מיוחד שמסמן לפייתון להתייחס למחרוזת (במקרה זה שם הקובץ) בדיוק כפי שהיא, ללא המרה לתווים מיוחדים. תחילית זו שימושית בעבודה עם מחרוזות בהקשרים נוספים ולא רק בעבודה עם קבצים.</p>
+      <img class="box_content_close" onclick="toggle_visibility('topic2')">
+    </div>
+    <!-- Closing Topic 2 -->
+
+  <a name="topic3">
+    <button class="box_title" onclick="toggle_visibility('topic3')">קריאה מקובץ</button>
+    <div id="topic3" class="box_content">
+      <p>נכיר כמה מתודות שימושיות ל<b>קריאת תוכן של קובץ </b>שפתחנו, כולן מתודות הפועלות על אובייקטים מטיפוס קובץ.</p>
+      <p>בכדי לקרוא את <b>תוכן הקובץ כולו </b>ניעזר במתודה <b>()read</b>. המתודה שומרת את תוכן הקובץ כולו כ<b>מחרוזת אחת</b>.</p>
+      <p>דוגמה לקריאה של תוכן הקובץ spells.txt באמצעות המתודה read:</p>
+      <div class="code">
+        >>> spells_input_file = open(r"c:\harry_potter\spells.txt")<br>
+        >>> spells = spells_input_file<mark class="mark_code">.read()</mark><br>
+        <button id="button_9_1_1" class="expand" onclick="expand_code('code_9_1_1', 'button_9_1_1')">
+          <img class="enterbutton">
+        </button>
+        <div class="hiddencode" id="code_9_1_1">
+          <span class="code_answer">
+            'Avada Kedavra: Death\nAberto: Opens objects\nLumos: Creates light from the wand’s tip\nObliviate: Erases memories\n'
+          </span>
+        </div>
+      </div>
+      <p>ודאי שמתם לב שהתו האחרון בכל שורה בקובץ הוא n\ המייצג ירידת שורה.<br>
+        ניעזר בפונקציה print כדי להדפיס את תוכן הקובץ כולל ירידות השורה:</p>
+      <div class="code">
+        >>> spells_input_file = open(r"c:\harry_potter\spells.txt")<br>
+        >>> spells = spells_input_file.read()<br>
+        >>> print(spells)<br>
+        <button id="button_9_1_2" class="expand" onclick="expand_code('code_9_1_2', 'button_9_1_2')">
+          <img class="enterbutton">
+        </button>
+        <div class="hiddencode" id="code_9_1_2">
+          <span class="code_answer">
+            Avada Kedavra: Death<br>
+            Aberto: Opens objects<br>
+            Lumos: Creates light from the wand’s tip<br>
+            Obliviate: Erases memories
+          </span>
+        </div>
+      </div>
+      <p>פשוט וקל, נכון?</p>
+
+      <!-- Interactive Question 9_1_1 -->
+      <img class="corner_iquestion-icon">
+      <div class="corner_iquestion-box" dir="rtl">
+        <div class="corner_iquestion-title" dir="rtl">מה החיסרון בקריאת תוכן של קובץ בעזרת המתודה read?</div>
+        <label id="iquestion_9_1_1-cont" class="corner_iquestion-option" onclick="expand_code('iquestion_9_1_1-a', 'iquestion_9_1_1-cont')">
+          <u>להמשך קריאה</u>
+        </label>
+        <div class="corner_iquestion-feedback" dir="rtl">
+          <span id="iquestion_9_1_1-a" style="display:none">הדוגמה לעיל מכילה קובץ טקסט קצרצר ובו ארבע שורות בלבד. לעומת זאת, בעבודה עם קבצים גדולים, השמה של תוכן קובץ לתוך משתנה יחיד עלולה ליצור עומס בזיכרון ולהאט את ריצת התוכנית. לפיכך המתודה read אינה מתאימה לקריאת קבצים גדולים.</span>
+        </div>
+        <img class="corner_iquestion-x">
+      </div><br>
+
+      <p>בעבודה עם קבצים גדולים מומלץ להיעזר בשיטת קריאה אחרת: קריאת <b>שורה אחת בכל פעם</b>, באמצעות המתודה <b>()readline</b>.</p>
+      <p>דוגמה לקריאה של תוכן הקובץ spells.txt שורה אחר שורה באמצעות המתודה readline:</p>
+
+      <div class="code">
+        >>> line = spells_input_file<mark class="mark_code">.readline()</mark><br>
+        >>> print(line)
+        <button id="button_9_1_3" class="expand" onclick="expand_code('code_9_1_3', 'button_9_1_3')">
+          <img class="enterbutton">
+        </button>
+        <div class="hiddencode" id="code_9_1_3">
+          <span class="code_answer">Avada Kedavra: Death</span><br>
+          >>> line = spells_input_file<mark class="mark_code">.readline()</mark><br>
+          >>> print(line)
+          <button id="button_9_1_4" class="expand" onclick="expand_code('code_9_1_4', 'button_9_1_4')">
+            <img class="enterbutton">
+          </button>
+          <div class="hiddencode" id="code_9_1_4">
+            <span class="code_answer">Aberto: Opens objects</span><br>
+            >>> line = spells_input_file<mark class="mark_code">.readline()</mark><br>
+            >>> print(line)
+            <button id="button_9_1_5" class="expand" onclick="expand_code('code_9_1_5', 'button_9_1_5')">
+              <img class="enterbutton">
+            </button>
+            <div class="hiddencode" id="code_9_1_5">
+              <span class="code_answer">Lumos: Creates light from the wand’s tip</span><br>
+              >>> line = spells_input_file<mark class="mark_code">.readline()</mark><br>
+              >>> print(line)
+              <button id="button_9_1_6" class="expand" onclick="expand_code('code_9_1_6', 'button_9_1_6')">
+                <img class="enterbutton">
+              </button>
+              <div class="hiddencode" id="code_9_1_6">
+                <span class="code_answer">Obliviate: Erases memories</span><br>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p>כמובן שנוכל להדפיס את הקובץ שורה אחר שורה גם באמצעות <b>לולאת for</b>:</p>
+      <div class="code">
+        >>> <mark class="mark_code">for</mark>line <mark class="mark_code">in</mark> spells_input_file:<br>
+        ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(line, end="")<br>
+        . . . <br>
+        <button id="button_9_1_7" class="expand" onclick="expand_code('code_9_1_7', 'button_9_1_7')">
+          <img class="enterbutton">
+        </button>
+        <div class="hiddencode" id="code_9_1_7">
+          <span class="code_answer">
+            Avada Kedavra: Death<br>
+            Aberto: Opens objects<br>
+            Lumos: Creates light from the wand’s tip<br>
+            Obliviate: Erases memories
+          </span>
+        </div>
+      </div>
+
+      <p>מתודה שימושית נוספת לקריאת קובץ היא המתודה <b>()readlines</b>. המתודה קוראת את <b>כל השורות בקובץ </b>לתוך <b>רשימה של מחרוזות</b>.</p>
+      <p>דוגמה לקריאה של תוכן הקובץ spells.txt באמצעות המתודה readlines:</p>
+
+      <div class="code">
+        >>> lines = spells_input_file <mark class="mark_code">.readlines()</mark><br>
+        >>> lines<br>
+        <button id="button_9_1_8" class="expand" onclick="expand_code('code_9_1_8', 'button_9_1_8')">
+          <img class="enterbutton">
+        </button>
+        <div class="hiddencode" id="code_9_1_8">
+          <span class="code_answer">
+            <mark class="mark_code_answer">[</mark>'Avada Kedavra: Death\n', 'Aberto: Opens objects\n', 'Lumos: Creates light from the wand’s tip\n', 'Obliviate: Erases memories'<mark class="mark_code_answer">]</mark>
+          </span>
+        </div>
+      </div>
+
+      <img class="box_content_close" onclick="toggle_visibility('topic3')">
+    </div>
+    <!-- Closing Topic 3 -->
+
+    <a name="topic4">
+      <button class="box_title" onclick="toggle_visibility('topic4')">סגירת קובץ</button>
+      <div id="topic4" class="box_content">
+        <p>מתי נסגר קובץ בפייתון?</p>
+        <p>כאשר פותחים קובץ באמצעות הפונקציה open, פייתון מבקשת ממערכת ההפעלה לנעול את הקובץ לשימוש על ידי תוכנות אחרות. הנעילה חשובה בכדי למנוע כתיבה לאותו קובץ במקביל, לדוגמה. הקובץ נותר נעול עד שפייתון תשחרר אותו. אמנם הקובץ ייסגר בשלב מסוים, אך לא נפרט על המנגנון האחראי לכך. למרות שהקובץ עתיד להיסגר, <b>מומלץ לסגור אותו באופן יזום </b>בכדי למנוע מהתוכנית להתנהג בצורה בלתי צפויה כדוגמת אי שמירה של שינויים בקובץ.</p>
+        <p><b>סגירת קובץ </b>נעשית באמצעות המתודה <b>()close</b>.</p>
+        <p>דוגמה לסגירה של קובץ באמצעות המתודה close:</p>
+        <div class="code">
+          >>> spells_input_file<mark class="mark_code">.close()</mark>
+        </div>
+
+        <!-- CORNER ENRICHMENT -->
+        <span class="corner_title" onclick="toggle_visibility('corner_9_1_1')">
+          <img class="corner_enrichment-icon">
+          <span class="corner_enrichment-title">with statement</span>
+          <span id="cont_9_1_1" class="corner_continue">להמשך קריאה</span>
+        </span>
+        <div id="corner_9_1_1" class="corner_enrichment-box">
+
+          <p>גם פייתון יודעת לעשות קסמים, והיא מאפשרת לנו לפתוח קבצים מבלי לדאוג לסגור אותם <b>באופן מפורש</b>.</p>
+          <p>נרמוז לפייתון למה אנו מתכוונים בעזרת המבנה הבא: נכתוב את ההצהרה <b>with</b>, אחריה נקרא לפונקציה open עם הארגומנטים המתאימים, נכתוב <b>as </b>ולאחריו שם של משתנה שיצביע על הקובץ ולבסוף נקודתיים שפותחות בלוק מוזח.</p>
+          <p>מבנה כללי עבור עבודה עם קובץ באמצעות ההצהרה with:</p>
+          <div class="code">
+            <span class="code_function">with</span> open('FileName.txt') <span class="code_function">as</span> input_file:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;do something with the file&gt;
+
+          </div>
+          <p>כאשר כותבים קוד במבנה הזה, הקובץ יישאר פתוח עד לסיום ריצת הבלוק with, ולאחר מכן ייסגר באופן אוטומטי.</p>
+          <p>עבודה עם ההצהרה with מומלצת כיוון שהיא משחררת את משאבי המערכת (כגון קבצים, אובייקטי סינכרון, חיבורי רשת ועוד).</p>
+
+          <img class="corner_enrichment-x" onclick="toggle_visibility('corner_9_1_1')">
+        </div>
+        <br><br>
+        <!-- END CORNER ENRICHMENT -->
+
+        <img class="box_content_close" onclick="toggle_visibility('topic4')">
+      </div>
+      <!-- Closing Topic 4 -->
+
+      <a name="topic5">
+        <button class="box_title" onclick="toggle_visibility('topic5')">כתיבה לקובץ וצורות גישה נוספות</button>
+        <div id="topic5" class="box_content">
+          <p>לעיתים נרצה לערוך קובץ, לדוגמה לכתוב לתוכו תוכן חדש. לשם כך אפשר להשתמש במתודה <b>()write </b>המאפשרת לכתוב מחרוזות לתוך קבצים.</p>
+
+          <!-- CORNER DEBUG -->
+          <br>
+          <span class="corner_title" onclick="toggle_visibility('corner_9_1_2')">
+            <img class="corner_debug-icon">
+            <span class="corner_debug-title">IOError</span>
+            <span id="cont_9_1_2" class="corner_continue">להמשך קריאה</span>
+          </span>
+          <div id="corner_9_1_2" class="corner_debug-box">
+            <p>נניח שאנו רוצים לכתוב קסם חדש לקובץ לחשי-הקסמים שלנו.<br>
+              לצורך כתיבת קסם לקובץ ננסה להיעזר במתודה write (וכן להשתמש במבנה with שהכרנו לעיל):
+            </p>
+            <div class="code">
+              >>> <mark class="mark_code">with</mark> open(r"c:\harry_potter\spells.txt") <mark class="mark_code">as</mark> spells_input_file:<br>
+              ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;spells_input_file<mark class="mark_code">.write(</mark>"with: Magically closes files after usage"<mark class="mark_code">)</mark><br>
+              <button id="button_9_1_9" class="expand" onclick="expand_code('code_9_1_9', 'button_9_1_9'), show_answer('code_9_1_9a')">
+                <img class="enterbutton">
+              </button>
+              <div class="hiddencode" id="code_9_1_9">
+                <span class="code_error">
+                  Traceback (most recent call last):<br>
+                  &nbsp;&nbsp; File "&lt;stdin&gt;", line 1, in &lt;module&gt;<br>
+                  IOError: File not open for writing
+                </span>
+              </div>
+            </div>
+            <div id="code_9_1_9a" style="display: none;">
+              <p>קיבלנו הודעת שגיאה מסוג <b>IOError</b>. שגיאה מסוג IO מתייחסת לנושאים של קלט-פלט (Input-Output), ובמקרה זה - ההודעה מפרטת שהקובץ אינו פתוח לכתיבה.<br>
+                בכדי להשתמש במתודה write הקובץ צריך להיות פתוח לכתיבה. נלמד כיצד לעשות זאת.<br>
+              </p>
+            </div>
+            <img class="corner_debug-x" onclick="toggle_visibility('corner_9_1_2')">
+          </div>
+          <br>
+          <!-- END CORNER DEBUG -->
+
+          <p>בפתיחת קובץ באמצעות הפונקציה open כפי שקראנו לה, ביכולתנו לקרוא מן הקובץ בלבד. זוהי ברירת המחדל של הפונקציה.</p>
+          <p>בכדי לפתוח קבצים עם צורות גישה אחרות, לדוגמה עבור כתיבה לקובץ, הפונקציה open מקבלת פרמטר נוסף שמציין את <b>צורת הגישה לקובץ</b>. נעביר אותו אחרי נתיב הגישה לקובץ.</p>
+
+          <h3 class="bold_title">צורות גישה נפוצות עבור הפונקציה open:</h3>
+          <table class="general_table">
+            <tr>
+              <th class="general_th" style="background-color: #023852; text-align: center; text-color: #ffffff; font-weight:bold;">הארגומנט המועבר לפונקציה</th>
+              <th class="general_th" style="background-color: #023852; text-align: center; text-color: #ffffff; font-weight:bold;">צורת הגישה לקובץ</td>
+            </tr>
+            <tr>
+              <td class="general_td" dir="rtl" style="text-align:center;">"r"<br>(זהו ערך ברירת המחדל של הפונקציה)</td>
+              <td class="general_td" dir="rtl">
+                גישה לקריאה בלבד, עבור קובץ קיים.<br>
+                אם הקובץ אינו קיים מתקבלת הודעת שגיאה.
+              </td>
+            </tr>
+            <tr>
+              <td class="general_td" dir="rtl" style="text-align:center;">"w"</td>
+              <td class="general_td" dir="rtl">
+                גישה לכתיבה בלבד.<br>
+                אם הקובץ אינו קיים הוא יווצר. אם הקובץ קיים, תוכן שנכתוב אליו ידרוס את התוכן הקיים, כלומר יחליף אותו.
+              </td>
+            </tr>
+            <tr>
+              <td class="general_td" dir="rtl" style="text-align:center;">"+r"</td>
+              <td class="general_td" dir="rtl">
+                גישה לכתיבה ולקריאה יחד, עבור קובץ קיים.<br>
+                אם הקובץ אינו קיים מתקבלת הודעת שגיאה.<br>
+                תוכן שנכתוב לקובץ יעדכן את התוכן הקיים.
+              </td>
+            </tr>
+            <tr>
+              <td class="general_td" dir="rtl" style="text-align:center;">"a"<br>(מהמילה append, להוסיף)</td>
+              <td class="general_td" dir="rtl">
+                גישה לכתיבה לסוף הקובץ בלבד, עבור קובץ קיים.<br>
+                אם הקובץ אינו קיים, יווצר קובץ חדש.
+              </td>
+            </tr>
+          </table>
+          <br>
+          <p>דוגמה לפתיחת הקובץ לכתיבה בעזרת הארגומנט "w", ושימוש במתודה write לכתיבת לחש-קסם חדש:</p>
+          <div class="code">
+            >>> with open(r"c:\harry_potter\spells.txt", <mark class="mark_code">"w"</mark>) as spells_input_file:<br>
+            ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;spells_input_file<mark class="mark_code">.write(</mark>"with: Magically closes files after usage"<mark class="mark_code">)</mark>
+          </div>
+
+          <p>כשנפתח את הקובץ לקריאה נקבל:</p>
+          <div class="code">
+            >>> with open(r"c:\harry_potter\spells.txt", <mark class="mark_code">"r"</mark>) as spells_input_file:<br>
+            ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;spells_input_file<mark class="mark_code">.read()</mark><br>
+            <button id="button_9_1_10" class="expand" onclick="expand_code('code_9_1_10', 'button_9_1_10')">
+              <img class="enterbutton">
+            </button>
+            <div class="hiddencode" id="code_9_1_10">
+              <span class="code_answer">with: Magically closes files after usage</span>
+            </div>
+          </div>
+          <p>שימו לב, כיוון שהשתמשנו בהתחלה בצורת הגישה "w", התוכן שכתבנו <b>דרס </b>את התוכן שהיה בקובץ קודם לכן.</p>
+          <br>
+
+          <p>דרך אחרת לערוך תוכן בקובץ היא להוסיפו לסוף הקובץ בעזרת צורת הגישה "a" (נקראת באנגלית append mode).</p>
+          <p>דוגמה לפתיחת הקובץ לכתיבה בעזרת הארגומנט "a", ושימוש במתודה write להוספת קריאת סיום מרגשת לסוף הקובץ:</p>
+          <div class="code">
+            >>> open(r"c:\harry_potter\spells.txt, <mark class="mark_code">"a"</mark>) as spells_input_file:<br>
+            ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;spells_input_file<mark class="mark_code">.write(</mark>"<mark class="mark_code">\n</mark>It’s time to practice!"<mark class="mark_code">)</mark>
+          </div>
+
+          <p>שימו לב שהוספנו גם n\ בעריכת הטקסט, כך שהטקסט יתחיל בשורה חדשה.</p>
+          <p>כעת, אם נפתח את הקובץ לקריאה, נקבל:</p>
+
+          <div class="code">
+            >>> with open(r"c:\harry_potter\spells.txt", <mark class="mark_code">"r"</mark>) as spells_input_file:<br>
+            ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;spells_input_file<mark class="mark_code">.read()</mark><br>
+            <button id="button_9_1_11" class="expand" onclick="expand_code('code_9_1_11', 'button_9_1_11')">
+              <img class="enterbutton">
+            </button>
+            <div class="hiddencode" id="code_9_1_11">
+              <span class="code_answer">
+                with: Magically closes files after usage<br>
+                <mark class="mark_code_answer">It's time to practice!</mark>
+              </span>
+            </div>
+          </div>
+
+          <p>עתה נותר רק לתהות: האם קיים כבר כישוף שמבצע את כל מה שלמדנו ביחידה..?</p>
+
+          <img class="box_content_close" onclick="toggle_visibility('topic5')">
+        </div>
+        <!-- Closing Topic 5 -->
+
+</body>
+</html>

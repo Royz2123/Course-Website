@@ -1,0 +1,649 @@
+/* Clen Version */
+@import url(http://fonts.googleapis.com/css?family=Varela+Round);
+:root { --font1:"Varela Round";}
+
+#fixedSectionHeader.student ~ h2 {font-family: var(--font1);font-size: 26px;  font-weight:bold;}
+h1   {font-family: var(--font1);}
+h2   {font-family: var(--font1);font-size: 26px;  font-weight:bold;}
+h3   {font-family: var(--font1);}
+h4   {font-family: var(--font1);}
+h5   {font-family: var(--font1);}
+h6   {font-family: var(--font1);}
+body {font-family: var(--font1);}
+span {font-family: var(--font1);}
+div  {font-family: var(--font1);}
+span {font-family: var(--font1);}
+b    {font-family: var(--font1); font-weight: bold;}
+u    {font-family: var(--font1);}
+i    {font-family: var(--font1);}
+a    {font-family: var(--font1);}
+
+
+/* Color Variables */
+:root {
+  --color1:#d7dadb;     /* grey */
+  --color2:#6dbcdb;     /* light blue */
+  --color3:#2c3e50;     /* dark blue */
+  --color4:#fc4349;     /* red */
+  --color5:#ffffff;     /* white */
+  --color6:#1d1d1d;     /* coal black */
+  --color7:#b657f0;     /* purple */
+  --color8:#404040;     /* dark grey */
+  --color9:#f5f5f5;     /* NEO LMS off-white BG color */
+  --color10:#000000;    /* black */
+  --color11:#228B22;    /* dark green */
+  --color12:yellow;
+  --color20:linear-gradient(to bottom right, #2FCFE2, #367189);
+  --color21:#2FCFE2;    /* gradient   - light blue */
+  --color22:#367189;    /* gradient   - dark blue */
+  --color23:#023852;    /* text       - dark blue */
+  --icon_color1:#F24738;   /* icon: debug      - red    */
+  --icon_color2:#FFC400;   /* icon: otherlang  - yellow */
+  --icon_color3:#49D682;   /* icon: correctwr  - green  */
+  --icon_color4:#843874;   /* icon: enrichment - purple */
+  --code_blue:  #1E76E8;
+  --code_purple:#DD55FF;
+  --code_red:   #F24738;
+  --code_green: #29B157;
+  --code_orange:#ff7f50;
+  --code_mark:  #ffff80;   /* light yellow */
+  --font1:"Varela Round";
+  --base_bg:"http://e-learn.cyber.org.il/python/base_graphics/base_bg2.png";
+}
+
+
+div.page_title {
+  font-family: var(--font1);
+  color: var(--color5);
+  font-weight: bold;
+  font-size: 28px;
+  text-align: center;
+  margin-top: 25px;
+}
+/* Menu Items */
+div.menu_chapters{
+  margin-right: 20px;
+  margin-bottom: 20px;
+  display: none;
+}
+
+a.unit_link, a.chapter_link {
+  color:  var(--color22);
+  cursor: pointer;
+}
+
+a.link {
+  color:  var(--color22);
+  cursor: pointer;
+}
+
+a.link:hover, a.unit_link:hover, a.chapter_link:hover {
+  color:  var(--color21);
+}
+a.link:visited, a.unit_link:visited, a.chapter_link:visited {
+  color:  var(--icon_color4);
+}
+
+/* Interactive Question */
+/* Correcting NEO's CSS for Radio Buttons */
+input[type="checkbox"].emptyLabel + label, input[type="radio"].emptyLabel + label {
+  margin-right: 15px;
+  margin-left: 15px;
+  vertical-align:  middle;
+  margin-top: 15px;
+}
+
+input[type="checkbox"].emptyLabel + label:before, input[type="radio"].emptyLabel + label:before{
+  margin-right: 0;
+  top: -4px;
+  left: -1px;
+}
+/* Corner - Iquestion */
+img.corner_iquestion-icon {
+  margin-right: 60px;
+  margin-bottom: -20px;
+  width: 35px;
+  height: 35px;
+  content:url(http://e-learn.cyber.org.il/python/base_graphics/icon_iquestion.png);
+}
+
+div.corner_iquestion-box {
+  font-family: var(--font1);
+  margin-right: 75px;
+  margin-top: -2px;
+  padding: 16px;
+  border-right: 3px solid var(--color22);
+}
+
+
+input.corner_iquestion-radio {
+  margin-top: 10px;
+
+}
+
+div.corner_iquestion-title {
+  border-bottom: 2px solid var(--color9);
+  padding-bottom: 10px;
+}
+
+div.corner_iquestion-feedback {
+  border-bottom: 2px solid var(--color9);
+  text-indent: 15px;
+}
+
+span.corner_iquestion-i_answer, span.corner_iquestion-c_answer {
+  display: none;
+  padding-bottom: 10px;
+  margin-right: 33px;
+  margin-left: 33px;
+}
+
+span.corner_iquestion-i_answer {color: var(--icon_color1);}
+span.corner_iquestion-c_answer {color: var(--icon_color3);}
+
+label.corner_iquestion-option {
+  cursor: pointer;
+}
+
+img.corner_iquestion-x {
+  width: 15px;
+  height: 15px;
+  float: right;
+  margin-right: -25px;
+  margin-top: 15px;
+  content:url(http://e-learn.cyber.org.il/python/base_graphics/icon_iquestion-x.png);
+}
+
+img.icon_reward {
+  width: 51px;
+  height: 66px;
+  float: right;
+  overflow: auto;
+  padding-left: 10px;
+  padding-bottom: 15px;
+  margin-top: 8px;
+  content:url(http://e-learn.cyber.org.il/python/base_graphics/icon_reward.png);
+}
+
+/* General */
+body.python_body {
+  font-family: var(--font1);
+  font-size: 16px;
+  color: var(--color23);
+  line-height: 1.5;
+  background: var(--color9);
+}
+
+body.title_body {
+  background-image: url("http://e-learn.cyber.org.il/python/base_graphics/base_bg2.png");
+}
+
+
+/* header */
+div.video_box {
+  background-color: var(--color21);
+  background-image: url("http://e-learn.cyber.org.il/python/base_graphics/base_bg2.png");
+  text-align: center;
+  padding: 10px;
+}
+
+iframe.video {
+  width: 672px;
+  height: 378px;
+  border: none;
+}
+
+div.toc_title {
+  color: var(--color22);
+  font-family: var(--font1);
+  font-weight: bold;
+  font-size: 22px;
+  padding-top: 10px;
+}
+
+
+h3.bold_title {
+  font-family: var(--font1);
+	font-size: 18px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight: bold;
+  margin-top: 25px;
+  margin-bottom: 0px;
+  color: var(--color22);
+}
+
+/* Marks */
+mark.mark_code, mark.mark_code_error, mark.mark_code_answer, mark.mark_code_comment {
+  font-family: monospace;
+  background-color: var(--code_mark);
+}
+
+mark.mark_code {
+  color: var(--color10);
+}
+
+mark.mark_code_error {
+  color: var(--code_red);
+}
+
+mark.mark_code_answer {
+  color: var(--code_blue);
+}
+
+mark.mark_code_comment {
+  color: var(--code_green);
+}
+
+mark.mark_code_function {
+  color: var(--code_purple);
+}
+
+/* Subject box */
+button.box_title {
+  font-family: var(--font1);
+  font-weight:bold;
+  background-image: url(http://e-learn.cyber.org.il/python/base_graphics/base_bg2.png);
+  color: var(--color5);
+  height:56px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  font-size:22px;
+  display:block;
+  padding:10px;
+  border: 2px solid #092533;
+  border-bottom:none;
+  margin-top: 20px;
+  width: 100%;
+  text-align: right;
+  cursor: pointer;
+  outline: none;
+}
+
+button.box_title:hover {
+  background: var(--color22);
+}
+
+div.box_content {
+    display: none;
+    font-family: var(--font1);
+    background: var(--color5);
+    overflow: hidden;
+    padding: 10px;
+    font-size: 15px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-top: 0px;
+    border-right: 2px solid #092533;
+    border-left: 2px solid #092533;
+    border-bottom: 2px solid #092533;
+    margin-top: -10px;
+}
+
+/* code design */
+div.code, div.code_heb {
+  border: 2px solid;
+  border-color: var(--color1);
+  background-color: var(--color9);
+  color: var(--color6);
+  padding: 20px;
+  font-size: 16px;
+  line-height: 21px;
+  width: 75%;
+  margin: auto;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+div.code, span.code {
+  direction: ltr;
+  text-align: left;
+  font-family: monospace;
+}
+
+div.code_heb, span.code_function_heb {
+  direction: rtl;
+  text-align: right;
+  font-family: Courier,Monospace;
+  font-weight: bold;
+  letter-spacing: -0.7px;
+}
+
+span.code_function_heb {
+  color: var(--code_purple);
+}
+
+p.code_indent {
+  font-family: monospace;
+  margin:0;
+  padding-left:2em;
+}
+
+span.code_comment {
+  font-family: monospace;
+  color: var(--code_green);
+}
+
+span.code_answer {
+  font-family: monospace;
+  color: var(--code_blue);
+}
+
+span.code_error {
+  font-family: monospace;
+  color: var(--code_red);
+}
+
+span.code_function {
+  font-family: monospace;
+  color: var(--code_purple);
+}
+
+span.code_input {
+  font-family: monospace;
+  color: var(--code_orange);
+}
+
+div.hiddencode {
+    display: none;
+    font-family: monospace;
+}
+
+/* revealing code button */
+img.enterbutton {
+    content:url(http://e-learn.cyber.org.il/python/base_graphics/enter.png);
+    border: 0px;
+    width: 75px;
+    height: 25px;
+    margin-top: -10px;
+    padding-bottom: 16px;
+}
+
+img.enterbutton:hover {
+    filter:invert(100%);
+}
+
+button.expand {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding: 0px;
+  background-color: Transparent;
+  position: absolute;
+  bottom: -33.5px;
+  left: 44px;
+}
+
+/* corners */
+img.corner_debug-icon, img.corner_enrichment-icon, img.corner_goodwrite-icon, img.corner_otherlang-icon {
+    margin-right: 40px;
+    margin-bottom: -8px;
+    width: 70px;
+    height: 70px;
+}
+
+img.corner_debug-icon      {content:url(http://e-learn.cyber.org.il/python/base_graphics/icon_debug.png);}
+img.corner_enrichment-icon {content:url(http://e-learn.cyber.org.il/python/base_graphics/icon_enrichment.png);}
+img.corner_goodwrite-icon  {content:url(http://e-learn.cyber.org.il/python/base_graphics/icon_goodwrite.png);}
+img.corner_otherlang-icon  {content:url(http://e-learn.cyber.org.il/python/base_graphics/icon_otherlang.png);}
+
+img.corner_debug-icon:hover      {content:url(http://e-learn.cyber.org.il/python/base_graphics/icon_debug-h.png);}
+img.corner_enrichment-icon:hover {content:url(http://e-learn.cyber.org.il/python/base_graphics/icon_enrichment-h.png);}
+img.corner_goodwrite-icon:hover  {content:url(http://e-learn.cyber.org.il/python/base_graphics/icon_goodwrite-h.png);}
+img.corner_otherlang-icon:hover  {content:url(http://e-learn.cyber.org.il/python/base_graphics/icon_otherlang-h.png);}
+
+span.corner_debug-title, span.corner_enrichment-title, span.corner_goodwrite-title, span.corner_otherlang-title {
+  font-family: var(--font1);
+  font-size: 18px;
+  font-weight: bold;
+  position:absolute;
+  margin-top: 20px;
+  margin-right: 10px;
+}
+
+span.corner_debug-title      {color: var(--icon_color1);}
+span.corner_enrichment-title {color: var(--icon_color4);}
+span.corner_goodwrite-title  {color: var(--icon_color3);}
+span.corner_otherlang-title  {color: var(--icon_color2);}
+
+span.corner_title {
+  cursor: pointer;
+}
+
+span.corner_continue {
+  font-family: var(--font1);
+  font-size: 16px;
+  color: var(--color8);
+  position:absolute;
+  margin-top: 50px;
+  margin-right: 10px;
+  text-decoration: underline;
+}
+
+div.corner_debug-box, div.corner_enrichment-box, div.corner_goodwrite-box, div.corner_otherlang-box {
+  display: block;
+  font-family: var(--font1);
+  margin-right: 75px;
+  padding: 16px;
+}
+div.corner_enrichment-box, div.corner_otherlang-box {
+   display: none;
+ }
+div.corner_debug-box      {border-right: 3px solid var(--icon_color1);}
+div.corner_enrichment-box {border-right: 3px solid var(--icon_color4);}
+div.corner_goodwrite-box  {border-right: 3px solid var(--icon_color3);}
+div.corner_otherlang-box  {border-right: 3px solid var(--icon_color2);}
+
+img.corner_debug-x, img.corner_enrichment-x, img.corner_goodwrite-x, img.corner_otherlang-x {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    float: right;
+    margin-right: -32px;
+    margin-top: 15px;
+}
+
+img.corner_debug-x      {content:url(http://e-learn.cyber.org.il/python/base_graphics/icon_debug-x.png);}
+img.corner_enrichment-x {content:url(http://e-learn.cyber.org.il/python/base_graphics/icon_enrichment-x.png);}
+img.corner_goodwrite-x  {content:url(http://e-learn.cyber.org.il/python/base_graphics/icon_goodwrite-x.png);}
+img.corner_otherlang-x  {content:url(http://e-learn.cyber.org.il/python/base_graphics/icon_otherlang-x.png);}
+
+img.corner_debug-x:hover      {content:url(http://e-learn.cyber.org.il/python/base_graphics/icon_debug-xh.png);}
+img.corner_enrichment-x:hover {content:url(http://e-learn.cyber.org.il/python/base_graphics/icon_enrichment-xh.png);}
+img.corner_goodwrite-x:hover  {content:url(http://e-learn.cyber.org.il/python/base_graphics/icon_goodwrite-xh.png);}
+img.corner_otherlang-x:hover  {content:url(http://e-learn.cyber.org.il/python/base_graphics/icon_otherlang-xh.png);}
+
+img.box_content_close {
+  content:url(http://e-learn.cyber.org.il/python/base_graphics/top.png);
+  width: 30px;
+  height: 30px;
+  margin-top: 30px;
+  cursor: pointer;
+  display: block;
+  float: left;
+}
+
+img.box_content_close:hover {content:url(http://e-learn.cyber.org.il/python/base_graphics/top-h.png);}
+
+
+/*
+div.box_debug {
+  font-family: var(--font1);
+  color: var(--icon_color1);
+  font-size: 16px;
+  font-weight:bold;
+  padding-top: 15px;
+}
+*/
+
+/* Lists */
+li {
+    margin: 10px 0;
+}
+
+
+/* Tables */
+table.general_table {
+    font-family: var(--font1);
+    border-collapse: collapse;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    min-width: 50%;
+}
+
+table.comparison {
+    font-family: var(--font1);
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    direction: ltr;
+}
+
+td.comparison, th.comparison, tr.comparison {
+    border: 0px;
+    direction: ltr;
+}
+
+thead.comparison, tbody.comparison {
+  vertical-align: top;
+  direction: ltr;
+}
+
+
+th.comparison {
+  font-family: var(--font1);
+	font-size: 18px;
+	font-weight:bold;
+  color: var(--color23);
+  width: 50%;
+  text-align: center;
+}
+
+td.general_td {
+  border: 1px solid var(--color1);
+  padding: 10px;
+  line-height: 1.5;
+}
+
+th.general_th {
+    border: 1px solid var(--color3);
+    padding: 10px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: var(--color3);
+    color: var(--color5);
+}
+
+td.marked_column {
+    background-color: var(--color1);
+}
+
+/* regular images */
+img.illustration {
+    display: block;
+    margin: auto;
+    max-width: 55%;
+    /*
+    width: 50%;
+    min-width: 200px;
+    max-width: 500px;*/
+    padding: 10px;
+}
+
+div.rolling_title {
+    font-family: var(--font1);
+    font-weight:bold;
+    background-color: var(--color23);
+    color: var(--color5);
+    height:30px;
+    padding: 8px;
+    text-indent: 56px;
+    margin: -10px;
+    margin-top: -40px;
+    font-size:22px;
+    text-align: right;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    margin-right: 26px;
+    margin-left: 0px;
+}
+
+div.rolling_content {
+    font-family: var(--font1);
+    background: var(--color5);
+    overflow: hidden;
+    padding: 10px;
+    font-size: 15px;
+    padding-right: 30px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-top: 0px;
+    border-right: 2px solid var(--color23);
+    border-left: 2px solid var(--color23);
+    border-bottom: 2px solid var(--color23);
+    margin-top: 10px;
+    margin-right: 26px;
+}
+
+img.rolling_icon {
+  content:url(http://e-learn.cyber.org.il/python/rolling_assignment/icon_rolling.png);
+  border: 0px;
+  width: 116px;
+  height: 100px;
+}
+
+img.rolling_hangimg {
+  content:url(http://e-learn.cyber.org.il/python/rolling_assignment/img_r_1.png);
+  float: left;
+  width: 155px;
+  height: 206px;
+  bottom: -200px;
+}
+
+div.rolling_hint-title {
+  font-family: var(--font1);
+  font-size: 16px;
+  color: var(--color8);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+div.rolling_hint {
+  display:none;
+}
+
+/* Video Player */
+
+#tsc_player {
+   z-index: 9999;
+}
+
+.tscplayer_inline {
+	position:static;
+	margin: 20px;
+	width: 672px;
+	height: 378px;
+	z-index:auto;
+  /* original size:
+  width: 852px;
+  height: 480px; */
+
+}
+
+.tscplayer_fullframe {
+	position:absolute;
+	top: 0px;
+	left: 0px;
+	margin: 0px;
+	padding: 0px;
+	z-index: 9999;
+}
+
+@media screen and (max-width: 852px) {
+    .tscplayer_inline {
+	width: 100%;
+    }
+}

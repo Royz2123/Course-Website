@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <title>5.2 משתנים לוקאליים וגלובליים</title>
+  <meta charset="utf-8">
+  <link href='https://fonts.googleapis.com/css?family=alef' rel='stylesheet'>
+  <link rel="stylesheet" type="text/css" href="../base/neo_css.css">
+  <script src="../base/python_js.js"></script>
+</head>
+
+<body class="python_body">
+  <script>
+    function toggle_visibility(id) {
+          var e = document.getElementById(id);
+          if (e.style.display == 'block')
+                e.style.display = 'none';
+          else
+                e.style.display = 'block';}
+
+    function expand_code(codeid, buttonid) {
+          var c = document.getElementById(codeid);
+          var b = document.getElementById(buttonid);
+          c.style.display = 'block';
+          b.style.display = 'none';}
+
+    function show_answer(id) {
+          var e = document.getElementById(id);
+          e.style.display = 'block';}
+  </script>
+  <div class="toc_title">מה נלמד?</div>
+
+  <a name="topic1">
+    <button class="box_title" onclick="toggle_visibility('topic1')">טווח ההכרה עבור משתנים (scope)</button>
+    <div id="topic1" class="box_content">
+		<p>פעמים רבות כאשר עובדים עם פונקציות, נרצה להעביר להן משתנים מתוך התוכנית. בכדי להבין כיצד לעבוד נכון עם משתנים בתוכנית, ובמיוחד בהעברתם לפונקציות, נתעכב על נושא חשוב והוא טווח ההכרה של משתנים בתוכנית.</p>
+     
+      <p>
+        <b>טווח ההכרה</b> (באנגלית <b>scope</b>) הנו הטווח שבו המשתנה קיים בתוך התוכנית. טווח ההכרה עשוי להיות גלובלי (עבור כל התוכנית) או לוקאלי (עבור
+        קטע קוד מסוים).
+        <br> בהתאמה, משתנה בתוכנית או בפונקציה עשוי להיות משני סוגים: <b>משתנה לוקאלי</b> או <b>משתנה גלובלי</b>.
+      </p>
+
+      <h3 class="bold_title">משתנה לוקאלי</h3>
+      <p>משתנה לוקאלי הוא משתנה שטווח ההכרה שלו תחום למקום בו הוא הוגדר בלבד. לדוגמה, אם נגדיר משתנה בתוך פונקציה הוא יהיה לוקאלי
+        לפונקציה. כלומר הוא מתקיים בפונקציה בה הוגדר בלבד ולאחר שריצת הפונקציה תסתיים הוא לא יהיה זמין לשימוש בתוכנית.
+      </p>
+      <h3 class="bold_title">משתנה גלובלי</h3>
+      <p>משתנה גלובלי הוא משתנה בעל טווח הכרה רחב, של התוכנית כולה.</p>
+      <p>הביטו בדוגמה הבאה:</p>
+      <div class="code">
+        global_var = "I'm global"
+        <br>
+        <br>
+        <span class="code_function">def</span> f():
+        <br> &nbsp;&nbsp;local_var = "I'm local"
+      </div>
+      <p>המשתנה global_var הנו משתנה גלובלי, כלומר - הוא מוכר בכל התוכנית.
+        <br> לעומתו, המשתנה local_var הוא משתנה לוקאלי, כלומר משתנה שמוכר אך ורק בבלוק או בפונקציה שהגדירה אותו - במקרה זה הוא
+        בטווח ההכרה של הפונקציה f.
+      </p>
+      <!-- CORNER DEBUG -->
+      <br>
+      <span class="corner_title" onclick="toggle_visibility('corner_5_2_1')">
+        <img class="corner_debug-icon">
+        <span class="corner_debug-title">NameError: גישה למשתנה לוקאלי מחוץ לטווח ההכרה</span>
+        <span id="cont_5_2_1" class="corner_continue">להמשך קריאה</span>
+      </span>
+      <div id="corner_5_2_1" class="corner_debug-box">
+
+        <p>אם נגדיר משתנה
+          <b>בתוך</b> פונקציה הוא יהיה לוקאלי לפונקציה. כלומר, טווח ההכרה שלו הוא אך ורק הפונקציה בה הוגדר, והוא לא יהיה זמין
+          לשימוש בתוכנית לאחר שריצת הפונקציה תסתיים.</p>
+        <p>דוגמה להגדרת משתנה לוקאלי בפונקציה water ושימוש במשתנה מחוץ לפונקציה:</p>
+        <div class="code">
+          >>> def water():
+          <br>...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fish_view = "I can only live within the water scope!"
+          <br>...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(fish_view)
+          <br>...
+          <br>>>> water()
+          <br>
+          <button id="button_5_2_1" class="expand" onclick="expand_code('code_5_2_1', 'button_5_2_1')">
+            <img class="enterbutton">
+          </button>
+          <div class="hiddencode" id="code_5_2_1">
+            <span class="code_answer">I can only live within the water scope!</span>
+            <br> >>> print(fish_view)
+            <br>
+            <button id="button_5_2_2" class="expand" onclick="expand_code('code_5_2_2', 'button_5_2_2')">
+              <img class="enterbutton">
+            </button>
+            <div class="hiddencode" id="code_5_2_2">
+              <span class="code_error">
+                Traceback (most recent call last):
+                <br> &nbsp;File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+                <br> NameError: name 'fish_view' is not defined</span>
+            </div>
+          </div>
+        </div>
+        <p>המשתנה fish_view הוגדר במסגרת בלוק הקוד של הפונקציה water. כלומר, טווח ההכרה שלו (וכך גם "אורך חייו") רלוונטי עבור
+          הפונקציה water בלבד. אנו יכולים להדפיס את ערך המשתנה במסגרת הפונקציה water. לעומת זאת, כשננסה להדפיס את הערך של
+          fish_view מחוץ לפונקציה water, נקבל הודעת שגיאה מסוג <b>NameError</b>, כיוון שמשתנה זה אינו מוגדר מחוץ לטווח ההכרה של הפונקציה.</p>
+
+        <img class="corner_debug-x" onclick="toggle_visibility('corner_5_2_1')">
+      </div>
+      <br>
+      <br>
+      <br>
+      <!-- END CORNER DEBUG -->
+
+      <!-- Interactive Question 5_2_1 -->
+      <img class="corner_iquestion-icon">
+      <div class="corner_iquestion-box" dir="rtl">
+        <div class="corner_iquestion-title" dir="rtl">כעת בואו נראה מה קורה כאשר <b>בתוך </b>פונקציה ניגשים למשתנה גלובלי שהוגדר בתוכנית <b>מחוץ </b>לה. הביטו בקוד הבא, מה לדעתכם הפלט שיתקבל? (חשבו ובחרו תשובה)
+          <div class="code">
+            <mark class="mark_code">a = 0</mark>
+            <br>
+            <span class="code_function">def</span> my_function():
+            <br>&nbsp; &nbsp; <mark class="mark_code">a = 3</mark>
+            <br>&nbsp; &nbsp; print(<mark class="mark_code">a</mark>)
+            <br>
+            <br> my_function()
+            <br> print(<mark class="mark_code">a</mark>)
+            <div class="hiddencode" id="code_5_2_3">
+              <br>
+              <span class="code_answer">3
+                <br> 0
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <label class="corner_iquestion-option" onclick="show_answer('iquestion_5_2_1-a1')">
+          <input type="radio" name="iquestion_5_2_1" class="corner_iquestion-radio">3 ואז 3 ואז 3</label>
+          <div class="corner_iquestion-feedback" dir="rtl">
+            <span id="iquestion_5_2_1-a1" class="corner_iquestion-i_answer">התשובה אינה נכונה. בדקו כמה פקודות הדפסה ישנן בקוד ומה מודפס בכל אחת.</span>
+          </div>
+        <label class="corner_iquestion-option" onclick="show_answer('iquestion_5_2_1-a2')">
+          <input type="radio" name="iquestion_5_2_1" class="corner_iquestion-radio">3 ואז 3 ואז 0</label>
+          <div class="corner_iquestion-feedback" dir="rtl">
+            <span id="iquestion_5_2_1-a2" class="corner_iquestion-i_answer">התשובה אינה נכונה. בדקו כמה פקודות הדפסה ישנן בקוד ומה מודפס בכל אחת. </span>
+          </div>
+        <label class="corner_iquestion-option" onclick="show_answer('iquestion_5_2_1-a3')">
+          <input type="radio" name="iquestion_5_2_1" class="corner_iquestion-radio">3 ואז 3</label>
+          <div class="corner_iquestion-feedback" dir="rtl">
+            <span id="iquestion_5_2_1-a3" class="corner_iquestion-i_answer">התשובה אינה נכונה, נסו להריץ את הקוד בכדי להבין לאיזה משתנה ישנה עדיפות.</span>
+          </div>
+        <label class="corner_iquestion-option" onclick="show_answer('code_5_2_3'), show_answer('iquestion_5_2_1-a4'), show_answer('iquestion_5_2_1-a4a')">
+          <input type="radio" name="iquestion_5_2_1" class="corner_iquestion-radio">3 ואז 0</label>
+          <div class="corner_iquestion-feedback" dir="rtl">
+            <span id="iquestion_5_2_1-a4" class="corner_iquestion-c_answer">התשובה נכונה! המשיכו לקריאת ההסבר.</span>
+            <div id="iquestion_5_2_1-a4a" style="display:none">
+              <p>נסתכל על הפלט: בעת הקריאה לפונקציה ()my_function מודפס הערך 3. לעומת זאת, שורת ההדפסה האחרונה מדפיסה 0. מדוע?</p>
+            <p>שורת ההשמה בתוך הפונקציה my_function יוצרת משתנה חדש. המשתנה החדש הוא משתנה לוקאלי בתחום הפונקציה בעל שם זהה (a) למשתנה
+				שמחוץ לפונקציה, המצביע לערך 3. כיוון שנוצר משתנה חדש, ההשמה בתוך הפונקציה  אינה משנה את הערך עליו מצביע המשתנה הגלובלי a.
+			</p>
+			
+			
+			
+			
+			
+            </div>
+          </div>
+
+        <img class="corner_iquestion-x">
+      </div><br>
+      <p>כאשר קיימים שני משתנים בעלי אותו שם, אחד לוקאלי והשני גלובלי, למשתנה הלוקאלי יש עדיפות. כלומר, במהלך ריצת הפונקציה
+        היא מחפשת את a במאגר המשתנים הלוקאליים לפני החיפוש במאגר הגלובלי. לכן קריאה לפונקציה my_function מדפיסה את ערכו של
+        המשתנה a הלוקאלי, שבטווח ההכרה של הפונקציה. שורת ההדפסה האחרונה מדפיסה את המשתנה a הגלובלי, שנותר ללא שינוי.
+      </p>
+      <p>כדי להימנע ממקרים כגון זה שבדוגמה מומלץ שלא להגדיר משתנים בעלי אותו שם בטווחי הכרה שונים, אלא לתת להם שמות ייחודיים.</p>
+		      <img class="box_content_close" onclick="toggle_visibility('topic1')">
+
+	  
+	  
+	  
+	  
+	</div>
+    <!-- Closing Topic 1 -->
+
+
+	  
+	<a name="topic2">
+    <button class="box_title" onclick="toggle_visibility('topic2')">גישה למשתנה גלובלי</button>
+    <div id="topic2" class="box_content">  
+      <p>לעיתים נרצה לקרוא ערך ממשתנה גלובלי. נוכל לעשות זאת בצורה הבאה:</p>
+	<div class="code">
+        <mark class="mark_code">a = 0</mark><br>
+        <span class="code_function">def</span> my_function():<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print(<mark class="mark_code">a</mark>)<br>
+        <br>
+        my_function()<br>
+        <button id="button_5_2_1a" class="expand" onclick="expand_code('code_5_2_1a', 'button_5_2_1a')">
+          <img class="enterbutton">
+        </button>
+        <br>
+        <div class="hiddencode" id="code_5_2_1a">
+          <span class="code_answer">0</span>
+        </div>
+
+      </div>
+      <p>כאמור, פייתון מחפשת את השם a במרחב השמות הלוקאלי, ואם אינו נמצא היא מחפשת את השם במרחב השמות הגלובלי. צורת כתיבה זו
+        עשויה להוביל לטעויות רבות ולכן היא
+        <u>אינה</u> מומלצת. </p>
+		
+		<p>על אף האמור, רצוי ש<u>לא לגשת</u> בתוך פונקציה למשתנים שהוגדרו מחוץ לה (שאינם קבועים), אלא להעביר אותם לפונקציה בצורה מסודרת, כארגומנטים. כך הפונקציה עצמאית ולא תלויה במשתנים אחרים (נסו לחשוב: מה יקרה אם אותו משתנה כלל לא הוגדר בעת הקריאה לפונקציה?). 
+		</p>
+		
+		
+		
+      <p>בהמשך לכך, אם בכל זאת נרצה לגשת למשתנים גלובליים בתוך פונקציה,<b>כולל</b> שינוי ערכם, יש באפשרותנו לעשות זאת. בכדי ליידע את פייתון שהמשתנה a כבר קיים מחוץ לטווח ההכרה ואנו רוצים
+        להתייחס אליו נשתמש בהצהרה <b>global</b> באופן הבא:</p>
+      <div class="code">
+        <mark class="mark_code">a = 0</mark>
+        <br>
+        <span class="code_function">def</span> my_function():
+        <br> &nbsp; &nbsp; <mark class="mark_code">global a</mark>
+        <br> &nbsp; &nbsp; <mark class="mark_code">a = 3</mark>
+        <br> &nbsp; &nbsp; print(<mark class="mark_code">a</mark>)
+        <br>
+        <br> my_function()
+        <br> print(<mark class="mark_code">a</mark>)
+      </div>
+	  
+	  
+	  
+	  
+      <p>במקרה זה יודפס הערך 3 ואחריו שוב הערך 3.</p>
+
+      <!-- CORNER ENRICHMENT -->
+      <br>
+      <span class="corner_title" onclick="toggle_visibility('corner_5_2_2')">
+        <img class="corner_enrichment-icon">
+        <span class="corner_enrichment-title">ההצהרה global בפונקציה</span>
+        <span id="cont_5_2_2" class="corner_continue">להמשך קריאה</span>
+      </span>
+      <div id="corner_5_2_2" class="corner_enrichment-box">
+
+        <p>זה עתה הכרנו שיטת עבודה לגישה ולשינוי של משתנים גלובליים בתוך פונקציות, והדגשנו שהשיטה אינה מומלצת. ננסה להבין מה
+          הבעייתיות בכך בעזרת הדוגמה הבאה:</p>
+        <div class="code">
+          ...
+          <br>
+          <span class="code_function">global</span>
+          <mark class="mark_code"> global_value</mark>
+        </div>
+        <div class="code">
+          <span class="code_function">def</span> mystery():
+          <br> &nbsp; &nbsp;
+          <span class="code_function">if</span>
+          <mark class="mark_code"> global_value</mark>:
+          <br> &nbsp; &nbsp;&nbsp; &nbsp;
+          <span class="code_function">print</span>("What's going on here?")
+          <br> &nbsp; &nbsp;
+          <span class="code_function">else</span>:
+          <br> &nbsp; &nbsp;&nbsp; &nbsp;
+          <span class="code_function">print</span>("Hey, who printed me?")
+        </div>
+
+        <p>
+          כפי שאפשר לראות, הפעולה של הפונקציה mystery תלויה במשתנה global_value. זהו משתנה גלובלי שטווח ההכרה שלו מחוץ לפונקציה. לכן,
+          בתוך הפונקציה לא ברור אילו קטעי קוד בתוכנית שמחוץ לה משפיעים עליה, ובהתאם לכך לא ברור כיצד הפונקציה תתנהג.
+          <br> כאשר אנו כותבים סקריפטים קצרים הבעיה הזו אינה גדולה כיוון שאנחנו רואים, זוכרים ומבינים בקלות את כל השינויים והתלויות
+          בין המשתנים בקוד. לעומת זאת, בתוכניות מורכבות, מסורבל לעקוב אחר כל המתרחש. בכתיבה כמו בדוגמה בלתי אפשרי להתייחס
+          לקוד כחלקים לוגיים נפרדים, כיוון שקטעי קוד שונים בתוכנית עלולים להשפיע אחד על השני באופן בלתי צפוי. כמתכנתים, נוצרת
+          לנו בעיה גדולה בעריכת שינויים ובבדיקת כל חלק בפני עצמו.
+          <br> לכן, נשתדל להימנע משימוש במשתנים גלובליים בתוך פונקציה ונעדיף להעביר אותם כארגומנטים. במקרים בהם אין לנו ברירה
+          נצהיר על השימוש באופן מפורש בעזרת המילה global.
+        </p>
+
+
+        <img class="corner_enrichment-x" onclick="toggle_visibility('corner_5_2_2')">
+      </div>
+      <br>
+      <br>
+      <!-- END CORNER ENRICHMENT -->
+
+      <img class="box_content_close" onclick="toggle_visibility('topic1')">
+    </div>
+    <!-- Closing Topic 2 -->
+
+
+</body>
+
+</html>

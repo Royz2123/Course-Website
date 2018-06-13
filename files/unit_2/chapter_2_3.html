@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <title>2.3 קלט משתמש ומניפולציות על משתנים</title>
+  <meta charset="utf-8">
+  <link href='https://fonts.googleapis.com/css?family=alef' rel='stylesheet'>
+  <link rel="stylesheet" type="text/css" href="../base/neo_css.css">
+  <script src="../base/python_js.js"></script>
+</head>
+
+<body class="python_body">
+  <script>
+    function toggle_visibility(id) {
+          var e = document.getElementById(id);
+          if (e.style.display == 'block')
+                e.style.display = 'none';
+          else
+                e.style.display = 'block';}
+
+    function expand_code(codeid, buttonid) {
+          var c = document.getElementById(codeid);
+          var b = document.getElementById(buttonid);
+          c.style.display = 'block';
+          b.style.display = 'none';}
+
+    function show_answer(id) {
+          var e = document.getElementById(id);
+          e.style.display = 'block';}
+  </script>
+  <div class="toc_title">מה נלמד?</div>
+
+  <a name="topic1">
+    <button class="box_title" onclick="toggle_visibility('topic1')">קבלת קלט מהמשתמש</button>
+    <div id="topic1" class="box_content">
+      <p>שלום, איך קוראים לך? מהו מקום מגוריך?
+        <br>שאלות אלה הן דוגמה ל<b>קלט מהמשתמש</b>, כלומר מידע שנרצה לקלוט מהמשתמש לתוכנית שאנו כותבים.
+        <br> הפקודה ()input מאפשרת לקבל קלט מהמשתמש. בהרצת פקודה זו, התוכנית תחכה עד שהמשתמש ילחץ Enter. לרוב נגדיר משתנה, שיצביע
+        על האובייקט שקלטנו מהמשתמש, כדי שנוכל לעשות בו שימוש חוזר. שימו לב שפייתון מתייחסת לקלט כאל
+        <b>מחרוזת</b>.</p>
+      <p>דוגמה לשימוש בפקודה input, הגדרת משתנה עבור הקלט, והדפסת המחרוזת שהתקבלה:</p>
+      <div class="code">
+        >>> name = input("Please enter your name:")
+        <br>
+        <span class="code_answer">Please enter your name:</span>
+        <span class="code_input">Pinocchio!</span>
+        <br> >>> print("Hello", name)
+        <br>
+        <span class="code_answer">Hello Pinocchio!</span>
+      </div>
+      <!-- CORNER -->
+      <br>
+      <span class="corner_title" onclick="toggle_visibility('corner_2_3_1')">
+        <img class="corner_enrichment-icon">
+        <span class="corner_enrichment-title">המשתנה האוטומטי</span>
+        <span id="cont_2_3_1" class="corner_continue">להמשך קריאה</span>
+      </span>
+      <div id="corner_2_3_1" class="corner_enrichment-box">
+        <p>בעת כתיבת קוד באינטרפרטר, תוכלו להיעזר במשתנה שנקרא "_" (קו תחתי). במשתנה זה נשמרת באופן אוטומטי התוצאה של הפעולה
+          האחרונה שהתבצעה.</p>
+        <p>דוגמה לשימוש במשתנה _ :</p>
+        <div class="code">
+          >>> 6
+          <br>>>> _
+          <br>
+          <span class="code_answer">6</span>
+          <br> >>> _ * 2
+          <br>
+          <span class="code_answer">12</span>
+        </div>
+        <img class="corner_enrichment-x" onclick="toggle_visibility('corner_2_3_1')">
+      </div>
+      <br>
+      <!-- END CORNER -->
+
+      <img class="box_content_close" onclick="toggle_visibility('topic1')">
+
+    </div>
+    <!-- Closing Topic 1 -->
+
+    <a name="topic2">
+      <button class="box_title" onclick="toggle_visibility('topic2')">הסבה בין טיפוסי משתנים</button>
+      <div id="topic2" class="box_content">
+
+        <!-- CORNER -->
+        <br>
+        <span class="corner_title" onclick="toggle_visibility('corner_2_3_2')">
+          <img class="corner_debug-icon">
+          <span class="corner_debug-title">TypeError: העלאה בחזקה למחרוזת</span>
+          <span id="cont_2_3_2" class="corner_continue">להמשך קריאה</span>
+        </span>
+        <div id="corner_2_3_2" class="corner_debug-box">
+          <p>בואו ננסה לקלוט מהמשתמש מספר ולהדפיס את ריבועו.</p>
+          <p></p>
+
+          <!-- Interactive Question 3_2_1 -->
+    			<img class="corner_iquestion-icon">
+    			<div class="corner_iquestion-box" dir="rtl">
+    				<div class="corner_iquestion-title" dir="rtl">מה דעתכם על התוכנית הבאה? מה לדעתכם יודפס על המסך?
+              <div class="code">
+                >>> number = input('Please enter a number:')
+                <br>
+                <span class="code_answer">Please enter a number:</span>
+                  <span class="code_input">5</span>
+                <br> >>> print(number ** 2)
+                <div class="hiddencode" id="code_2_3_1">
+                    <span class="code_error">
+                      Traceback (most recent call last):<br>
+                      &nbsp;&nbsp;File " &lt;stdin&gt;", line 1, in &lt;module&gt;<br>
+                      TypeError: unsupported operand type(s) for ** or pow(): 'str' and 'int'
+                    </span>
+                </div>
+              </div>
+            </div>
+
+    				<label class="corner_iquestion-option" onclick="show_answer('iquestion_2_3_1-a1')">
+    					<input type="radio" name="iquestion_2_3_1" class="corner_iquestion-radio"><span class="code">'2 ** 5'</span></label>
+    					<div class="corner_iquestion-feedback" dir="rtl">
+    						<span id="iquestion_2_3_1-a1" class="corner_iquestion-i_answer">התשובה אינה נכונה, חשבו מהו טיפוס הקלט ונסו שוב.</span>
+    					</div>
+
+    				<label class="corner_iquestion-option" onclick="show_answer('iquestion_2_3_1-a2')">
+    					<input type="radio" name="iquestion_2_3_1" class="corner_iquestion-radio"><span class="code">25</span></label>
+    					<div class="corner_iquestion-feedback" dir="rtl">
+    						<span id="iquestion_2_3_1-a2" class="corner_iquestion-i_answer">התשובה אינה נכונה, חשבו מהו טיפוס הקלט ונסו שוב.</span>
+    					</div>
+
+            <label class="corner_iquestion-option" onclick="show_answer('iquestion_2_3_1-a3')">
+    					<input type="radio" name="iquestion_2_3_1" class="corner_iquestion-radio"><span class="code">10</span></label>
+    					<div class="corner_iquestion-feedback" dir="rtl">
+    						<span id="iquestion_2_3_1-a3" class="corner_iquestion-i_answer">התשובה אינה נכונה, הביטו בעיון באופרטור, חשבו מהו טיפוס הקלט ונסו שוב.</span>
+    					</div>
+
+    				<label class="corner_iquestion-option" onclick="show_answer('code_2_3_1'), show_answer('iquestion_2_3_1-a4'), show_answer('iquestion_2_3_1-a4a'), show_answer('iquestion_2_3_1-a4b')">
+    					<input type="radio" name="iquestion_2_3_1" class="corner_iquestion-radio">הודעת שגיאה</label>
+    					<div class="corner_iquestion-feedback" dir="rtl">
+    						<span id="iquestion_2_3_1-a4" class="corner_iquestion-c_answer">התשובה נכונה, שימו לב לפלט שמתקבל.</span>
+                <div id="iquestion_2_3_1-a4a" style="display:none">
+                  <p>מתקבלת הודעת שגיאה מסוג <b>TypeError</b>. הודעת השגיאה אומרת לנו שפעולת העלאה בחזקה על מחרוזת איננה נתמכת. להזכירכם, הפעולה input החזירה לנו ערך מטיפוס str.</p>
+                  <p>כיצד נוכל לפתור את הבעיה?<br>
+                    נוכל <b>להסב</b> את המשתנה מטיפוס str לטיפוס int באופן הבא:</p>
+                </div>
+                <div class="code" id="iquestion_2_3_1-a4b" style="display:none; text-indent:0">
+                  >>> print(int(number) ** 2)
+                  <br>
+                    <span class="code_answer">25</span>
+      					</div>
+              </div>
+    				<img class="corner_iquestion-x">
+          </div><br>
+
+          <img class="corner_debug-x" onclick="toggle_visibility('corner_2_3_2')">
+        </div>
+        <br><br
+        <!-- END CORNER -->
+
+        <p>לעיתים נצטרך לשנות את הטיפוס של משתנה שהגדרנו או שקיבלנו. לדוגמה, קלט מן המשתמש נשמר כמחרוזת, אך יתכן שנרצה לבצע
+          עליו חישובים מספריים. או להיפך, מספר שנרצה להדפיס כמחרוזת. השינוי של טיפוס המשתנה נקרא
+          <b>הסבה</b> (casting).</p>
+        <p>להלן דוגמאות להסבה של משתנים:</p>
+
+        <div class="code">
+          >>> num = 4
+          <br>>>> num = float(num)
+          <br>>>> num
+          <br>
+          <span class="code_answer">4.0</span>
+          <br> >>> num = str(num)
+          <br>>>> num
+          <br>
+          <span class="code_answer">
+            <span class="code_answer">'4.0'</span>
+          </span>
+        </div>
+        <img class="box_content_close" onclick="toggle_visibility('topic2')">
+      </div>
+      </div>
+      <!-- Closing Topic 2 -->
+
+
+      <a name="topic3">
+        <button class="box_title" onclick="toggle_visibility('topic3')">החלפה בין משתנים</button>
+        <div id="topic3" class="box_content">
+          <p>נניח שהגדרנו שני משתנים ואנחנו רוצים להחליף בין הערכים שלהם.<br>
+            נדמיין את פיטר-פן שגר בארץ-לעולם-לא ואת שלגיה שגרה עם הגמדים ביער:</p>
+          <div class="code">
+            >>> where_peter_pan = 'neverland'<br>
+            >>> where_snow_white = 'forest'
+          </div>
+          <p>מה יקרה אם יום אחד יחליפו פיטר-פן ושלגיה ביניהם את מקום המגורים? בפייתון, התהליך פשוט ואינטואיטיבי.
+            <br> דוגמה להחלפת מקום המגורים:</p>
+          <div class="code">
+            >>> where_peter_pan, where_snow_white = where_snow_white, where_peter_pan
+          </div>
+          <p>ובאופן כללי:</p>
+          <div class="code">
+            >>> var1 = 1
+            <br>>>> var2 = 2
+            <br>>>> var1, var2 = var2, var1
+          </div>
+          <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_2/graphics/img_2_3_1.png">
+
+          <!-- CORNER -->
+          <br>
+          <span class="corner_title" onclick="toggle_visibility('corner_2_3_3')">
+            <img class="corner_otherlang-icon">
+            <span class="corner_otherlang-title">החלפה בין משתנים</span>
+            <span id="cont_2_3_3" class="corner_continue">להמשך קריאה</span>
+          </span>
+          <div id="corner_2_3_3" class="corner_otherlang-box">
+            <p>החלפה בין משתנים בשפת פייתון היא פעולה פשוטה ביותר. בואו נשווה את פעולת ההחלפה לתהליך דומה בשפות תכנות אחרות.
+              בשפות כדוגמת C++, C וג'אווה צריך להגדיר משתנה שלישי, זמני, ולהיעזר בו. בהתאמה, קטע הקוד הנדרש לכך אף ארוך יותר.
+              <p>דוגמה להחלפה בין משתנים בשפת C:</p>
+              <div class="code">
+                int var1 = 1;
+                <br> int var2 = 2;
+                <br> int temp;
+                <br>
+                <br> temp = var1;
+                <br> var1 = var2;
+                <br> var2 = temp;
+              </div>
+              <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_2/graphics/img_2_2_2.png">
+              <br>
+              <img class="corner_otherlang-x" onclick="toggle_visibility('corner_2_3_3')">
+          </div>
+          <br>
+          <!-- END CORNER -->
+
+          <img class="box_content_close" onclick="toggle_visibility('topic3')">
+        </div>
+        <!-- closing topic 3 -->
+
+</body>
+
+</html>

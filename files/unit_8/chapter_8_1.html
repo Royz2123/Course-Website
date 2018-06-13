@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <title>8.1 טאפל (tuple)</title>
+  <meta charset="utf-8">
+  <link href='https://fonts.googleapis.com/css?family=alef' rel='stylesheet'>
+  <link rel="stylesheet" type="text/css" href="../base/neo_css.css">
+  <script src="../base/python_js.js"></script>
+</head>
+
+<body class="python_body">
+  <script>
+    function toggle_visibility(id) {
+      var e = document.getElementById(id);
+      if (e.style.display == 'block')
+        e.style.display = 'none';
+      else
+        e.style.display = 'block';
+    }
+
+    function expand_code(codeid, buttonid) {
+      var c = document.getElementById(codeid);
+      var b = document.getElementById(buttonid);
+      c.style.display = 'block';
+      b.style.display = 'none';
+    }
+
+    function show_answer(id) {
+      var e = document.getElementById(id);
+      e.style.display = 'block';
+    }
+  </script>
+
+  <div class="toc_title">מה נלמד?</div>
+
+  <a name="topic1">
+    <button class="box_title" onclick="toggle_visibility('topic1')">מהו טאפל?</button>
+    <div id="topic1" class="box_content">
+
+      <p>
+        <b>טאפל</b> (רשומה, באנגלית<b> tuple</b>) הוא מבנה נתונים שמסוגל להכיל איברים מטיפוסים שונים. בפרק זה נעמוד על אופיו ועל ההבדלים בינו לבין רשימה.
+      </p>
+      <p>להזכירכם, רשימה מגדירים על ידי סוגריים מרובעים [ ]. לעומתה, טאפל מסמנים על ידי<b>סוגריים עגולים </b> ( ).
+        <br> בכתיבת סוגריים עגולים אפשר להגדיר טאפל, אפילו ללא ערכים.
+        <br> דוגמה ליצירת טאפל ללא ערכים:
+      </p>
+      <div class="code">
+        >>> my_first_tuple =<mark class="mark_code">()</mark>
+        <br> >>> type(my_first_tuple)
+        <br>
+        <span class="code_answer">&lt;class 'tuple'&gt;</span>
+        <br> >>> print(my_first_tuple)
+        <button id="button_8_1_1" class="expand" onclick="expand_code('code_8_1_1', 'button_8_1_1')">
+          <img class="enterbutton">
+        </button>
+        <div class="hiddencode" id="code_8_1_1">
+          <span class="code_answer">()</span>
+        </div>
+      </div>
+
+      <p>כדי להגדיר טאפל המכיל <b>מספר איברים</b> (שניים או יותר), נפריד בין ערכי האיברים באמצעות פסיקים.
+        <br> דוגמה להגדרת טאפל המכיל 3 איברים:
+      </p>
+      <div class="code">
+        >>> friendly_tuple = (2.5<mark class="mark_code">,</mark> 3<mark class="mark_code">,</mark> "banana")
+        <br> >>> friendly_tuple
+        <br>
+        <span class="code_answer">(2.5, 3, 'banana')</span>
+      </div>
+      <p>שימו לב שאפשר להגדיר טאפל גם באמצעות ערכים שמופרדים בפסיק <b>ללא סוגריים</b>. במקרה כזה, פייתון תארוז את האיברים כטאפל בעצמה:
+      </p>
+      <div class="code">
+        >>> sophisticated_tuple = 2, "tomato"
+        <br> >>> sophisticated_tuple
+        <br>
+        <span class="code_answer">(2, 'tomato')</span>
+      </div>
+
+
+      <p>כעת ננסה להגדיר טאפל עם איבר יחיד.</p>
+
+      <!-- Interactive Question 8_1_1 -->
+      <img class="corner_iquestion-icon">
+      <div class="corner_iquestion-box" dir="rtl">
+        <div class="corner_iquestion-title" dir="rtl">
+          <p>הביטו על אופן ההגדרה הבא. מה לדעתכם יקרה בעת הרצת הפקודה type? (חשבו ובחרו תשובה)
+            <div class="code">
+              >>> one_value_tuple = (20)
+              <br> >>> one_value_tuple
+              <br>
+              <span class="code_answer">20</span>
+              <br> >>> type(one_value_tuple)
+              <br>
+              <div class="hiddencode" id="code_8_1_1-a1">
+                <span class="code_answer">&lt;class 'int'&gt;</span>
+              </div>
+            </div>
+          </p>
+        </div>
+        <label class="corner_iquestion-option" onclick="show_answer('iquestion_8_1_1-a1'),show_answer('code_8_1_1-a1'), show_answer('iquestion_8_1_1-a1a')">
+          <input type="radio" name="iquestion_8_1_1" class="corner_iquestion-radio">יודפס &lt;'class 'int&gt;.</label>
+        <div class="corner_iquestion-feedback" dir="rtl">
+          <span id="iquestion_8_1_1-a1" class="corner_iquestion-c_answer">התשובה נכונה! המשיכו לקריאת ההסבר.</span>
+        </div>
+
+        <label class="corner_iquestion-option" onclick="show_answer('iquestion_8_1_1-a2')">
+          <input type="radio" name="iquestion_8_1_1" class="corner_iquestion-radio">יודפס &lt;'class 'tuple&gt;.</label>
+        <div class="corner_iquestion-feedback" dir="rtl">
+          <span id="iquestion_8_1_1-a2" class="corner_iquestion-i_answer">התשובה אינה נכונה, זו אינה הצורה להגדיר טאפל בעל איבר אחד. נסו שוב.
+          </span>
+        </div>
+
+        <label class="corner_iquestion-option" onclick="show_answer('iquestion_8_1_1-a3')">
+          <input type="radio" name="iquestion_8_1_1" class="corner_iquestion-radio">תתקבל הודעת שגיאה.</label>
+        <div class="corner_iquestion-feedback" dir="rtl">
+          <span id="iquestion_8_1_1-a3" class="corner_iquestion-i_answer">התשובה אינה נכונה, הפקודה חוקית. נסו שוב.
+          </span>
+        </div>
+
+        <img class="corner_iquestion-x">
+      </div>
+      <br>
+      <div id="iquestion_8_1_1-a1a" style="display:none;">
+        <p>כפי ששמתם לב, הניסיון להגדיר טאפל בעל איבר יחיד על ידי הקוד (20) אינו מצליח, ומתקבל מספר שלם (int). במקרה זה פייתון מתייחסת לסוגריים כאל ביטוי, כמו (1 + 2) או ("a" + "b").</p>
+      </div>
+
+      <p>כדי לסייע לפייתון להבין שאנחנו לא מתכוונים לביטוי בסוגריים אלא ליצירת טאפל עם איבר יחיד, נוסיף <b>פסיק לאחר האיבר</b>.
+        <br> דוגמה להגדרת טאפל עם איבר יחיד:
+      </p>
+      <div class="code">
+        >>> one_value_tuple = (20,)
+        <br> >>> one_value_tuple
+        <br>
+        <span class="code_answer">(20,)</span>
+        <br> >>> type(one_value_tuple)
+        <br>
+        <span class="code_answer">&lt;class 'tuple'&gt;</span>
+      </div>
+
+      <img class="box_content_close" onclick="toggle_visibility('topic1')">
+    </div>
+    <!-- Closing Topic 1 -->
+
+    <a name="topic2">
+      <button class="box_title" onclick="toggle_visibility('topic2')">דמיון ושוני בין טאפל לבין רשימה</button>
+      <div id="topic2" class="box_content">
+
+        <p>הטאפל והרשימה הם שני מבני נתונים הדומים זה לזו – באפשרותם להחזיק מספר איברים מטיפוסים שונים, ובנוסף, שניהם רצפים
+          ולכן ניגש אליהם ונעבוד איתם באמצעות מיקומים (אינדקסים). המשמעות היא שפעולות רבות שהכרנו עבור רשימות (כגון פעולות
+          גישה, איטרציות בלולאה וכדומה) משמשות גם עבור טאפלים.
+        </p>
+        <p>דוגמאות לפעולות שימושיות עבור הטיפוס טאפל:
+        </p>
+        <div class="code">
+          >>> milk_info = ("lactose", "11/08/2022", "dairy cows", "135.6 liters", 300)
+          <br> >>>
+          <mark class="mark_code">len</mark>(milk_info)
+          <br>
+          <button id="button_8_1_2" class="expand" onclick="expand_code('code_8_1_2', 'button_8_1_2')">
+            <img class="enterbutton">
+          </button>
+          <div class="hiddencode" id="code_8_1_2">
+            <span class="code_answer">5</span>
+            <br>
+            <br> >>> milk_info<mark class="mark_code">[0]</mark>
+            <br>
+            <button id="button_8_1_3" class="expand" onclick="expand_code('code_8_1_3', 'button_8_1_3')">
+              <img class="enterbutton">
+            </button>
+            <div class="hiddencode" id="code_8_1_3">
+              <span class="code_answer">'lactose'</span>
+              <br>
+              <br> >>> milk_info[<mark class="mark_code">2:</mark>]
+              <br>
+              <button id="button_8_1_4" class="expand" onclick="expand_code('code_8_1_4', 'button_8_1_4')">
+                <img class="enterbutton">
+              </button>
+              <div class="hiddencode" id="code_8_1_4">
+                <span class="code_answer">('dairy cows', '135.6 liters', 300)</span>
+                <br>
+                <br> >>> str(milk_info[4])<mark class="mark_code">+</mark> " "<mark class="mark_code">+</mark> milk_info[2]
+                <br>
+                <button id="button_8_1_5" class="expand" onclick="expand_code('code_8_1_5', 'button_8_1_5')">
+                  <img class="enterbutton">
+                </button>
+                <div class="hiddencode" id="code_8_1_5">
+                  <span class="code_answer">'300 dairy cows'</span>
+                  <br>
+                  <br> >>><mark class="mark_code">for</mark> info<mark class="mark_code">in</mark> milk_info:
+                  <br> . . . print("-- " + str(info) + " --")
+                  <br>
+                  <button id="button_8_1_6" class="expand" onclick="expand_code('code_8_1_6', 'button_8_1_6')">
+                    <img class="enterbutton">
+                  </button>
+                  <div class="hiddencode" id="code_8_1_6">
+                    <span class="code_answer">-- lactose --
+                      <br> -- 11/08/2022 --
+                      <br> -- dairy cows --
+                      <br> -- 135.6 liters --
+                      <br> -- 300 --</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- CORNER DEBUG -->
+        <br>
+        <span class="corner_title" onclick="toggle_visibility('corner_8_1_1')">
+          <img class="corner_debug-icon">
+          <span class="corner_debug-title">טאפל הוא immutable</span>
+          <span id="cont_8_1_1" class="corner_continue">להמשך קריאה</span>
+        </span>
+        <div id="corner_8_1_1" class="corner_debug-box">
+          <p>מתכנת רעב הגדיר טאפל ובו רשימת מרכיבים לסלט:</p>
+          <div class="code">
+            >>> salad_ingredients = ("tomato", "cucumber", "tuna fish", "onion")
+          </div>
+          <p>המתכנת רוצה להפוך את הסלט לידידותי בעבור צמחונים. מה יקרה כשינסה לבצע פעולת השמה, כך שהאיבר במיקום 2 שמצביע לערך
+            "tuna fish" יצביע לאיבר חדש בעל הערך "spinach" (תרד)?
+          </p>
+          <div class="code">
+            >>> salad_ingredients[2] = "spinach"
+            <button id="button_8_1_7" class="expand" onclick="expand_code('code_8_1_7', 'button_8_1_7'), show_answer('code_8_1_7a')">
+              <img class="enterbutton">
+            </button>
+            <div class="hiddencode" id="code_8_1_7">
+              <span class="code_error">
+                Traceback (most recent call last):
+                <br>&nbsp;&nbsp; File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+                <br>TypeError: 'tuple' object does not support item assignment
+            </div>
+          </div>
+          <div id="code_8_1_7a" style="display: none;">מתקבלת הודעת שגיאה מסוג TypeError שמפרטת לנו שפעולת השמה אינה נתמכת על ידי אובייקט מטיפוס טאפל.
+          </div>
+          <p>כאן טמון <b>ההבדל המהותי בין טאפל לבין רשימה</b>:
+            <br> רשימה היא טיפוס שניתן לשינוי (באנגלית mutable), ואילו <b>טאפל הוא טיפוס שאינו ניתן לשינוי</b> (באנגלית <b>immutable</b>).
+            <br> איברים ברשימה אפשר לשנות באמצעות השמה, הוספה, מחיקה ופעולות נוספות. לעומתם, אחרי הגדרת טאפל <b>לא קיימת אפשרות</b>
+            לשנות את תוכנו, להוסיף איבר או למחוק איבר. אחרי הגדרת טאפל <b>קיימת אפשרות</b> רק לגשת אליו לצורך קריאה. להזכירכם, באופן
+            דומה גם הטיפוס מחרוזת הוא אינו בר-שינוי.
+          </p>
+
+
+          <img class="corner_debug-x" onclick="toggle_visibility('corner_8_1_1')">
+        </div>
+        <br>
+        <br>
+        <!-- END CORNER DEBUG -->
+
+
+        <p>אם כך, מהם <b>היתרונות של הטיפוס טאפל</b>?
+          <ul>
+            <li>טאפל הוא מבנה נתונים <b>בטוח</b> כיוון שהוא מגן על נתונים שלא צריכים להשתנות. מומלץ להשתמש בטאפל כשאנו מעוניינים לוודא
+              שמידע שאנו מאחסנים לא יעבור כל שינוי.
+            </li>
+            <li>טאפל הוא מבנה נתונים <b>חסכוני</b> יותר בהקצאת מקום בזיכרון מאשר רשימה. פייתון מקצה לטאפל זיכרון בדיוק בגודל הנדרש,
+              בעוד שלרשימה מוקצה זיכרון נוסף שמאפשר לבצע בה שינויים (כדוגמת הוספת איברים). </li>
+          </ul>
+        </p>
+
+        <!-- CORNER GOODWRITE -->
+        <br>
+        <span class="corner_title" onclick="toggle_visibility('corner_8_1_2')">
+          <img class="corner_goodwrite-icon">
+          <span class="corner_goodwrite-title">בחירת מבנה נתונים</span>
+          <span id="cont_8_1_2" class="corner_continue">להמשך קריאה</span>
+        </span>
+        <div id="corner_8_1_2" class="corner_goodwrite-box">
+
+          <p>כיצד נחליט מתי להשתמש בטאפל עבור אחסון מידע?
+            <br> נבחן את <b>אופי המידע</b> שברשותנו.
+          </p>
+          <p>על פי קונבנציה נעדיף להשתמש בטאפל על פני רשימה במקרים הבאים:
+          </p>
+          <ul>
+            <li>המידע הנו <b>קבוע מראש</b>. כלומר, מספר האיברים וערכיהם אינם עתידים להשתנות.
+            </li>
+            <li>קיימת חשיבות ל<b>מיקום</b> של האיברים בתוך מבנה הנתונים, כלומר לסדר בו הם מאוחסנים.
+            </li>
+          </ul>
+          <p>דוגמה לשימוש בטאפל עבור מידע שאינו עתיד להשתנות ושקיימת בו חשיבות לסדר האיברים היא הגדרת נקודה מסוימת על ידי הקורדינאטות
+            x ו-y:
+          </p>
+          <div class="code">
+            >>> point = (5, 2)
+          </div>
+          <p>האיברים בטאפל point מייצגים ביחד מושג שנקרא "נקודה". הנקודה מורכבת משני איברים בדיוק, והסדר שלהם הוא בעל משמעות:
+            האיבר במיקום אחת הוא קואורדינטת ה-x, והאיבר במיקום שתיים הוא קואורדינטת ה-y.
+          </p>
+          <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_8/graphics/img_8_1_1.png">
+          <img class="corner_goodwrite-x" onclick="toggle_visibility('corner_8_1_2')">
+        </div>
+        <br>
+        <!-- END CORNER GOODWRITE -->
+
+
+        <img class="box_content_close" onclick="toggle_visibility('topic2')">
+      </div>
+      <!-- Closing Topic 2 -->
+
+
+	  
+	  
+	  
+	 
+</body>
+
+</html>

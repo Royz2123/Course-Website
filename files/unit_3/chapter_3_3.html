@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <title>3.3 גישה לתווים וחיתוך מקטעים במחרוזת</title>
+  <meta charset="utf-8">
+  <link href='https://fonts.googleapis.com/css?family=alef' rel='stylesheet'>
+  <link rel="stylesheet" type="text/css" href="../base/neo_css.css">
+  <script src="../base/python_js.js"></script>
+</head>
+
+<body class="python_body">
+  <script>
+    function toggle_visibility(id) {
+          var e = document.getElementById(id);
+          if (e.style.display == 'block')
+                e.style.display = 'none';
+          else
+                e.style.display = 'block';}
+
+    function expand_code(codeid, buttonid) {
+          var c = document.getElementById(codeid);
+          var b = document.getElementById(buttonid);
+          c.style.display = 'block';
+          b.style.display = 'none';}
+
+    function show_answer(id) {
+          var e = document.getElementById(id);
+          e.style.display = 'block';}
+  </script>
+<div class="video_box"><iframe width="300" height="150" class="tscplayer_inline" id="embeddedSmartPlayerInstance" src="http://videos.cyber.org.il.s3-website.eu-west-2.amazonaws.com/3.3/3.3_player.html?embedIFrameId=embeddedSmartPlayerInstance" scrolling="no" frameborder="0" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen"></iframe></div>
+<a name="topic1">
+    <button class="box_title" onclick="toggle_visibility('topic1')">גישה לתו במחרוזת</button>
+    <div id="topic1" class="box_content">
+      <p>
+        פייתון היא שפה נהדרת לעבודה עם מחרוזות ולכן כדאי לנו ללמוד כיצד לגשת לאיברים, מקטעים וחלקים שונים במחרוזת.
+        <br> הגישה לתווים במחרוזת היא על פי
+        <b>המיקום</b> שלהם, ולא על פי הערך שלהם. כלומר, כדי לגשת לתו ״m״ במחרוזת ״Take me please״ נכתוב לפייתון פקודה שמתייחסת
+        לתו
+        <b>במיקום</b> 5 במחרוזת, ולא מפורשות לערך m.
+        <br> אם כך, בכדי לגשת לתווים במחרוזת נרצה לדעת היכן הם נמצאים בתוכה. כל תו במחרוזת נמצא במיקום (אינדקס, index) מסוים,
+        כאשר המיקום הראשון הוא
+        <b>אפס</b> (0).
+      </p>
+      <p>דוגמה למיספור מיקומים במחרוזת:</p>
+
+      <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_3/graphics/img_3_3_1.png">
+
+      <p>הגישה לתו על פי מיקומו נעשית על ידי שימוש בסוגריים מרובעים [ ]. </p>
+      <p>דוגמה לגישה לתווים באמצעות סוגריים מרובעים:</p>
+
+      <div class="code">
+        >>> card_str = "Joker"
+        <br> >>> card_str[0]
+        <br>
+        <span class="code_answer">'J'</span>
+        <br> >>> card_str[2]
+        <br>
+        <span class="code_answer">'k'</span>
+        <br> >>> card_str[4]
+        <br>
+        <span class="code_answer">'r'</span>
+      </div>
+
+      <img class="box_content_close" onclick="toggle_visibility('topic1')">
+    </div>
+    <!-- Closing Topic 1 -->
+
+    <a name="topic2">
+      <button class="box_title" onclick="toggle_visibility('topic2')">גישה מהסוף לתו במחרוזת</button>
+      <div id="topic2" class="box_content">
+        <p>אפשר לגשת לתו במחרוזת גם מהכיוון ההפוך, כלומר לספור מסוף המחרוזת באמצעות מיקומים שליליים.</p>
+        <p>דוגמה למיספור מיקומים במחרוזת מהסוף להתחלה וגישה לתווים:</p>
+
+        <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_3/graphics/img_3_3_2.png">
+<br>
+        <div class="code">
+          >>> card_str = "Joker"
+          <br> >>> card_str[-1]
+          <br>
+          <span class="code_answer">'r'</span>
+          <br> >>> card_str[-3]
+          <br>
+          <span class="code_answer">'k'</span>
+          <br> >>> card_str[-5]
+          <br>
+          <span class="code_answer">'J'</span>
+        </div>
+
+        <!-- CORNER -->
+        <br>
+        <span class="corner_title" onclick="toggle_visibility('corner_3_3_1')">
+          <img class="corner_debug-icon">
+          <span class="corner_debug-title">IndexError</span>
+          <span id="cont_3_3_1" class="corner_continue">להמשך קריאה</span>
+        </span>
+        <div id="corner_3_3_1" class="corner_debug-box">
+
+          <p>נגדיר שוב את האובייקט "Joker":</p>
+          <div class="code">
+            >>> card_str = "Joker"
+          </div>
+          <p>מה יקרה לדעתכם אם ננסה להריץ כל אחת מהשורות הבאות?</p>
+
+          <div class="code">
+            >>> card_str[5]
+            <br>
+            <button id="button_3_3_1" class="expand" onclick="expand_code('code_3_3_1', 'button_3_3_1')">
+              <img class="enterbutton">
+            </button>
+            <div class="hiddencode" id="code_3_3_1">
+              <span class="code_error">
+                Traceback (most recent call last):
+                <br>&nbsp;&nbsp;File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+                <br> IndexError: string index out of range</span>
+              <br>
+              <br> >>> card_str[-6]
+              <br>
+              <button id="button_3_3_2" class="expand" onclick="expand_code('code_3_3_2', 'button_3_3_2')">
+                <img class="enterbutton">
+              </button>
+              <div class="hiddencode" id="code_3_3_2">
+                <span class="code_error">Traceback (most recent call last):
+                  <br>&nbsp;&nbsp;File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+                  <br> IndexError: string index out of range</span>
+              </div>
+            </div>
+          </div>
+          <p>
+            ודאי ראיתם כי בשתיהן מתקבלת הודעת שגיאה מסוג
+            <b>IndexError</b>. שגיאה זו נגרמת כתוצאה מחריגה מגבולות המחרוזת, כלומר מניסיון לגשת למיקום שאינו קיים במחרוזת.
+            <br> לכן נשים לב לא לחרוג מן הגבולות, בדרך כלל על ידי וידוא אורך המחרוזת. בהמשך נלמד דרכים לבדוק זאת.
+          </p>
+          <img class="corner_debug-x" onclick="toggle_visibility('corner_3_3_1')">
+        </div>
+        <br>
+        <!-- END CORNER -->
+        <img class="box_content_close" onclick="toggle_visibility('topic2')">
+      </div>
+      <!-- Closing Topic 2 -->
+
+      <a name="topic3">
+        <button class="box_title" onclick="toggle_visibility('topic3')">חיתוך, מקטעים וקפיצות</button>
+        <div id="topic3" class="box_content">
+          <p>
+            לאחר שניגשנו לתווים בודדים במחרוזת נראה כיצד לחתוך מחרוזות ולגשת לחלקים או מקטעים שונים של המחרוזת. פעולת החיתוך נקראת <b>slicing</b>,
+            ובעברית <b>חיתוך</b>. </p>
+          <p>החיתוך נעשה על ידי ציון המיקום (אינדקס) של תחילת החיתוך (START) והמיקום של סיום החיתוך (STOP), וביניהם נקודתיים.
+          </p>
+          <p>צורת הכתיבה:</p>
+
+          <div class="code">
+            >>> # Strings slicing:
+            <mark class="mark_code">string[START:STOP]</mark>
+          </div>
+
+          <p>שימו לב שהמספר שנכתוב כמיקום STOP יציין את המיקום שבו יסתיים החיתוך, אבל הוא עצמו <b>אינו</b> נכלל במקטע הנוצר. כך אורך
+            המקטע יהיה תמיד ההפרש בין האינדקסים.
+          </p>
+          <p>דוגמה לחיתוך מקטע במחרוזת:</p>
+
+          <div class="code">
+            >>> hobby = "Gaming"
+            <br> >>> hobby[0:2]
+            <br>
+            <span class="code_answer">'Ga'</span>
+          </div>
+
+          <p>בדוגמה זו ניגשנו למיקומים 0 עד 2 (לא כולל), ואורך המחרוזת שנוצרה הוא 2.</p>
+          <p> דוגמה לחיתוך החל מאמצע המחרוזת:</p>
+
+          <div class="code">
+            >>> hobby = "Gaming"
+            <br> >>> hobby[2:5]
+            <br>
+            <span class="code_answer">'min'</span>
+          </div>
+          <p>כאן ניגשנו לאינדקסים 2 עד 5 וקיבלנו מקטע באורך 3.</p>
+
+          <!-- CORNER -->
+          <br>
+          <span class="corner_title" onclick="toggle_visibility('corner_3_3_2')">
+            <img class="corner_enrichment-icon">
+            <span class="corner_enrichment-title">מיקומים דיפולטיים</span>
+            <span id="cont_3_3_2" class="corner_continue">להמשך קריאה</span>
+          </span>
+          <div id="corner_3_3_2" class="corner_enrichment-box">
+
+            <!-- Interactive Question 3_3_1 -->
+            <img class="corner_iquestion-icon">
+            <div class="corner_iquestion-box" dir="rtl">
+              <div class="corner_iquestion-title" dir="rtl">לפניכם קטע קוד. איזה מקטע יתקבל לדעתכם בעת ההרצה? (חשבו ובחרו תשובה)
+                <div class="code">
+                  >>> hobby = "Gaming"
+                  <br> >>> hobby[:2]
+                  <br>
+                  <div class="hiddencode" id="code_3_3_3">
+                    <span class="code_answer">'Ga'</span>
+                  </div>
+                </div>
+              </div>
+
+              <label class="corner_iquestion-option" onclick="show_answer('iquestion_3_3_1-a1')">
+                <input type="radio" name="iquestion_3_3_1" class="corner_iquestion-radio">'Gmn'</label>
+                <div class="corner_iquestion-feedback" dir="rtl">
+                  <span id="iquestion_3_3_1-a1" class="corner_iquestion-i_answer">קפיצות 2 יילמדו בקרוב, זה אינו הפלט במקרה זה, נסו שוב.</span>
+                </div>
+              <label class="corner_iquestion-option" onclick="show_answer('iquestion_3_3_1-a2')">
+                <input type="radio" name="iquestion_3_3_1" class="corner_iquestion-radio">'ng'</label>
+                <div class="corner_iquestion-feedback" dir="rtl">
+                  <span id="iquestion_3_3_1-a2" class="corner_iquestion-i_answer">צורת הכתיבה לקבלת 2 תווים מהסוף היא [:2-]hobby, נסו שוב.</span>
+                </div>
+              <label class="corner_iquestion-option" onclick="show_answer('code_3_3_3'), show_answer('iquestion_3_3_1-a3'), show_answer('iquestion_3_3_1-a3a'), show_answer('iquestion_3_3_1-a3b'), show_answer('iquestion_3_3_1-a3c')">
+                <input type="radio" name="iquestion_3_3_1" class="corner_iquestion-radio">'Ga'</label>
+                <div class="corner_iquestion-feedback" dir="rtl">
+                  <span id="iquestion_3_3_1-a3" class="corner_iquestion-c_answer">נכון!</span>
+                    <span id="iquestion_3_3_1-a3a" style="display:none">מן התשובה עולה כי בפייתון קיימים <b>ערכי ברירת מחדל</b> בפעולת החיתוך:</span>
+                    <div id="iquestion_3_3_1-a3b" style="display:none;">
+                      <p>אם מיקום
+                        <b>תחילת המקטע</b> מושמט, המקטע יחל בתחילת המחרוזת, כלומר במיקום אפס (0).
+                        <br> אם מיקום
+                        <b>סוף המקטע</b> מושמט המקטע יסתיים בסוף המחרוזת, כלומר במיקום ששווה לאורך המחרוזת. </p>
+                      <p> מטעמי נוחות, אם תרצו לחתוך מקטע מחרוזת שמתחיל בהתחלה שלה, או שמסתיים בסופה, אפשר להשמיט את המיקומים האלה.
+                        <br> בדוגמה שלנו, החיתוך החל ממיקום אפס (0) עד למיקום שתיים (2) לא כולל.</p>
+                      <p>דוגמה נוספת, ביצוע פעולת "חיתוך" של המחרוזת כולה:</p>
+                    </div>
+                    <div id="iquestion_3_3_1-a3c" class="code" style="display:none; text-indent:0">
+                        >>> hobby = "Gaming"
+                        <br> >>> hobby[:]
+                        <br>
+                        <span class="code_answer">'Gaming'</span>
+                    </div>
+                </div>
+              <label class="corner_iquestion-option" onclick="show_answer('iquestion_3_3_1-a4')">
+                <input type="radio" name="iquestion_3_3_1" class="corner_iquestion-radio">תתקבל הודעת שגיאה מסוג IndexError</label>
+                <div class="corner_iquestion-feedback" dir="rtl">
+                  <span id="iquestion_3_3_1-a4" class="corner_iquestion-i_answer">צורה זו חוקית בפייתון, נסו שוב.</span>
+                </div>
+
+              <img class="corner_iquestion-x">
+            </div><br>
+
+            <img class="corner_enrichment-x" onclick="toggle_visibility('corner_3_3_2')">
+          </div>
+          <br><br>
+          <!-- END CORNER -->
+
+          <p>בחיתוך מקטעים אפשר להשתמש גם במיקומים שליליים.</p>
+          <p>דוגמה לחיתוך עם מיקום שלילי:</p>
+          <div class="code">
+              >>> hobby = "Gaming"
+              <br> >>> hobby[1:-1]
+              <br>
+              <span class="code_answer">'amin'</span>
+            </div>
+
+            <p>בדוגמה זו ניגשנו למקטע ממיקום אחת עד מיקום מינוס אחת (האחרון), לא כולל.</p>
+
+          <!-- CORNER -->
+          <br>
+          <span class="corner_title" onclick="toggle_visibility('corner_3_3_3')">
+            <img class="corner_enrichment-icon">
+            <span class="corner_enrichment-title">פעולת חיתוך: ללכת על בטוח</span>
+            <span id="cont_3_3_3" class="corner_continue">להמשך קריאה</span>
+          </span>
+          <div id="corner_3_3_3" class="corner_enrichment-box">
+
+            <p>כשלמדנו לגשת לתו כלשהו במחרוזת, הקפדנו לכתוב מיקום שהוא בגבולות אורך המחרוזת אחרת קיבלנו הודעת שגיאה. לעומת זאת,
+              בפקודות חיתוך, בהנחה שאנו כותבים מיקומים שהם מספרים (integers) בתוך הסוגריים המרובעים, לא נקבל הודעות שגיאה
+              גם אם המיקומים ממש מוזרים.</p>
+            <p>לדוגמה, נסו להריץ את קטע הקוד הבא:</p>
+
+            <div class="code">
+              >>> wrong_slicing = "nothing happens"
+              <br> >>> wrong_slicing[-7888:14000000]
+              <br>
+              <button id="button_3_3_4" class="expand" onclick="expand_code('code_3_3_4', 'button_3_3_4')">
+                <img class="enterbutton">
+              </button>
+              <div class="hiddencode" id="code_3_3_4">
+                &nbsp;
+              </div>
+            </div>
+            <p>כפי שוודאי שמתם לב, המיקומים בחיתוך אינם הגיוניים ולמרות זאת לא התקבלה הודעת שגיאה. למעשה נראה שלא קרה דבר. במקרים
+              מסוימים שלא יילמדו בקורס זה, אפשר לנצל את ההתנהגות הזו בצורה חכמה. אבל, כיוון שהתוכנית שלנו עלולה להיכשל מבלי
+              שנשים לב ולגרום לבלבול בשלב מאוחר יותר, מומלץ להקדיש תשומת לב יתירה בעת ביצוע פעולות חיתוך. </p>
+
+            <img class="corner_enrichment-x" onclick="toggle_visibility('corner_3_3_3')">
+          </div>
+          <br><br>
+          <!-- END CORNER -->
+
+          <p>אם לא התרשמתם מיכולות פייתון עד כה, נוסיף מרכיב מעניין נוסף!
+            <br> קיימת אפשרות לחיתוך מחרוזות שכוללת
+            <b>קפיצה</b>, או step, במרווחים שונים מאחד. תבנית הכתיבה היא:
+          </p>
+
+          <div class="code">
+            >>> # Slicing with step: string[START:STOP:<mark class="mark_code">STEP]</mark>
+          </div>
+          <p>הערך האחרון שהתווסף (STEP) מציין את
+            <b>מרווח הקפיצה</b>.</p>
+
+          <p>דוגמה לשימוש בחיתוך עם קפיצה: בדוגמה הבאה ניגש לכל התווים במיקומים הזוגיים - ממיקום אפס עד למיקום חמש (לא כולל), בקפיצות
+            של 2.</p>
+          <br>
+          <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_3/graphics/img_3_3_3.png">
+          <br>
+
+          <div class="code">
+            >>> hobby = "Gaming"
+            <br> >>> hobby[0:5:<mark class="mark_code">2</mark>]
+            <br>
+            <button id="button_3_3_5" class="expand" onclick="expand_code('code_3_3_5', 'button_3_3_5')">
+              <img class="enterbutton">
+            </button>
+            <div class="hiddencode" id="code_3_3_5">
+              <span class="code_answer">'Gmn'</span>
+            </div>
+          </div>
+          <p>שימו לב שהשימוש בקפיצה מאפשר לנו לגשת בקלות לתווים זוגיים או אי זוגיים במחרוזת, מבלי לעשות שימוש בלולאות!
+          </p>
+
+          <img class="box_content_close" onclick="toggle_visibility('topic3')">
+        </div>
+        <!-- Closing Topic 3 -->
+
+        <a name="topic4">
+          <button class="box_title" onclick="toggle_visibility('topic4')">שינוי מחרוזת</button>
+          <div id="topic4" class="box_content">
+              <!-- CORNER -->
+              <br>
+              <span class="corner_title" onclick="toggle_visibility('corner_3_3_4')">
+                <img class="corner_debug-icon">
+                <span class="corner_debug-title">TypeError: מחרוזת היא Immutable</span>
+                <span id="cont_3_3_4" class="corner_continue">להמשך קריאה</span>
+              </span>
+              <div id="corner_3_3_4" class="corner_debug-box">
+
+                <p>בואו ננסה לשנות תו בודד במחרוזת:</p>
+                <div class="code">
+                    >>> my_string = "Change me!" <br>
+                    >>> my_string[0] = "S"<br>
+                    <button id="button_3_3_6" class="expand" onclick="expand_code('code_3_3_6', 'button_3_3_6')">
+                        <img class="enterbutton">
+                      </button>
+                      <div class="hiddencode" id="code_3_3_6">
+                          <span class="code_error">
+                              Traceback (most recent call last):
+                              <br>&nbsp;&nbsp;File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+                              <br> TypeError: 'str' object does not support item assignment</span>
+                      </div>
+                </div>
+                <p>קיבלנו הודעת שגיאה! <br>
+                    הסיבה לכך היא שאובייקטים מטיפוס מחרוזת <b>הם בלתי ניתנים לשינוי (immutable)</b>. בכדי לשנות את המשתנה, במקרה זה my_string, נצטרך להגדיר אובייקט חדש מטיפוס מחרוזת עם השינוי הרצוי ולהעביר את my_string להצביע אליו. כלומר, נגדיר מחדש את my_string באופן הבא:
+                    </p>
+                    <div class="code">
+                        >>> my_string = "<mark class="mark_code">S</mark>hange me!"
+
+                    </div>
+                <p>
+                    אם כך, שינוי ערכו של משתנה מטיפוס מחרוזת הוא למעשה הסרת ההתייחסות (ההצבעה) אל המחרוזת המקורית והפנייתה למחרוזת חדשה.
+                </p>
+                <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_3/graphics/img_3_3_4.png">
+                  </mark>
+                <img class="corner_debug-x" onclick="toggle_visibility('corner_3_3_4')">
+              </div>
+              <br>
+              <!-- END CORNER -->
+
+            <img class="box_content_close" onclick="toggle_visibility('topic4')">
+          </div>
+          <!-- Closing Topic 4 -->
+
+</body>
+
+</html>

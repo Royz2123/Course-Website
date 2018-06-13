@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <title>1.3 קדימה, לעבודה!</title>
+  <meta charset="utf-8">
+  <link href='https://fonts.googleapis.com/css?family=alef' rel='stylesheet'>
+  <link rel="stylesheet" type="text/css" href="../base/neo_css.css">
+  <script src="../base/python_js.js"></script>
+</head>
+<body class="python_body">
+  <script>
+    function toggle_visibility(id) {
+          var e = document.getElementById(id);
+          if (e.style.display == 'block')
+                e.style.display = 'none';
+          else
+                e.style.display = 'block';}
+
+    function expand_code(codeid, buttonid) {
+          var c = document.getElementById(codeid);
+          var b = document.getElementById(buttonid);
+          c.style.display = 'block';
+          b.style.display = 'none';}
+
+          function show_answer(id) {
+          var e = document.getElementById(id);
+          e.style.display = 'block';}
+  </script>
+  <div class="toc_title">מה נלמד?</div>
+  <a name="topic1">
+    <button class="box_title" onclick="toggle_visibility('topic1')">פעולות חשבוניות בסיסיות</button>
+    <div id="topic1" class="box_content">
+      <p>נתחיל את ההיכרות שלנו עם פייתון ועם האינטרפרטר בכמה חישובים קלילים. פשוט פתחו את חלון האינטרפרטר, הקלידו בכל פעם תרגיל
+        חשבוני אחר, ולחצו Enter!</p>
+
+      <div class="code">
+        >>> 5 + 2
+        <br>
+        <span class="code_answer">7</span>
+        <br> >>> 5 - 2
+        <br>
+        <span class="code_answer">3</span>
+        <br> >>> 5 * 2
+        <br>
+        <span class="code_answer">10</span>
+      </div>
+
+      <p>פשוט, נכון?
+      </p>
+      <p>בקלות נוכל לבצע פעולות נוספות:
+      </p>
+
+      <table class="general_table">
+        <tr>
+          <th class="general_th">פעולה</th>
+          <th class="general_th">אופרטור</th>
+          <th class="general_th">דוגמת הרצה</th>
+        </tr>
+        <tr>
+          <td class="general_td">חילוק שתוצאתו היא שבר עשרוני</td>
+          <td class="general_td">/</td>
+          <td class="general_td" dir="ltr">
+            <span class="code">>>> 5 / 2</span><br>
+            <span class="code_answer">2.5</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="general_td">חילוק שתוצאתו היא מנה שלמה ללא שארית </td>
+          <td class="general_td">//</td>
+          <td class="general_td" dir="ltr">
+            <span class="code">>>> 5 // 2</span><br>
+            <span class="code_answer">2</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="general_td">מודולו (modulo), תוצאתו היא שארית מפעולת החילוק</td>
+          <td class="general_td">%</td>
+          <td class="general_td" dir="ltr">
+            <span class="code">>>> 5 % 2</span><br>
+            <span class="code_answer">1</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="general_td">חזקה</td>
+          <td class="general_td">**</td>
+          <td class="general_td" dir="ltr">
+            <span class="code">>>> 5 ** 2</span><br>
+            <span class="code_answer">25</span>
+          </td>
+        </tr>
+      </table>
+
+      <img class="box_content_close" onclick="toggle_visibility('topic1')">
+    </div>
+    <!-- Closing Topic 1 -->
+
+    <a name="topic2">
+      <button class="box_title" onclick="toggle_visibility('topic2')">הפקודה print</button>
+      <div id="topic2" class="box_content">
+
+        <p>הפקודה הראשונה שנכיר בפייתון היא פקודה שימושית מאוד: הפקודה
+          <b>print</b>.
+          <br> הפקודה מבצעת הדפסה של הערך שנתון לה בסוגריים, ונכתבת בצורה הבאה:
+        </p>
+        <div class="code">
+          <mark class="mark_code">print</mark>(
+          <something to print>)
+        </div>
+        <p>דוגמה להדפסה:
+        </p>
+        <div class="code">
+          >>> print("Hello")
+          <br>
+          <span class="code_answer">Hello</span>
+          <br> >>> print(2)
+          <br>
+          <span class="code_answer">2</span>
+          <br>
+        </div>
+        <p>שימו לב לצורת הכתיבה השונה עבור טקסט, אשר תחום במרכאות, ועבור מספר. נרחיב על כך בהמשך.
+        </p>
+        <p>עכשיו, נסו בעצמכם להדפיס את שמכם באינטרפרטר!
+        </p>
+
+        <!-- CORNER -->
+        <br>
+        <span class="corner_title" onclick="toggle_visibility('corner_1_3_1')">
+          <img class="corner_debug-icon">
+          <span class="corner_debug-title">NameError</span>
+          <span id="cont_1_3_1" class="corner_continue">להמשך קריאה</span>
+        </span>
+        <div id="corner_1_3_1" class="corner_debug-box">
+
+          <p>ברוכים הבאים לפינת הדיבוג הראשונה. מהו
+            <b>דיבוג</b>?
+            <br> דיבוג, למעשה debug, הוא בדיקת קוד במטרה למצוא שגיאות שגורמות לתקלות ("באגים") בריצת התוכנית ובמידת האפשר לתקן
+            אותן.
+            <br> לאורך הקורס נכיר שגיאות שעלולות להתרחש במהלך כתיבת הקוד וכיצד להימנע מהן.
+          </p>
+          <p>בואו נראה מה יקרה בהרצת השורה הבאה:</p>
+          <div class="code">
+            >>> print(Superman)
+            <br>
+            <button id="button_1_3_1" class="expand" onclick="expand_code('code_1_3_1', 'button_1_3_1'), show_answer('code_1_3_1a'), show_answer('code_1_3_1b')">
+                <img class="enterbutton">
+              </button>
+              <div class="hiddencode" id="code_1_3_1">
+            <span class="code_error">
+              Traceback (most recent call last):
+              <br>&nbsp;&nbsp;File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+              <br> NameError: name 'Superman' is not defined</span>
+          </div>
+        </div>
+        <div id="code_1_3_1a" style="display: none;">
+          <p>קיבלנו הודעת שגיאה מסוג NameError, וההודעה מפרטת שהשם Superman אינו מוגדר. אכן, לא הגדרנו מראש מהו Superman. <br>
+             פייתון מחפשת שם של משתנה או של פונקציה (למי שלא מכיר מה זה, אל דאגה, נלמד בהמשך) ואינה מוצאת. לכן מתקבלת שגיאה. <br>
+            כיצד נפתור את הבעיה? אמנם אנחנו יכולים להגדיר מיהו Superman עוד לפני פקודת ההדפסה, אך לא נעשה
+            זאת כעת. כיוון שהתכוונו להדפיס ישירות את הטקסט ״Superman״ - נקפיד לתחום אותו במרכאות וננסה שוב.
+          </p>
+        </div>
+          <div class="code" id="code_1_3_1b" style="display: none;">
+            >>> print(״Superman״)
+            <br>
+            <button id="button_1_3_2" class="expand" onclick="expand_code('code_1_3_2', 'button_1_3_2')">
+              <img class="enterbutton">
+            </button>
+            <div class="hiddencode" id="code_1_3_2">
+              <span class="code_answer">Superman</span>
+            </div>
+          </div>
+
+
+          <img class="corner_debug-x" onclick="toggle_visibility('corner_1_3_1')">
+        </div>
+        <br>
+        <!-- END CORNER -->
+
+        <!-- CORNER -->
+        <br>
+        <span class="corner_title" onclick="toggle_visibility('corner_1_3_2')">
+          <img class="corner_enrichment-icon">
+          <span class="corner_enrichment-title">סוגי שגיאות בפייתון</span>
+          <span id="cont_1_3_2" class="corner_continue">להמשך קריאה</span>
+        </span>
+        <div id="corner_1_3_2" class="corner_enrichment-box">
+
+          <p>בקורס זה נכיר חלק מן השגיאות בהן אנחנו עלולים להיתקל כמתכנתים אך כמובן שקיימות שגיאות מסוגים שונים. מומלץ מאוד
+            להכיר את
+            <a class="link" target="_blank" href="https://docs.python.org/3.3/tutorial/errors.html">האתר הזה</a> כדי לקרוא על שגיאות בפייתון ולדעת כיצד להתמודד איתן.
+          </p>
+          <img class="corner_enrichment-x" onclick="toggle_visibility('corner_1_3_2')">
+        </div>
+        <br>
+        <!-- END CORNER -->
+
+        <img class="box_content_close" onclick="toggle_visibility('topic2')">
+      </div>
+      <!-- Closing Topic 2 -->
+
+      <a name="topic3">
+        <button class="box_title" onclick="toggle_visibility('topic3')">הערות שורה</button>
+        <div id="topic3" class="box_content">
+
+          <p>הידעתם? לא כל התוכן בתוכנית חייב להיכתב בשפת פייתון! בכתיבת קוד לפעמים נרצה לכתוב לעצמינו <b>הערה</b>, בשפת יומיום. יותר
+            חשוב מכך - <b>מומלץ</b> לשלב הסברים מילוליים למה שאנחנו כותבים: גם עבורנו וגם עבור אחרים שעתידים לקרוא את הקוד.
+            <br> בכדי לשלב בקוד הערה המשמשת להבהרה או הסבר הקוד, נכתוב סולמית (או סורג, #), ולאחריה טקסט חופשי. התו סולמית #
+            מסמן לפייתון להתעלם מהטקסט הכתוב החל מהסולמית ועד סוף השורה.
+          </p>
+          <p>דוגמה להערת שורה בקוד:
+          </p>
+          <div class="code">
+            <span class="code_comment">
+            <mark class="mark_code_comment">#</mark> Print my favorite superhero</span> <br>
+             >>> print("Wonder Woman")
+          </div>
+          <p>עוד על הסברים והערות - בהמשך, כשנלמד על תיעוד.</p>
+
+
+          <img class="box_content_close" onclick="toggle_visibility('topic3')">
+        </div>
+        <!-- Closing Topic 3 -->
+
+        <a name="topic4">
+          <button class="box_title" onclick="toggle_visibility('topic4')">שימוש בספריות</button>
+          <div id="topic4" class="box_content">
+            <p>נפתח בהודעה משמחת: לא כל דבר אנחנו צריכים לממש בעצמנו בקוד.
+              <br> אחת החוזקות המופלאות של פייתון היא אוסף הפקודות והפעולות שמגיעות איתה. לדוגמה, הפקודה print שלמדנו היא למעשה
+              פעולה מובנית בעלת שם ששמור בשפת פייתון (ליתר דיוק: זוהי פונקציה, נלמד על כך בהרחבה בהמשך).
+            </p>
+            
+			<p>פייתון מכילה הגדרה של פעולות רבות המיועדות לשימוש רחב, המגיעות כחלק מ  <b>הספרייה הסטנדרטית</b> המותקנת יחד עם האינטרפרטר. חלק מהפעולות הללו (כמו print) נגישות באופן ישיר, וחלקן נמצאות 			 <b>בספריות משנה</b>  הנקראות בשם מודולים, שאותן ניתן לייבא באמצעות הפקודה <b>import</b>. בהמשך תוכלו גם להוריד ספריות חיצוניות ולייבא אותן לשימושכם.
+			</p>
+            <p>דוגמה לספרייה ולשימוש בפעולה מתוכה:
+              <br> פייתון מכילה הגדרות של פעולות מתמטיות רבות תחת הספרייה המתמטית שנקראת <b>math</b>. לפני שנוכל להשתמש בפעולות המתמטיות,
+              נייבא את הספרייה באופן הבא:
+            </p>
+            <div class="code">
+              >>> import math
+            </div>
+            <p>בכדי לקרוא לפעולה כלשהי, נציין את שם הספרייה, נקודה, ולאחר מכן את שם הפעולה. בסוגריים נעביר את הערך הדרוש לפעולה.
+              <br> לדוגמה, כדי לחשב סינוס (sin) של 90 מעלות ברדיאנים, נכתוב:
+            </p>
+            <div class="code">
+              >>> math.sin(90) <br>
+              <span class="code_answer">0.893</span>
+            </div>
+            <p>יתכן שאתם מתרגשים לגלות אוצר שכזה אך שואלים: איך נמצא את הספרייה המתאימה? איך נדע כיצד להשתמש בפעולות שהיא מספקת?
+              <br> התשובה היא שאין דרך אחת לעשות זאת, ורוב המידע נמצא בחיפוש באינטרנט. זה גם חלק מהכיף! עבור פעולות רבות אפשר
+              להניח שהן קיימות בספרייה כלשהי, ונותר רק לגשש ולמצוא את המבוקש.  <br>
+              לצורך כך תוכלו להיעזר גם באתר הבא:
+              <a class="link" target="_blank" href="https://docs.python.org/3/contents.html">https://docs.python.org/3/contents.html</a>
+            </p>
+            <img class="box_content_close" onclick="toggle_visibility('topic4')">
+          </div>
+          <!-- Closing Topic 4 -->
+
+</body>
+
+</html>

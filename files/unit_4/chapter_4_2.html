@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <title>4.2 בלוק תנאי</title>
+  <meta charset="utf-8">
+  <link href='https://fonts.googleapis.com/css?family=alef' rel='stylesheet'>
+  <link rel="stylesheet" type="text/css" href="../base/neo_css.css">
+  <script src="../base/python_js.js"></script>
+</head>
+
+<body class="python_body">
+  <script>
+    function toggle_visibility(id) {
+          var e = document.getElementById(id);
+          if (e.style.display == 'block')
+                e.style.display = 'none';
+          else
+                e.style.display = 'block';}
+
+    function expand_code(codeid, buttonid) {
+          var c = document.getElementById(codeid);
+          var b = document.getElementById(buttonid);
+          c.style.display = 'block';
+          b.style.display = 'none';}
+  </script>
+  <div class="toc_title">מה נלמד?</div>
+
+  <a name="topic1">
+    <button class="box_title" onclick="toggle_visibility('topic1')">בקרת זרימה</button>
+    <div id="topic1" class="box_content">
+
+      <p>ודאי נתקלתם בחייכם בצורך לקבל החלטות, כלומר לבחור איך להתנהג בהינתן תנאים מסוימים. לדוגמה: <b>אם</b> התחזית גשומה <b>אז</b> אקח מטרייה,
+        <b>אם</b> צפויה שמש אצטייד בשמשייה ובכל מזג אוויר <b>אחר</b> - אצא עם שכמייה.</p>
+      <p>מבנה כזה מכונה <b>תנאי</b> ובתכנות הוא ממומש באמצעות הפקודה <b>if</b> ("אם"). פקודת תנאי (if) מאפשרת שליטה על סדר ביצוע (וגם אי-ביצוע)
+        פעולות בתוכנית. כלומר, היא משמשת ל<b>בקרת זרימה</b> במהלך תוכנית.
+      </p>
+      <img class="box_content_close" onclick="toggle_visibility('topic1')">
+    </div>
+    <!-- Closing Topic 1 -->
+
+    <a name="topic2">
+      <button class="box_title" onclick="toggle_visibility('topic2')">if elif else</button>
+      <div id="topic2" class="box_content">
+
+        <p>פקודת תנאי מאפשרת ביצוע פעולה או פעולות, אם (ורק אם) <b>מתקיים</b> תנאי כלשהו. אפשר גם להגדיר ביצוע פעולה אחרת אם (ורק אם)
+          התנאי <b>לא מתקיים</b>.</p>
+        <p>נכיר את צורת כתיבת התנאי בפייתון.
+        </p>
+        <h3 class="bold_title">התנאי if:</h3>
+        <p>את התנאי נתחיל ב<b>מילת ההתנייה if</b>, מיד אחריה נכתוב מהו התנאי שבודקים (ביטוי לוגי) ובסוף השורה נכתוב נקודתיים. לאחר
+          מכן יתחיל בלוק מוזח. הבלוק מתאר את מה שיקרה בהינתן קיום/אי קיום התנאי ועליו להכיל לפחות שורת קוד אחת.
+        </p>
+        <p>דוגמה לבלוק תנאי פשוט:
+        </p>
+        <div class="code">
+            <span class="code_function">if</span> 3 &lt; 4:
+          <br> &nbsp;&nbsp;<span class="code_function">print</span>("Three is less than four.")
+          <br><span class="code_answer">Three is less than four.</span>
+        </div>
+        <p>הביטו בדוגמה הבאה, מה יקרה כאשר נריץ אותה?</p>
+        <div class="code">
+            <span class="code_function">if</span> 1 == 2:
+          <br>&nbsp;&nbsp;<span class="code_function">print</span>("No way!")
+        </div>
+        <p>בדוגמה זו התנאי הוא הביטוי הלוגי 2 == 1. שימו לב שתנאי זה לעולם לא יתקיים ולכן השורה בבלוק המוזח לא תודפס אף פעם.
+        </p>
+        <h3 class="bold_title">else:</h3>
+        <p>לאחר בלוק של פקודת if, שמתבצע במקרים בהם התנאי מתקיים, אפשר להוסיף בלוק שמתבצע כאשר<b> התנאי אינו מתקיים</b>, כלומר בכל
+          המקרים האחרים. בלוק זה יגיע לאחר פקודת else ואחריה נקודתיים.
+        </p>
+        <p>דוגמה למבנה if else:
+        </p>
+        <div class="code">name = input()
+          <br> <span class="code_function">if</span> name.endswith("son"):
+          <br>&nbsp;&nbsp;<span class="code_function">print</span>("You might be Scandinavian.")
+          <br> <span class="code_function">else</span>:
+          <br>&nbsp;&nbsp;<span class="code_function">print</span>("You're probably not Scandinavian.")
+        </div>
+
+
+        <h3 class="bold_title">elif:</h3>
+        <p>המילה השמורה <b>elif</b> (קיצור של else if, אחרת אם) משמשת להגדרת תנאי ביניים (אחד או יותר). פייתון בודקת נכונות של תנאי כלשהו ואם התנאי לא מתקיים, כלומר הבדיקה הראשונה החזירה שקר, היא ממשיכה לבדיקה הבאה.</p>
+        <p>elif יכולה להופיע <b>רק</b> לאחר משפט if. בסוף המקרים השונים שנבדקים עם elif אפשר (אך לא הכרחי) לשלב משפט else. משפט זה יתבצע אם אף אחד מהמצבים הקודמים לא התקיים.
+          </p>
+        <p>דוגמה למבנה if elif else:</p>
+        <div class="code">
+            choice = input() <br>
+            <span class="code_function">if</span> choice == 1:<br>
+            &nbsp;&nbsp;<span class="code_function">print</span>("You've chosen one.")<br>
+            <span class="code_function">elif</span> choice == 2:<br>
+            &nbsp;&nbsp;<span class="code_function">print</span>("You've chosen two.")<br>
+            <span class="code_function">elif</span> choice == 3:<br>
+            &nbsp;&nbsp;<span class="code_function">print</span>("You've chosen three.")<br>
+            <span class="code_function">else</span>:<br>
+            &nbsp;&nbsp;<span class="code_function">print</span>("You've chosen something else.")
+        </div>
+        <p>שימו לב, השימוש במילה elif מסייע לנו להימנע מ<b>כתיבה מקוננת</b>, כלומר תנאי בתוך תנאי.
+            כתיבה מקוננת נחשבת מסורבלת, כפי שאפשר להתרשם מהשוואת הדוגמה הבאה, בה משתמשים ב-if וב-else בלבד, לדוגמה הקודמת (שכוללת גם elif):
+            </p>
+        <div class="code">
+            choice = input()<br>
+            <span class="code_function">if</span> choice == 1:<br>
+            &nbsp;&nbsp;&nbsp;<span class="code_function">print</span>("You've chosen one.")<br>
+            <span class="code_function">else</span>:<br>
+            &nbsp;&nbsp;<span class="code_function">if</span> choice == 2:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code_function">print</span>("You've chosen two.")<br>
+            &nbsp;&nbsp;<span class="code_function">else</span>:	<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code_function">if</span> choice == 3:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code_function">print</span>("You've chosen three.")<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code_function">else</span>:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code_function">print</span>("You've chosen something else.")
+        </div>
+
+        <img class="box_content_close" onclick="toggle_visibility('topic2')">
+      </div>
+      <!-- Closing Topic 2 -->
+
+      <a name="topic3">
+        <button class="box_title" onclick="toggle_visibility('topic3')">ביטויים לוגיים בתנאים</button>
+        <div id="topic3" class="box_content">
+
+          <p>בפקודות תנאי אפשר לשלב ביטויים לוגיים, כפי שלמדנו ביחידה על משתנים.<br/> 
+				דוגמה לשילוב אופרטורים לוגיים ואופרטורים של השוואה בפקודת תנאי:
+
+              </p>
+          <div class="code">
+              <span class="code_function">if</span> (months_passed <mark class="mark_code">==</mark> 18) <mark class="mark_code">and</mark> (location_moon <mark class="mark_code">==</mark> location_sun): <br>
+              &nbsp;&nbsp;&nbsp;<span class="code_function">print</span>("Eclipse!")<br>
+              <span class="code_function">else</span>:<br>
+              &nbsp;&nbsp;&nbsp;<span class="code_function">print</span>("Just a regular day…")
+          </div>
+          <p>בדוגמה זו מספר החודשים צריך להיות שמונה עשר, ומיקום הירח צריך להיות זהה למיקום השמש כדי שיודפס eclipse (ליקוי חמה). אחרת, יודפס Just a regular day (רק יום רגיל…)
+            </p>
+		
+		
+		
+			
+      <!-- CORNER -->
+      <br>
+      <span class="corner_title" onclick="toggle_visibility('corner_4_2_1')">
+        <img class="corner_enrichment-icon">
+        <span class="corner_enrichment-title">ערך ברירת מחדל למשתנה</span>
+        <span id="cont_4_2_1" class="corner_continue">להמשך קריאה</span>
+      </span>
+      <div id="corner_4_2_1" class="corner_enrichment-box">
+        <p>לפניכם קטע קוד מתוך תוכנית שלמה. נסו להבין מה עלול להיות בעייתי בו.</p>
+        <div class="code">
+            ...  <br>
+            pet_num = int(input(‘How many pets do you have?'))<br>
+            <span class="code_function">if</span> pet_num > 2:<br>
+            &nbsp;&nbsp;message = "You are an animal lover!"<br>
+            <span class="code_function">print</span>(message)<br>
+            ...
+        </div>
+        <p>שימו לב שהמשתנה message מוגדר (או אינו מוגדר) כתלות בביטוי הלוגי pet_num > 2.
+            אם ברשותך תוכי אחד, אזי לאחר ההרצה:</p>
+        <div class="code">How many pets do you have? 1</div>
+        <p>במצב כזה, pet_num = 1, התנאי לא מתקיים וכתוצאה מכך גם המשתנה message לא מוגדר. <br>
+            כל ניסיון להדפיס את message או להשתמש בו בהמשך התוכנית יגרור שגיאה מסוג NameError שמצביעה על כך שהמשתנה message אינו מוגדר.
+            </p>
+        <p>באופן כללי, שימוש במשתנה שמוגדר (או שאינו מוגדר) כתלות בתנאי לוגי <b>אינו</b> נחשב תכנות טוב.
+          </p>
+        <p>בכדי לוודא שמשתנה תמיד מוגדר, כדאי לתת לו <b>ערך ברירת מחדל</b>
+           (דיפולט). הרבה יותר קל וקריא לבדוק האם משתנה הוא בעל ערך ברירת מחדל מאשר לבדוק האם המשתנה בכלל קיים. <br>
+            במקרה שלנו נוכל לאתחל את המשתנה בכל ערך שנרצה, לדוגמה במחרוזת ריקה:
+            </p>
+        <div class="code">message = ""</div>
+
+        <img class="corner_enrichment-x" onclick="toggle_visibility('corner_4_2_1')">
+      </div>
+      <br>
+      <br>
+      <!-- END CORNER -->
+
+
+          <img class="box_content_close" onclick="toggle_visibility('topic3')">
+        </div>
+        <!-- Closing Topic 3 -->
+
+</body>
+
+</html>

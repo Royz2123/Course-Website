@@ -1,0 +1,285 @@
+ <!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <title>8.2 דוגמאות לשימוש בטיפוס טאפל</title>
+  <meta charset="utf-8">
+  <link href='https://fonts.googleapis.com/css?family=alef' rel='stylesheet'>
+  <link rel="stylesheet" type="text/css" href="../base/neo_css.css">
+  <script src="../base/python_js.js"></script>
+</head>
+
+<body class="python_body">
+  <script>
+    function toggle_visibility(id) {
+      var e = document.getElementById(id);
+      if (e.style.display == 'block')
+        e.style.display = 'none';
+      else
+        e.style.display = 'block';
+    }
+
+    function expand_code(codeid, buttonid) {
+      var c = document.getElementById(codeid);
+      var b = document.getElementById(buttonid);
+      c.style.display = 'block';
+      b.style.display = 'none';
+    }
+
+    function show_answer(id) {
+      var e = document.getElementById(id);
+      e.style.display = 'block';
+    }
+  </script>
+
+  <div class="toc_title">מה נלמד?</div>
+
+      <a name="topic1">
+        <button class="box_title" onclick="toggle_visibility('topic1')">השמה באמצעות טאפל (tuple assignment)</button>
+        <div id="topic1" class="box_content">
+			<p>
+				בפייתון אפשר להשתמש בטאפלים לצורך ביצוע <b>פעולת השמה מרובה</b>. כלומר, זהו קיצור דרך שימושי ואלגנטי עבור השמת ערכים למספר משתנים בפעולה יחידה. 
+			</p>
+
+
+
+		
+
+            <br> דוגמה להשמת שלושה ערכים לשלושה משתנים באמצעות טאפלים (tuple assignment):
+          </p>
+          <div class="code">
+            >>> (food, type, calories) = ("bread", "whole wheat", 80)
+            <br>>>> food
+            <br>
+            <button id="button_8_1_8" class="expand" onclick="expand_code('code_8_1_8', 'button_8_1_8')">
+              <img class="enterbutton">
+            </button>
+            <div class="hiddencode" id="code_8_1_8">
+              <span class="code_answer">bread</span>
+              <br>>>> calories
+              <br>
+              <button id="button_8_1_9" class="expand" onclick="expand_code('code_8_1_9', 'button_8_1_9')">
+                <img class="enterbutton">
+              </button>
+              <div class="hiddencode" id="code_8_1_9">
+                <span class="code_answer">80</span>
+              </div>
+            </div>
+          </div>
+          <p>בדוגמה זו נוצרו בטאפל השמאלי שלושה <b>משתנים</b> (כלומר מצביעים) ובטאפל הימני שלושה <b>ערכים</b>. בפועל, פייתון ביצעה <b>השמה</b> בין
+            כל זוג איברים מתאימים כגון: הצבעה של המשתנה שנקרא food על הערך "bread".
+          </p>
+          <p>לפעולת ההשמה באמצעות טאפלים קיימים שימושים רבים. דוגמה נפוצה, בה נתקלנו ביחידה על משתנים, היא החלפה בין ערכים של
+            שני משתנים ללא צורך במשתנה זמני:
+          </p>
+          <div class="code">
+            <span class="code_comment"># exchange gifts using tuples</span>
+            <br>>>> my_gift, your_gift = your_gift, my_gift
+          </div>
+		  		  
+		 
+          <img class="box_content_close" onclick="toggle_visibility('topic1')">
+        </div> 
+		  
+	<!-- Closing Topic 1 -->
+
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+	<a name="topic2">
+        <button class="box_title" onclick="toggle_visibility('topic2')">החזרת ערכים מפונקציה
+	</button>
+        <div id="topic2" class="box_content">
+			<p>
+			ביחידה שעוסקת בפונקציות למדנו שפונקציה יכולה להחזיר יותר מערך אחד. נראה כיצד מבנה הנתונים טאפל משמש ל<b>פעולת החזרת ערכים</b> זו.
+			</p>
+
+			<p>ניזכר בקטע קוד שמדגים הגדרת פונקציה שמחזירה שני ערכים:</p>
+			
+          <div class="code">
+            >>> def sum_and_avg(a, b):
+            <br>. . . sum_num = a + b
+            <br>. . . avg_num = (a + b) / 2
+            <br>. . . return <mark class="mark_code">sum_num, avg_num</mark>
+          </div>
+          <p>בפועל, הפונקציה sum_and_avg מחזירה את שני הערכים sum_num ו-avg_num בתור <b>טאפל</b>. זכרו, אין הכרח לכתוב את הטאפל עם
+            סוגריים.
+          </p>
+          <p>דוגמה לקריאה לפונקציה sum_and_avg ושימוש בפונקציה type לבדיקת הטיפוס שמוחזר ממנה:
+          </p>
+          <div class="code">
+            >>>
+            <mark class="mark_code">type</mark>(sum_and_avg(3, 6))
+            <br>
+            <button id="button_8_1_10" class="expand" onclick="expand_code('code_8_1_10', 'button_8_1_10')">
+              <img class="enterbutton">
+            </button>
+            <div class="hiddencode" id="code_8_1_10">
+              <span class="code_answer">&lt;class 'tuple'&gt;</span>
+            </div>
+          </div>
+          <p>דוגמה לקריאה לפונקציה sum_and_avg והשמת ערכי ההחזרה לשני משתנים:</p>
+          <div class="code">
+            >>> x, y = sum_and_avg(3, 6)
+            <br> >>> x
+            <br>
+            <button id="button_8_1_11" class="expand" onclick="expand_code('code_8_1_11', 'button_8_1_11')">
+              <img class="enterbutton">
+            </button>
+            <div class="hiddencode" id="code_8_1_11">
+              <span class="code_answer">9</span>
+              <br>>>> y
+              <br>
+              <button id="button_8_1_12" class="expand" onclick="expand_code('code_8_1_12', 'button_8_1_12')">
+                <img class="enterbutton">
+              </button>
+              <div class="hiddencode" id="code_8_1_12">
+                <span class="code_answer">4.5</span>
+              </div>
+            </div>
+          </div>
+		  
+		  
+	
+          <img class="box_content_close" onclick="toggle_visibility('topic2')">
+        </div>
+        <!-- Closing Topic 2 -->
+
+			  
+		  
+		  
+<a name="topic3">
+   <button class="box_title" onclick="toggle_visibility('topic3')">string formatting (יצירת תבנית למחרוזת)
+	</button>
+        <div id="topic3" class="box_content">
+		<p>
+		מקרה נפוץ נוסף בו משתמשים במבנה הנתונים טאפל הוא עבור <b>יצירת תבנית למחרוזת</b> (באנגלית, <b>string formatting</b>). 
+		</p>
+  
+		  
+		  
+		  
+		  
+		  
+		  
+	<p>לפנינו שני משתנים המתארים פריטים שנמצאים בתוך סלסילת פיקניק:</p>
+          <div class="code">
+            >>> fruit = "grapes"
+            <br>>>> drink = "wine"
+          </div>
+          <p>אם נרצה להדפיס תיאור של תכולת הסלסילה, נוכל לבצע זאת בשתי דרכים:
+          </p>
+          <p>דרך אחת, כפי שלמדנו ביחידה על מחרוזות, היא באמצעות <b>שרשור</b>:
+          </p>
+          <div class="code">
+            >>> "The basket contains "
+            <mark class="mark_code">+</mark> fruit
+            <mark class="mark_code">+</mark> " and "
+            <mark class="mark_code">+</mark> drink
+            <mark class="mark_code">+ "."</mark>
+            <br>
+            <span class="code_answer">'The basket contains grapes and wine.'</span>
+
+          </div>
+          <p>באפשרות זו השתמשנו באופרטור '+' על מנת לשרשר בין מחרוזות שהקלדנו בפקודת ההדפסה, לבין מחרוזות שמגיעות מתוך משתנים
+            (fruit ו-drink).</p>
+          <p>דרך נוספת לביצוע פעולת ההדפסה היא באמצעות <b>string formatting</b>.
+            <br> בשיטה זו אנו משתמשים בתו '%' ליצירת תבנית להדפסת מחרוזות. נכתוב s% בכל פעם שנרצה לשבץ מחרוזת המגיעה מתוך משתנה.
+            בסיום פקודת ההדפסה נעביר את המשתנים אותם אנו רוצים לשבץ כ<b>טאפל המלווה בסימן %</b>, תוך הקפדה על סדר האיברים.
+          </p>
+          <p>הדפסת תכולת סלסילת הפיקניק בשיטת string formatting:
+          </p>
+          <div class="code">
+            >>> "The basket contains
+            <mark class="mark_code">%s</mark> and
+            <mark class="mark_code">%s</mark>."
+            <mark class="mark_code">% (fruit, drink)</mark>
+            <br>
+            <span class="code_answer">'The basket contains grapes and wine.'</span>
+
+          </div>
+          <p>שימו לב שבתבנית זו יצרנו <b>הפרדה ברורה</b> בין המחרוזת המוקלדת בפקודת ההדפסה לבין המשתנים. צורה זו נוחה הרבה יותר עבור
+            תחזוקת הקוד, למשל שינוי המשתנים.
+          </p>
+          <br>
+          <p>להזכירכם, בשיטת השרשור ('+') אפשר לשרשר מחרוזות בלבד. אם נרצה לשרשר מספר לדוגמה, נצטרך להמירו לטיפוס מחרוזת. אם
+            לא נבצע המרה מפורשת של המספר למחרוזת - נקבל הודעת שגיאה מסוג TypeError.
+          </p>
+          <p>לעומת זאת, בשיטת string formatting אפשר לשבץ במחרוזת גם <b>טיפוסים נוספים</b>, שאינם מחרוזת. לדוגמה, בכדי להדפיס <b>מספר
+              שלם</b> (int), נכתוב <b>d%</b> במקום בו נרצה לשבצו. אפשרויות נוספות תמצאו בפינת ההעשרה להלן.
+          </p>
+          <p>דוגמה להדפסת מספר ומחרוזת בשיטת string formatting:
+          </p>
+          <div class="code">
+            >>> bottles_num, drink = 3, "wine"
+            <br>>>> "The basket contains
+            <mark class="mark_code">%d</mark> bottles of %s." % (bottles_num, drink)
+            <br>
+            <button id="button_8_1_13" class="expand" onclick="expand_code('code_8_1_13', 'button_8_1_13')">
+              <img class="enterbutton">
+            </button>
+            <div class="hiddencode" id="code_8_1_13">
+              <span class="code_answer">'The basket contains 3 bottles of wine.'</span>
+            </div>
+          </div>
+          <p>בדוגמה לעיל העברנו בתוך פקודת ההדפסה טאפל שמורכב מכמה משתנים. לחלופין, אפשר להעביר משתנה שמצביע על טאפל שמורכב
+            מן האיברים בסדר הנכון.
+          </p>
+          <p>דוגמה להדפסת מספר ומחרוזת באמצעות הגדרת המשתנה basket_content מטיפוס טאפל:
+          </p>
+          <div class="code">
+            >>> basket_content = 3, "wine"
+            <br>>>> "The basket contains %d bottles of %s." %
+            <mark class="mark_code">basket_content</mark>
+            <br>
+            <button id="button_8_1_14" class="expand" onclick="expand_code('code_8_1_14', 'button_8_1_14')">
+              <img class="enterbutton">
+            </button>
+            <div class="hiddencode" id="code_8_1_14">
+              <span class="code_answer">'The basket contains 3 bottles of wine.'</span>
+            </div>
+          </div>
+          <p>או כיצד מחרוזות מורכבות, שמכילות ערכים של משתנים, הפכו בקלות לקריאות למשתמש!
+          </p>
+
+          <!-- CORNER ENRICHMENT -->
+          <br>
+          <span class="corner_title" onclick="toggle_visibility('corner_8_1_3')">
+            <img class="corner_enrichment-icon">
+            <span class="corner_enrichment-title">string formatting</span>
+            <span id="cont_8_1_3" class="corner_continue">להמשך קריאה</span>
+          </span>
+          <div id="corner_8_1_3" class="corner_enrichment-box">
+
+            <p>קיימות וריאציות רבות ואפשרויות אינספור לביצוע string formatting במחרוזות.</p>
+            <p>פרק זה למדנו לבצע פעולות בשיטה הישנה ("old style") באמצעות שימוש בסימן "%". בגרסאות פייתון 2.6 והלאה קיימת אפשרות
+              לבצע את הפעולה גם באמצעות מתודה הנקראת <b>format</b>.
+            </p>
+            <p>בנוסף, ישנן אפשרויות רבות לעיצוב פקודות ההדפסה, בשתי השיטות.
+            </p>
+            <p>
+              על כל אלה תוכלו לקרוא
+              <a class="link" target="_blank" href="https://pyformat.info/">בקישור הזה</a> (להסבר על המתודה format לחצו על "new style"). <b>מומלץ מאוד!</b>
+            </p>
+
+            <img class="corner_enrichment-x" onclick="toggle_visibility('corner_8_1_3')">
+          </div>
+          <br>
+          <!-- END CORNER ENRICHMENT -->
+
+
+          <img class="box_content_close" onclick="toggle_visibility('topic3')">
+        </div>
+        <!-- Closing Topic 3 -->
+
+		
+		
+		
+		
+		
+		
+	

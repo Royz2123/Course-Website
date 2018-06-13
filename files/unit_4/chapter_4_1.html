@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <title>4.1 בלוקים</title>
+  <meta charset="utf-8">
+  <link href='https://fonts.googleapis.com/css?family=alef' rel='stylesheet'>
+  <link rel="stylesheet" type="text/css" href="../base/neo_css.css">
+  <script src="../base/python_js.js"></script>
+</head>
+
+<body class="python_body">
+  <script>
+    function toggle_visibility(id) {
+          var e = document.getElementById(id);
+          if (e.style.display == 'block')
+                e.style.display = 'none';
+          else
+                e.style.display = 'block';}
+
+    function expand_code(codeid, buttonid) {
+          var c = document.getElementById(codeid);
+          var b = document.getElementById(buttonid);
+          c.style.display = 'block';
+          b.style.display = 'none';}
+  </script>
+  <div class="toc_title">מה נלמד?</div>
+
+  <a name="topic1">
+    <button class="box_title" onclick="toggle_visibility('topic1')">בלוקים - תחביר וקונבנציות</button>
+    <div id="topic1" class="box_content">
+
+      <p>כשכותבים תוכנית היא כוללת לרוב "<b>בלוקים</b>": פסקאות של מספר שורות קוד ששייכות לאותו רצף לוגי. לפני שנכיר את בלוק התנאי, נכיר את המבנה הכללי של הבלוק הפייתוני.
+        </p>
+      <p>להלן דוגמה לבלוק בפייתון:
+        </p>
+      <div class="code">
+          <span class="code_function">if</span> (age &lt; 18): <br>
+          &nbsp;&nbsp;&nbsp;<span class="code_function">print</span>("see you next time")<br>
+          &nbsp;&nbsp;&nbsp;guests -= 1
+      </div>
+      <p>מהם מאפייני הבלוק?</p>
+      <p>השורה הראשונה בבלוק היא <b>שורת הפקודה</b> ולאחריה יגיע רצף שורות קוד ששייך לבלוק.
+          שורת הפקודה תמיד מסתיימת ב<b>נקודתיים</b> (כמו פקודת התנאי, if, בדוגמה) ויתר שורות הבלוק נמצאות ב<b>הזחה</b> לשורה הראשונה. <br>
+           הזחה (אינדנטציה, indentation) היא הרחקה של שורה מהשוליים.
+          </p>
+
+      <!-- CORNER -->
+      <br>
+      <span class="corner_title" onclick="toggle_visibility('corner_4_1_1')">
+        <img class="corner_goodwrite-icon">
+        <span class="corner_goodwrite-title">הזחה</span>
+        <span id="cont_4_1_1" class="corner_continue">להמשך קריאה</span>
+      </span>
+      <div id="corner_4_1_1" class="corner_goodwrite-box">
+        <p>ההזחה בפייתון יכולה להתבצע על ידי רווחים או על ידי טאב (TAB). בקורס זה נעשה שימוש ב<b>ארבעה רווחים</b>.
+        </p>
+        <img class="corner_goodwrite-x" onclick="toggle_visibility('corner_4_1_1')">
+      </div>
+      <br>
+      <br>
+      <!-- END CORNER -->
+
+      <!-- CORNER -->
+      <br>
+      <span class="corner_title" onclick="toggle_visibility('corner_4_1_2')">
+        <img class="corner_enrichment-icon">
+        <span class="corner_enrichment-title">קונבנציות הזחה בבלוקים</span>
+        <span id="cont_4_1_2" class="corner_continue">להמשך קריאה</span>
+      </span>
+      <div id="corner_4_1_2" class="corner_enrichment-box">
+        <p>קריאה נוספת על קונבנציות הזחה בבלוקים תוכלו למצוא
+          <a class="link" target="_blank" href="https://www.python.org/dev/peps/pep-0008/#tabs-or-spaces">בקישור הזה</a>.
+        </p>
+        <img class="corner_enrichment-x" onclick="toggle_visibility('corner_4_1_2')">
+      </div>
+      <br>
+      <br>
+      <!-- END CORNER -->
+
+      <!-- CORNER -->
+      <br>
+      <span class="corner_title" onclick="toggle_visibility('corner_4_1_3')">
+        <img class="corner_otherlang-icon">
+        <span class="corner_otherlang-title">תיחום בלוקים</span>
+        <span id="cont_4_1_3" class="corner_continue">להמשך קריאה</span>
+      </span>
+      <div id="corner_4_1_3" class="corner_otherlang-box">
+        <p>הביטו שוב בדוגמת הבלוק בפייתון והשוו אותה לבלוק זהה שנכתב בשפת C: </p>
+        <div class="code">
+            if (age &lt; 18) <br>
+            {<br>
+              &nbsp;&nbsp;&nbsp;printf("see you next time");<br>
+              &nbsp;&nbsp;&nbsp;guests -= 1 <br>
+            }
+        </div>
+        <p>שימו לב שההזחה בפייתון מקבילה לסוגריים המסולסלים { } בשפות תכנות אחרות, כדוגמת: ג'אווה, C++, C ועוד.
+          </p>
+
+        <img class="corner_otherlang-x" onclick="toggle_visibility('corner_4_1_3')">
+      </div>
+      <br>
+      <br>
+      <!-- END CORNER -->
+
+      <!-- CORNER -->
+      <br>
+      <span class="corner_title" onclick="toggle_visibility('corner_4_1_4')">
+        <img class="corner_debug-icon">
+        <span class="corner_debug-title">IndentationError</span>
+        <span id="cont_4_1_4" class="corner_continue">להמשך קריאה</span>
+      </span>
+      <div id="corner_4_1_4" class="corner_debug-box">
+        <p>מה יקרה אם נשלב הזחות מיותרות, כלומר נכניס טאב או רווחים בתוך הקוד?
+            נסו להריץ את הדוגמה הבאה:
+            </p>
+        <div class="code">
+          &gt;&gt;&gt; debugging = "Let's see what happens when I use extra spaces"
+          <br>&gt;&gt;&gt;&nbsp;&nbsp;<span class="code_function">print</span>(debugging)
+          <br>
+          <button id="button_4_1_1" class="expand" onclick="expand_code('code_4_1_1', 'button_4_1_1')">
+            <img class="enterbutton">
+          </button>
+          <div class="hiddencode" id="code_4_1_1">
+            <span class="code_error">
+              &nbsp;&nbsp;File "&lt;stdin&gt;", line 1
+              <br> &nbsp;&nbsp;&nbsp;print(debugging)
+              <br> &nbsp;&nbsp;&nbsp;^
+              <br> IndentationError: unexpected indent</span>
+          </div>
+        </div>
+        <p>מדוע מתקבלת הודעת שגיאה בהרצת קוד זה? <br>
+            מבנה הזחה שאינו נכון עלול להוביל לשגיאה מסוג: <b>IndentationError</b>. במקרה שלנו, הזחה בלתי צפויה. <br>
+            מדוגמה זו אפשר להסיק שהזחות במקומות הנכונים אינן בגדר המלצה (במסגרת קונבנציות לכתיבה נכונה ולשיפור הקריאות), אלא הן <b>חלק מהתחביר</b> של פייתון. חשוב לא להוסיף רווחים מיותרים או טאבים מיותרים, ולא לשלב בין השניים.
+            </p>
+        <img class="corner_debug-x" onclick="toggle_visibility('corner_4_1_4')">
+      </div>
+      <br>
+      <br>
+      <!-- END CORNER -->
+
+      <!-- CORNER -->
+      <br>
+      <span class="corner_title" onclick="toggle_visibility('corner_4_1_5')">
+        <img class="corner_enrichment-icon">
+        <span class="corner_enrichment-title">הפקודה pass</span>
+        <span id="cont_4_1_5" class="corner_continue">להמשך קריאה</span>
+      </span>
+      <div id="corner_4_1_5" class="corner_enrichment-box">
+        <p>לעיתים בכתיבת תוכנית אנחנו פותחים בלוק אבל עדיין לא "ממלאים" אותו בקוד. במקרה כזה נשתמש בפקודה שמדלגת - pass. <br>
+          פקודה זו שימושית בין השאר כשרוצים להריץ חלק מתוכנית כדי לבדוק אותה, אך לפני שכתבנו חלקים אחרים. <br>
+            דוגמה לשימוש ב-pass:
+            </p>
+        <div class="code">
+            <span class="code_function">if</span> python_grade > 90: <br>
+            &nbsp;&nbsp;<span class="code_function">print</span>("I'm so proud of you!")<br>
+            <span class="code_function">else</span>:<br>
+            &nbsp;&nbsp;<mark class="mark_code_function">pass</mark> <span class="code_comment"># TODO: print(&lt;Add a motivational statement&gt;)</span>
+        </div>
+
+        <img class="corner_enrichment-x" onclick="toggle_visibility('corner_4_1_5')">
+      </div>
+      <br>
+      <br>
+      <!-- END CORNER -->
+
+      <img class="box_content_close" onclick="toggle_visibility('topic1')">
+    </div>
+    <!-- Closing Topic 1 -->
+
+</body>
+
+</html>

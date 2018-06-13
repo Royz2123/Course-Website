@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <title>6.1 מהי רשימה</title>
+  <meta charset="utf-8">
+  <link href='https://fonts.googleapis.com/css?family=alef' rel='stylesheet'>
+  <link rel="stylesheet" type="text/css" href="../base/neo_css.css">
+  <script src="../base/python_js.js"></script>
+</head>
+<body class="python_body">
+  <script>
+    function toggle_visibility(id) {
+          var e = document.getElementById(id);
+          if (e.style.display == 'block')
+                e.style.display = 'none';
+          else
+                e.style.display = 'block';}
+
+    function expand_code(codeid, buttonid) {
+          var c = document.getElementById(codeid);
+          var b = document.getElementById(buttonid);
+          c.style.display = 'block';
+          b.style.display = 'none';}
+
+    function show_answer(id) {
+          var e = document.getElementById(id);
+          e.style.display = 'block';}
+  </script>
+  <div class="toc_title">מה נלמד?</div>
+    <button class="box_title" onclick="toggle_visibility('topic1')">הרשימה כמבנה נתונים</button>
+    <div id="topic1" class="box_content">
+
+      <p>ביחידות הקודמות למדנו לעבוד עם אובייקטים מטיפוסים פשוטים יחסית כמו float, int ו-string.
+        <br> ביחידה זו נכיר פתרון למקרים בהם נרצה
+        <b>לאחד</b> מספר אובייקטים כך שנוכל להתייחס אליהם יחד.
+        <br>ה<b>רשימה</b> היא מבנה נתונים (data structure) שימושי מאוד, המתאים לתפקיד זה.
+        <br> לדוגמה, נוכל ליצור רשימה של שמות סרטים, בה כל איבר הוא אובייקט מטיפוס מחרוזת (כגון 'Titanic', 'Star Wars') או רשימה
+        של הגילים של כל בני המשפחה, בה כל איבר הוא מטיפוס int, ועוד.
+      </p>
+      <img class="box_content_close" onclick="toggle_visibility('topic1')">
+    </div>
+    <!-- Closing Topic 1 -->
+
+      <button class="box_title" onclick="toggle_visibility('topic2')">יצירת רשימה</button>
+      <div id="topic2" class="box_content">
+
+        <p>רשימה מסמנים על ידי
+          <b>סוגריים מרובעים [ ]</b>. בכתיבת סוגריים מרובעים אפשר ליצור רשימה, אפילו ריקה.
+          <br> דוגמה ליצירת רשימה ריקה:
+        </p>
+
+        <div class="code">
+          >>> empty_list = []<br>
+          >>> type(empty_list)<br>
+          <button id="button_6_1_1" class="expand" onclick="expand_code('code_6_1_1', 'button_6_1_1')">
+            <img class="enterbutton">
+          </button>
+          <div class="hiddencode" id="code_6_1_1">
+            <span class="code_answer">&lt;class 'list'&gt;<br></span>
+            >>> print(empty_list)<br>
+            <button id="button_6_1_2" class="expand" onclick="expand_code('code_6_1_2', 'button_6_1_2')">
+              <img class="enterbutton">
+            </button>
+            <div class="hiddencode" id="code_6_1_2">
+              <span class="code_answer">[]</span>
+            </div>
+          </div>
+        </div>
+
+        <p>כדי ליצור רשימה המכילה אובייקטים, יש להפריד אותם באמצעות פסיקים. כל אובייקט מכונה
+          <b>איבר</b> ברשימה.
+          <br> דוגמה ליצירת רשימה המכילה את האיברים הראשונים בסדרת פיבונאצ'י (סדרה בה כל איבר הוא סכום שני האיברים הקודמים לו):
+        </p>
+
+        <div class="code">
+          >>> fibo_list = [1, 1, 2, 3, 5, 8, 13, 21]<br>
+          >>> fibo_list<br>
+          <span class="code_answer">[1, 1, 2, 3, 5, 8, 13, 21]</span>
+        </div>
+
+        <p>הרשימה fibo_list מכילה שמונה מספרים, כלומר איברים מהטיפוס int, אולם איברים ברשימה יכולים להיות גם מטיפוסים שונים.
+          <br> דוגמה לרשימה עם איברים מטיפוסים שונים:</p>
+        <div class="code">
+          >>> crazy_list = [2, "The Big Bang Theory!", True, 4.6]<br>
+          >>> crazy_list<br>
+          <span class="code_answer">[2, 'The Big Bang Theory!', True, 4.6]</span>
+        </div>
+
+        <img class="box_content_close" onclick="toggle_visibility('topic2')">
+      </div>
+      <!-- Closing Topic 2 -->
+
+        <button class="box_title" onclick="toggle_visibility('topic3')">גישה לאיברים ברשימה</button>
+        <div id="topic3" class="box_content">
+
+          <p>כל איבר ברשימה מוגדר על ידי
+            <b>מיקום</b> (אינדקס). כלומר, קיימת חשיבות לסדר האיברים ברשימה.
+            <br> בדומה למחרוזת, גם ברשימה המיקומים מתחילים מאפס, ואפשר לגשת לאיבר מסוים על ידי ציון המיקום שלו.</p>
+          <p>דוגמה לגישה לאיברים ברשימה:</p>
+
+          <div class="code">
+            >>> crazy_list[0]<br>
+            <button id="button_6_2_1" class="expand" onclick="expand_code('code_6_2_1', 'button_6_2_1')">
+              <img class="enterbutton">
+            </button>
+            <div class="hiddencode" id="code_6_2_1">
+              <span class="code_answer">2</span>
+              <br>>>> crazy_list[1]<br>
+              <button id="button_6_2_2" class="expand" onclick="expand_code('code_6_2_2', 'button_6_2_2')">
+                <img class="enterbutton">
+              </button>
+              <div class="hiddencode" id="code_6_2_2">
+                <span class="code_answer">'The Big Bang Theory!'</span>
+                <br>>>> crazy_list[2]<br>
+                <button id="button_6_2_3" class="expand" onclick="expand_code('code_6_2_3', 'button_6_2_3')">
+                  <img class="enterbutton">
+                </button>
+                <div class="hiddencode" id="code_6_2_3">
+                  <span class="code_answer">True</span>
+                  <br>>>> crazy_list[3]<br>
+                  <button id="button_6_2_4" class="expand" onclick="expand_code('code_6_2_4', 'button_6_2_4')">
+                    <img class="enterbutton">
+                  </button>
+                  <div class="hiddencode" id="code_6_2_4">
+                    <span class="code_answer">4.6</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <img class="box_content_close" onclick="toggle_visibility('topic3')">
+        </div>
+        <!-- Closing Topic 3 -->
+
+          <button class="box_title" onclick="toggle_visibility('topic4')">רשימה בתוך רשימה</button>
+          <div id="topic4" class="box_content">
+
+            <p>כפי שראינו, רשימה יכולה להכיל איברים מטיפוסים שונים. בהתאמה לכך, רשימה יכולה אף להכיל איברים מהטיפוס "רשימה".</p>
+            <p>דוגמה לרשימה המכילה שני איברים שכל אחד מהם רשימה בפני עצמו:</p>
+
+            <div class="code">
+              >>> unique = [["a", "list"], ["of", "lists"]]<br>
+              >>> unique<br>
+              <span class="code_answer">[['a', 'list'], ['of', 'lists']]</span>
+            </div>
+
+            <p>בואו נראה כיצד לגשת לאיברים של רשימה בתוך רשימה.
+              <br> כאשר יש רשימה "חיצונית" המכילה רשימה "פנימית", ראשית יש לגשת למיקום של האיבר ה"חיצוני" ואז לגשת לאיבר ה"פנימי"
+              הרצוי.
+            </p>
+            <p>דוגמה לגישה לאיברים ברשימה בתוך רשימה:</p>
+
+            <div class="code">
+              >>> unique<br>
+              <span class="code_answer">[['a', 'list'], ['of', 'lists']]</span>
+              <br>>>> unique[1]<br>
+              <span class="code_answer">['of', 'lists']</span>
+              <br>>>> unique[1][0]<br>
+              <span class="code_answer">'of'</span>
+              <br>>>> unique[0][1]<br>
+              <span class="code_answer">'list'</span>
+              <br>>>> unique [0][0]<br>
+              <span class="code_answer">'a'</span>
+            </div>
+
+            <p>ייתכן שתהיתם מתי שימושי להשתמש במבנה של רשימה בתוך רשימה. מבנה זה נוח לשימוש כאשר מארגנים יחד נתונים מסוגים שונים.
+            </p>
+            <p>לדוגמה, לפניכם רשימה בה כל איבר מכיל רשימה שכוללת שם, שנת לידה ותחום עיסוק.
+              <br>הביטו ברשימה ובאופן הגישה לנתונים ברשימה:</p>
+
+            <div class="code">
+              >>> influential_people = [["Mark Zuckerberg", 1984, "Computer programmer"], ["Sheryl Sandberg", 1969, "Technology executive"],
+              ["Albert Einstein", 1879, "Theoretical physicist"]]<br>
+              >>> influential_people[0]<br>
+              <button id="button_6_3_1" class="expand" onclick="expand_code('code_6_3_1', 'button_6_3_1')">
+                <img class="enterbutton">
+              </button>
+              <div class="hiddencode" id="code_6_3_1">
+                <span class="code_answer">['Mark Zuckerberg', 1984, 'Computer programmer']</span>
+                <br>>>> influential_people[0][0]<br>
+                <button id="button_6_3_2" class="expand" onclick="expand_code('code_6_3_2', 'button_6_3_2')">
+                  <img class="enterbutton">
+                </button>
+                <div class="hiddencode" id="code_6_3_2">
+                  <span class="code_answer">'Mark Zuckerberg'</span>
+                  <br>>>> influential_people[0][1]<br>
+                  <button id="button_6_3_3" class="expand" onclick="expand_code('code_6_3_3', 'button_6_3_3')">
+                    <img class="enterbutton">
+                  </button>
+                  <div class="hiddencode" id="code_6_3_3">
+                    <span class="code_answer">1984</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Interactive Question 6_1_1 -->
+            <img class="corner_iquestion-icon">
+            <div class="corner_iquestion-box" dir="ltr">
+              <div class="corner_iquestion-title" dir="rtl">כדי לוודא שלא התבלבלתם, איזו מן הפקודות הבאות תדפיס את השם '‏Sheryl Sandberg‏'?</div>
+
+              <label class="corner_iquestion-option" onclick="show_answer('iquestion_6_1_1-a1')">
+                <input type="radio" name="iquestion_6_1_1" class="corner_iquestion-radio">influential_people[2]‎‏</label>
+                <div class="corner_iquestion-feedback" dir="rtl">
+                  <span id="iquestion_6_1_1-a1" class="corner_iquestion-i_answer">פקודה זו תדפיס ['Albert Einstein', 1879, 'Theoretical physicist'], נסו שוב.</span>
+                </div>
+              <label class="corner_iquestion-option" onclick="show_answer('iquestion_6_1_1-a2')">
+                <input type="radio" name="iquestion_6_1_1" class="corner_iquestion-radio">influential_people[1][0]</label>
+                <div class="corner_iquestion-feedback" dir="rtl">
+                  <span id="iquestion_6_1_1-a2" class="corner_iquestion-c_answer">אכן! הידעתם? בין תפקידיה של Sheryl Sandberg: מנהלת התפעול הראשית של פייסבוק!</span>
+                </div>
+              <label class="corner_iquestion-option" onclick="show_answer('iquestion_6_1_1-a3')">
+                <input type="radio" name="iquestion_6_1_1" class="corner_iquestion-radio">influential_people[1][1]</label>
+                <div class="corner_iquestion-feedback" dir="rtl">
+                  <span id="iquestion_6_1_1-a3" class="corner_iquestion-i_answer">פקודה זו תדפיס 1969, נסו שוב.</span>
+                </div>
+              <label class="corner_iquestion-option" onclick="show_answer('iquestion_6_1_1-a4')">
+                <input type="radio" name="iquestion_6_1_1" class="corner_iquestion-radio">influential_people[2][0]</label>
+                <div class="corner_iquestion-feedback" dir="rtl">
+                  <span id="iquestion_6_1_1-a4" class="corner_iquestion-i_answer">פקודה זו תדפיס 'Albert Einstein', נסו שוב.</span>
+                </div>
+
+              <img class="corner_iquestion-x">
+            </div><br>
+
+
+
+            <img class="box_content_close" onclick="toggle_visibility('topic4')">
+          </div>
+          <!-- Closing Topic 4 -->
+
+            <button class="box_title" onclick="toggle_visibility('topic5')">יצירת רשימה באמצעות ()list</button>
+            <div id="topic5" class="box_content">
+
+              <p>למדנו כיצד ליצור רשימה באמצעות סוגריים מרובעים [ ]. דרך נוספת ליצירת רשימה חדשה היא בעזרת הפונקציה
+                <b>list</b>.
+                <br> דוגמה ליצירת רשימה ריקה באמצעות ()list: </p>
+
+              <div class="code">
+                >>> empty_list = list()<br>
+                >>> empty_list<br>
+                <span class="code_answer">[]</span>
+              </div>
+
+              <p>באמצעות ()list אפשר גם ליצור רשימה ממחרוזת. זו אינה רשימה ריקה, אלא רשימה שכל איבר בה הוא תו במחרוזת המקורית.
+                <br>דוגמה ליצירת רשימה ממחרוזת:</p>
+
+              <div class="code">
+                >>> letters = "science"<br>
+                >>> list_of_letters = list(letters)<br>
+                >>> list_of_letters <br>
+                <span class="code_answer">['s', 'c', 'i', 'e', 'n', 'c', 'e']</span>
+              </div>
+
+              <span class="corner_title" onclick="toggle_visibility('corner_6_1_1')">
+                <img class="corner_enrichment-icon">
+                <span class="corner_enrichment-title">שמירת איברי רשימה למשתנים</span>
+                <span class="corner_continue">להמשך קריאה</span>
+              </span>
+              <div id="corner_6_1_1" class="corner_enrichment-box">
+                <p>לפניכם טריק שימושי בעבודה עם רשימות: אפשר לשמור בקלות איברי רשימה לתוך משתנים!
+                  <br> דוגמה להשמת איברי רשימה למשתנים:</p>
+
+                <div class="code">
+                  >>> cool_trick = [1, 2, 3]<br>
+                  >>> a, b, c = cool_trick<br>
+                  >>> a<br>
+                  <span class="code_answer">1</span>
+                  <br>>>> c<br>
+                  <span class="code_answer">3</span>
+                </div>
+
+                <p>שימו לב: עליכם להקפיד לייצר משתנים כמספר האיברים ברשימה אחרת מתקבלת הודעת שגיאה!</p>
+                <img class="corner_enrichment-x" onclick="toggle_visibility('corner_6_1_1')">
+              </div><br><br>
+
+              <img class="box_content_close" onclick="toggle_visibility('topic5')">
+            </div>
+            <!-- Closing Topic 5 -->
+<br>
+</body>
+
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <title>0.2 מבנה הקורס הווירטואלי</title>
+  <meta charset="utf-8">
+  <link href='https://fonts.googleapis.com/css?family=alef' rel='stylesheet'>
+  <link rel="stylesheet" type="text/css" href="../base/neo_css.css">
+  <script src="../base/python_js.js"></script>
+</head>
+
+<body class="python_body">
+  <script>
+    function toggle_visibility(id) {
+          var e = document.getElementById(id);
+          if (e.style.display == 'block')
+                e.style.display = 'none';
+          else
+                e.style.display = 'block';}
+
+    function show_answer(id) {
+          var e = document.getElementById(id);
+          e.style.display = 'block';}
+
+  </script>
+  <div class="toc_title">מה נלמד?</div>
+  <a name="topic1">
+    <button class="box_title" onclick="toggle_visibility('topic1')">מבנה הקורס</button>
+    <div id="topic1" class="box_content">
+
+      <p><b>הקורס self.py</b> מחולק למספר <b>יחידות לימוד</b>: אתם נמצאים כרגע ביחידת המבוא, ולאחריה מגיעות תשע יחידות תוכן. כל יחידת לימוד
+        מחולקת ל<b>פרקים</b>, על פי נושאים מרכזיים.</p>
+      <p>חלק מהתוכן מאוגד תחת <b>פינות תוכן</b> שילוו אתכם לאורך הלימוד:</p>
+
+        <table cellpadding="20">
+          <tbody>
+          <tr>
+              <td style="border:0px;"><img class="corner_debug-icon"></td>
+              <td style="border:0px;">
+                <b>פינת דיבוג</b> <br>
+                בפינה זו תכירו שגיאות נפוצות וכלים כיצד להתמודד איתן ולהימנע מטעויות.
+              </td>
+          </tr>
+          <tr>
+              <td style="border:0px;"><img class="corner_goodwrite-icon"></td>
+              <td style="border:0px;">
+                <b>פינת לכתוב טוב</b> <br>
+                בפינה זו תרכשו הרגלי כתיבת קוד נכונים ותכירו קונבנציות הנהוגות בכתיבת קוד בשפת פייתון.
+              </td>
+          </tr>
+          <tr>
+              <td style="border:0px;"><img class="corner_otherlang-icon"></td>
+              <td style="border:0px;">
+                <b>פינת בשפה אחרת</b> <br>
+                בפינה זו נעמוד על הבדלים מהותיים בין שפת פייתון לשפות תכנות אחרות, כדוגמת שפת C אותה אתם כבר מכירים.
+              </td>
+          </tr>
+          <tr>
+              <td style="border:0px;"><img class="corner_enrichment-icon"></td>
+              <td style="border:0px;">
+                <b>פינת העשרה</b> <br>
+                בפינה זו תחשפו למקורות ידע והרחבה נוספים ונכיר לכם טיפים שימושיים.
+              </td>
+          </tr>
+        </table>
+
+      <p>בכדי <b>לרכוש את הידע</b> בפייתון תוכלו ללמוד באמצעות קריאה ו/או צפייה בסרטוני הווידאו שהכנו עבורכם. אבל שימו לב, בכדי
+        <b>לדעת לתכנת</b> בפייתון הדבר החשוב ביותר הוא לתרגל, לתרגל ולתרגל.</p>
+      <p>כל פרק בקורס מלווה ב<b>תרגול</b>: תיתקלו בתרגילים מסוגים שונים וברמות קושי ואתגר משתנות. את כל התרגילים תוכלו להגיש ולקבל
+        עליהם משוב אוטומטי מיידי. את תרגילי כתיבת קוד תתבקשו להגיש באמצעות מערכת Auto Feedback שמאפשרת בדיקה אוטומטית לתוכניות
+        שתכתבו.
+      </p>
+      <p>בנוסף לתרגילים שבסוף הפרקים, הקורס מלווה ב<b>משימה מתגלגלת</b>: משימת תכנות שתפתחו בשלבים. עם סיום הקורס יהיה בידכם פרויקט
+        שלם שכתבתם בשפת פייתון! </p>
+      <p>אנו מעודדים אתכם להתנסות, לחקור ולהעמיק ככל האפשר. </p>
+
+      <img class="box_content_close" onclick="toggle_visibility('topic1')">
+    </div>
+    <!-- Closing Topic 1 -->
+
+    <a name="topic2">
+      <button class="box_title" onclick="toggle_visibility('topic2')">מודל הערכה</button>
+      <div id="topic2" class="box_content">
+
+        <p>כאמור, הקורס מבוסס על קריאה/צפייה בתוכן הלימוד ועל תרגול בסוף כל פרק ובסוף כל יחידת לימוד. עליכם לפתור ולהגיש את
+          כל התרגילים בקורס, ותוכלו להגיש כמה פעמים שתרצו <b>עד המועד האחרון</b> שהוגדר במערכת עבור כל משימה.
+        </p>
+        <p>ההערכה הסופית שלכם בקורס תתבסס על פתרון התרגילים והמשימות ותהווה שקלול של שלושה מרכיבים: </p>
+        <ul>
+          <li>הגשת התרגילים במערכת NEO (המערכת הזו)</li>
+          <li>הגשת תרגילי כתיבת הקוד במערכת Auto Feedback </li>
+          <li>הערכת המדריך שלכם עבור שתי משימות במהלך הקורס (תרגיל באמצע הקורס והמשימה המסכמת של הקורס)
+          </li>
+        </ul>
+        <p>שימו לב, במהלך הלימוד תיתקלו מידי פעם בשאלה המוטמעת בתוכן. שאלות אלה הן עבורכם - חשבו וענו עליהן, אך תשובותיכם אינן מוגשות ואינן נשמרות במערכת.
+          </p>
+          <!-- Interactive Question 0_2_1 -->
+    			<img class="corner_iquestion-icon">
+    			<div class="corner_iquestion-box" dir="rtl">
+    				<div class="corner_iquestion-title" dir="rtl">לדוגמה: מהי הדרך המומלצת ללמוד בקורס self.py?</div>
+
+    				<label class="corner_iquestion-option" onclick="show_answer('iquestion_0_2_1-a1')">
+    					<input type="radio" name="iquestion_0_2_1" class="corner_iquestion-radio">לקרוא את החומר ו/או לצפות בסרטונים</label>
+    					<div class="corner_iquestion-feedback" dir="rtl">
+    						<span id="iquestion_0_2_1-a1" class="corner_iquestion-i_answer">אכן, אך זו אינה התשובה המלאה, נסו שוב.</span>
+    					</div>
+            <label class="corner_iquestion-option" onclick="show_answer('iquestion_0_2_1-a2')">
+    					<input type="radio" name="iquestion_0_2_1" class="corner_iquestion-radio">לבצע את כל משימות התרגול</label>
+    					<div class="corner_iquestion-feedback" dir="rtl">
+    						<span id="iquestion_0_2_1-a2" class="corner_iquestion-i_answer">אכן, אך זו אינה התשובה המלאה, נסו שוב.</span>
+    					</div>
+            <label class="corner_iquestion-option" onclick="show_answer('iquestion_0_2_1-a3')">
+    					<input type="radio" name="iquestion_0_2_1" class="corner_iquestion-radio">לתכנן את חלוקת הזמנים כך שלא יישארו משימות לרגע האחרון</label>
+    					<div class="corner_iquestion-feedback" dir="rtl">
+    						<span id="iquestion_0_2_1-a3" class="corner_iquestion-i_answer">אכן, אך זו אינה התשובה המלאה, נסו שוב.</span>
+    					</div>
+            <label class="corner_iquestion-option" onclick="show_answer('iquestion_0_2_1-a4')">
+    					<input type="radio" name="iquestion_0_2_1" class="corner_iquestion-radio">לעזור ולהיעזר בלומדים אחרים</label>
+    					<div class="corner_iquestion-feedback" dir="rtl">
+    						<span id="iquestion_0_2_1-a4" class="corner_iquestion-i_answer">אכן, אך זו אינה התשובה המלאה, נסו שוב.</span>
+    					</div>
+            <label class="corner_iquestion-option" onclick="show_answer('iquestion_0_2_1-a5')">
+    					<input type="radio" name="iquestion_0_2_1" class="corner_iquestion-radio">כל התשובות נכונות</label>
+    					<div class="corner_iquestion-feedback" dir="rtl">
+    						<span id="iquestion_0_2_1-a5" class="corner_iquestion-c_answer">נכון מאוד, שילוב זה הוא המפתח להצלחה!</span>
+    					</div>
+
+    				<img class="corner_iquestion-x">
+          </div><br>
+        <p>בכדי ללמוד באופן המעמיק ביותר ולקבל את מירב הנקודות השתדלו לחלק את הזמן שלכם בתבונה - למדו את החומר בצורה הדרגתית
+          והשאירו די זמן לתרגל, לחזור על החומר, לתקן, וחוזר חלילה.
+        </p>
+
+        <img class="box_content_close" onclick="toggle_visibility('topic2')">
+      </div>
+      <!-- Closing Topic 2 -->
+
+      <a name="topic2a">
+        <button class="box_title" onclick="toggle_visibility('topic2a')">דרישות מן הדפדפן ללמידה בקורס</button>
+        <div id="topic2a" class="box_content">
+          <p>הקורס self.py מותאם בצורה המיטבית לצפייה ב<b>דפדפן כרום</b>. אם הדפדפן כרום אינו מותקן לכם על המחשב, תוכלו לעשות זאת <a class="link" target="_blank" href="https://www.google.com/intl/iw_il/chrome/">בקישור הזה</a>.</p>
+
+          <h3 class="bold_title">התוספים Allow Copy ו-Paste It</h3>
+          <p>במהלך הקורס תרצו לעיתים להעתיק או להדביק קטעי טקסט או קטעי קוד מן הדף בדפדפן או לתוכו. כיוון שהגדרות ברירת המחדל אינן מאפשרות זאת עבור כל דפי הקורס, עליכם לאפשר העתקת טקסט והדבקת טקסט באופן יזום.</p>
+          <p>אנא התקינו שני תוספים עבור דפדפן הכרום שלכם:</p>
+          <ol>
+            <li><b>התוסף Allow Copy</b><br>
+              <p>בכדי לאפשר את פעולת ההעתקה באופן גורף, לאחר שתפתחו חלון של הדפדפן כרום, אנא היכנסו ל<a class="link" target="_blank" href="https://chrome.google.com/webstore/detail/allow-copy/abidndjnodakeaicodfpgcnlkpppapah">קישור הזה</a>, לחצו על כפתור ההוספה ואשרו לדפדפן להוסיפו.</p>
+              <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_0/graphics/img_0_2_0a.png">
+              <p>לאחר שהתוסף יותקן, כאשר תרצו להעתיק קטע מן הדפדפן שאינו בר-העתקה, לחצו על האייקון הקטן שיתווסף לכם בראש הדפדפן.</p>
+            </li>
+            <li><b>התוסף Paste It</b><br>
+              <p>בכדי לאפשר את פעולת ההדבקה באופן גורף, לאחר שתפתחו חלון של הדפדפן כרום, אנא היכנסו ל<a class="link" target="_blank" href="https://chrome.google.com/webstore/detail/paste-it/flkmjdnckhfkjkldogocpnmljokfnbln">קישור הזה</a>, לחצו על כפתור ההוספה ואשרו לדפדפן להוסיפו.</p>
+              <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_0/graphics/img_0_2_0b.png">
+              <p>לאחר שהתוסף יותקן, כאשר תרצו להדביק תוכן לתוך הדפדפן, יתכן שתידרשו ללחוץ על האייקון הקטן שיתווסף לכם בראש הדפדפן וייתכן שתיפתח לכם לשונית עם תיבת טקסט לתוכה תתבקשו להדביק את התוכן, ורק לאחר מכן תוכלו להדביקו למקום הרצוי.</p>
+              <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_0/graphics/img_0_2_0c.png">
+            </li>
+          </ol>
+          <p>תוספים אלה יהיו לכם לעזר רב בהמשך הקורס.</p>
+          <img class="box_content_close" onclick="toggle_visibility('topic2a')">
+        </div>
+        <!-- Closing Topic 2a -->
+
+
+
+
+
+
+      <a name="topic3">
+        <button class="box_title" onclick="toggle_visibility('topic3')">היכרות עם המערכת "ניאו" (NEO)</button>
+        <div id="topic3" class="box_content">
+          <p><b>מערכת ניאו </b>(NEO) היא מערכת ניהול למידה שדומה מאוד למערכת EDU שאתם מכירים מקורסים קודמים בתוכנית. בשונה ממערכת EDU, מערכת זו מתאימה ל"אירוח" קורסים וירטואליים, אחד מהם הוא הקורס self.py.</p>
+          <p>לאחר הרישום לקורס, יופיע מסך "קטלוג קורסים" ובו הקישור לקורס self.py. בחרו בקורס ותגיעו למסך הראשי ובו פירוט יחידות הלימוד של הקורס.</p>
+
+          <h3 class="bold_title">קטלוג יחידות לימוד של הקורס self.py</h3>
+          <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_0/graphics/img_0_2_1.png">
+          <p>במסך יחידות הלימוד (שיעורים) מוצג קטלוג יחידות הלימוד בקורס. בכל ריבוע בקטלוג מופיע שם היחידה ומספרה, מספר הפרקים (החלקים) ממנו היא מורכבת ומד התקדמות המציין את אחוז המשימות שסיימתם ביחידה.</p>
+          <p>בצד שמאל של המסך מוצג מד התקדמות כללי בקורס והודעות נוספות.</p>
+          <p>בחירה באחת מיחידות הלימוד בקטלוג תוביל אתכם ללימוד הפרק הראשון ביחידה זו.</p>
+
+          <h3 class="bold_title">פרק לימוד</h3>
+          <p>כאמור, כל יחידת לימוד מורכבת ממספר פרקים. כל פרק מכיל תוכן לימוד שמחולק לנושאים, ותרגול.</p>
+          <p>דוגמה למסך תוכן של הפרק "6.1 מהי רשימה?" ביחידת הלימוד "רשימות":</p>
+          <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_0/graphics/img_0_2_2.png">
+          <p>נביט על מסך תוכן של פרק בקורס:</p>
+          <p>כל פרק מחולק לנושאים. לחיצה על כותרת הנושא תחשוף את תוכנו.<br>
+          שימו לב, אם הפרק כולל סרטון וידאו הוא יופיע בראש הדף. תוכלו לצפות בסרטון בנוסף או במקום קריאת התוכן הכתוב, לבחירתכם.</p>
+          <p>בתחתית הדף מופיע הכפתור <b>בצעו תרגול</b>. לאחר שלמדתם את התוכן לחצו עליו בכדי לעבור לתרגילים של הפרק.</p>
+          <p>להזכירכם, חלק מן התרגילים מובנים במערכת "ניאו" ותקבלו עליהם משוב אוטומטי לאחר שתגישו את התרגול (כלומר תסיימו את כל התרגילים בפרק). לעומת זאת, תרגילי כתיבת קוד ששזורים לאורך הפרקים יפנו אתכם לבדוק ולהגיש את עבודתכם <b>גם </b>במערכת נוספת, המערכת AutoFeedback.</p>
+
+          <img class="box_content_close" onclick="toggle_visibility('topic3')">
+        </div>
+        <!-- Closing Topic 3 -->
+
+      <a name="topic4">
+        <button class="box_title" onclick="toggle_visibility('topic4')">היכרות עם המערכת "משוב אוטומטי" (AutoFeedback)</button>
+        <div id="topic4" class="box_content">
+
+
+          <p>כאשר תתבקשו במהלך התרגולים בקורס לכתוב ולהגיש תוכניות בפייתון, תופנו למערכת חיצונית שמאפשרת לכם לבדוק את התוכניות ולקבל עליהן משוב אוטומטי מיידי. המערכת נקראת <b>AutoFeedback platform</b>.</p>
+          <p>הכניסה לדף ההתחברות למערכת הבדיקות האוטומטיות היא מן הקישור הבא: <a class="link" target="_blank" href="http://autofeedback.cyber.org.il">http://autofeedback.cyber.org.il</a></p>
+          <p>נכיר את אופן העבודה במערכת AutoFeedback ודוגמאות למסכים נבחרים בהם תיתקלו בעבודתכם עם המערכת.</p>
+
+          <h3 class="bold_title">התחברות למערכת</h3>
+          <p>כדי לעבוד במערכת המשוב האוטומטי עליכם להתחבר תחילה. הכניסו את שם המשתמש והסיסמה שלכם ולאחר מכן לחצו על הכפתור "Log in" (התחברות).</p>
+          <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_0/graphics/img_0_2_3.png">
+          <p>לידיעתכם, במקרה ששכחתם את הסיסמה שלכם, תוכלו לשחזר אותה באמצעות לחיצה על הקישור "?Lost password" במסך ההתחברות למערכת.</p>
+
+          <h3 class="bold_title">דף הקורס</h3>
+          <p>לאחר ההתחברות, תחת הכותרת "My courses" (הקורסים שלי), יופיע לכם שם הקורס המורכב מקוד הקורס, מספר הכיתה והמוקד. לחצו על שם הקורס.</p>
+          <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_0/graphics/img_0_2_4.png">
+          <p>לאחר בחירה בקורס פייתון יפתח בפניכם דף עם רשימת כל התרגילים שכוללים כתיבת קוד בקורס. לצד כל תרגיל מופיע סרגל התקדמות שמייצג את סטטוס ההגשה (הבדיקות על ידי המערכת) של התרגיל.</p>
+          <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_0/graphics/img_0_2_5.png">
+          <p>שימו לב, התרגילים אינם מאורגנים בקבוצות על פי יחידות הלימוד. סדר העבודה על תרגילים וכן תרגילים נוספים שאינם כוללים כתיבת קוד מסודרים ומקובצים עבורכם במערכת "ניאו". עבדו על תרגיל כתיבת קוד כאשר תופנו אליו מתוך המערכת "ניאו".</p>
+          <p>לחיצה על תרגיל כלשהו תוביל אתכם לדף התרגיל בו תוכלו להגישו לבדיקה על ידי מערכת המשוב האוטומטי.</p>
+
+          <h3 class="bold_title">הגשת תרגיל לבדיקה</h3>
+          <p>באפשרותכם להגיש תרגיל לבדיקה על ידי המערכת באחת משתי דרכים:
+          <ol>
+            <li>העלאת קובץ קוד מהמחשב (עם סיומת py.)</li>
+            <li>כתיבת קוד ישירות בדף התרגיל</li>
+          </ol></p>
+          <br>
+          <b>העלאת קובץ קוד מהמחשב (עם סיומת py.)</b> מתבצעת באמצעות לחיצה על כפתור "upload solution from computer".
+          <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_0/graphics/img_0_2_6.png">
+          <b>כתיבת קוד ישירות בדף התרגיל</b> נעשית בתוך החלונית בדומה לדוגמה הבאה:
+          <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_0/graphics/img_0_2_7.png">
+          <p>לאחר העלאת הקובץ או כתיבת הקוד לחצו על הכפתור <b>Submit </b> (הגש), בכדי לשלוח את התרגיל לבדיקה על ידי המערכת ולקבל את המשוב האוטומטי.</p>
+          <p>תוכלו לבדוק תרגילים ולקבל עליהם משוב כמה פעמים שתרצו (במסגרת המועד שהוגדר להגשת התרגיל).</p>
+
+          <h3 class="bold_title">מבנה המשוב</h3>
+          <p>מבנה המשוב שיוצג לכם נחלק לשני סוגים, בהתאם לסוג ההרצות שהתבצעו (לתרגילים שונים מתאימות הרצות שונות): משוב <b>תרחישים </b>ומשוב <b>unit testing </b>(עבור פונקציות).</p>
+          <p>נסביר כיצד נראה כל סוג של משוב וכיצד ללמוד ממנו.</p>
+          <p>דוגמה לפלט מסוג <b>משוב תרחישים</b>:</p>
+          <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_0/graphics/img_0_2_8.png">
+          <p>כפי שאפשר לראות בתמונה, המשוב מסוג "תרחישים" מופיע בחלונית שמעליו וכולל:
+          <ul>
+            <li>שורת כותרת ובה ניקוד כללי באחוזים. המספר מייצג את אחוז התרחישים מבין התרחישים שהמערכת הריצה שהסתיימו בהצלחה. בדוגמה זו המערכת הריצה שני תרחישים בלבד ומתוכם אחד הסתיים בהצלחה.</li>
+            <li>טבלה ובה שורת פירוט עבור כל תרחיש שהמערכת הריצה:
+              <ul>
+                <li>תרחיש אשר הסתיים בהצלחה מסומן ב-<span style="color:#49D682; font-weight: bold">v ירוק</span>. לאחר מכן מתואר התרחיש בקצרה.</li>
+                <li>תרחיש אשר נכשל (כלומר הפלט שהתקבל אינו זהה לפלט הצפוי) מסומן ב-<span style="color:#F24738; font-weight: bold">x אדום</span>. לאחר מכן מתואר בקצרה התרחיש והסבר קצר על הבעיה שהתקבלה בהרצה.</li>
+              </ul>
+            </li>
+          </ul>
+          לפירוט אודות הצלחה או כישלון של בדיקה (הרצה) כלשהי, לחצו על הקישור "פרטים נוספים".</p>
+          <p>דוגמה לפרטים שמוצגים עבור תרחיש שנכשל:</p>
+          <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_0/graphics/img_0_2_9.png">
+          <p>דוגמה לפלט מסוג <b>משוב unit testing</b> (שנועד לבדיקת פונקציות):</p>
+          <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_0/graphics/img_0_2_10.png">
+          <p>כפי שאפשר לראות בתמונה, המשוב מסוג "תרחישים" מופיע בחלונית שמעליו וכולל:</p>
+
+          <ul>
+            <li>שורת כותרת ובה ניקוד כללי באחוזים. המספר מייצג את אחוז ההרצות שהסתיימו בהצלחה. בדוגמה זו המערכת הריצה שלוש בדיקות ומתוכן שתיים הסתיימו בהצלחה.</li>
+            <li>טבלה ובה שורה לכל הרצה:
+              <ul>
+                <li>עמודה ימנית שמציגה אם הבדיקה הסתיימה בהצלחה (<span style="color:#49D682; font-weight: bold">v ירוק</span>) או בכישלון (<span style="color:#F24738; font-weight: bold">x אדום</span>).</li>
+                <li>עמודה שבכותרת שלה חתימת הפונקציה. בכל שורה מפורטת קריאה לפונקציה עם ארגומנטים שונים.</li>
+                <li>עמודה עם הכותרת "צפוי" שמתארת מה הפלט לו ציפתה המערכת בהרצת הפונקציה.</li>
+                <li>עמודה עם הכותרת "התקבל בפועל" שמתארת מהו הפלט שהוחזר בפועל בעקבות הרצת הפונקציה.</li>
+              </ul>
+            </li>
+          </ul>
+          <br>
+          <p>שימו לב, קיימים שני מקרים בהם המערכת <b>לא תבדוק</b> את תוכן ההגשה.</p>
+          <ol>
+            <li><b>שגיאה תחבירית בקוד (Syntax Error)</b><br>
+            שגיאת תחביר מתייחסת לאופן שבו הקוד מסודר, בדגש על מבנה השפה וחוקיה: הזחות, סוגריים מתאימים ועוד. במצב של שגיאת תחביר בקוד שלכם, המערכת תציג בפניכם את ההודעה:</li>
+            <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_0/graphics/img_0_2_11.png">
+
+            <li><b>שגיאת אי תאימות של חתימת הפונקציה</b> (עבור משוב unit testing)<br>
+            בתרגילי כתיבת פונקציות תקבלו הנחיות ברורות בנוגע לאופן כתיבת חתימת הפונקציה. כתיבת חתימת הפונקציה באופן שונה מזה שהוגדר בהוראות בקורס, תציג בפניכם את ההודעה:</li>
+            <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_0/graphics/img_0_2_12.png">
+          </ol>
+
+          <h3 class="bold_title">הגשת גרסה סופית של תרגיל</h3>
+          <p>שימו לב, לאחר שתגישו את התוכנית שלכם לבדיקה ולקבלת משוב, תצטרכו לבחור <b>גרסה להגשה סופית</b>.</p>
+
+
+          <p>כדי לצפות ב<b>היסטוריית ההגשות לבדיקה </b> (Submission history) של תרגיל גללו עד סופו של דף התרגיל. בצד ימין תופיע מסגרת ובה פירוט ההגשות למערכת הבדיקות האוטומטית שבוצעו על ידיכם.</p>
+          <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_0/graphics/img_0_2_13.png">
+          <p>לחיצה על הגשה כלשהי מהרשימה תוביל אתכם למסך הגשת תרגיל ובו קטע הקוד שהגשתם בעבר.</p>
+          <p><b>בחירה של גרסה להגשה סופית</b> מתבצעת על ידי לחיצה על הכוכב הכחול שנמצא לצד הגרסה אותה אתם מעוניינים להגיש.<br>
+          לאחר שתבחרו עבור תרגיל גרסת הגשה סופית יתעדכנו סרגל ההתקדמות ושקלול הציון, שמופיעים במסך התרגילים. לדוגמה:</p>
+          <img class="illustration" src="http://e-learn.cyber.org.il/python/unit_0/graphics/img_0_2_14.png">
+
+          <img class="box_content_close" onclick="toggle_visibility('topic4')">
+        </div>
+        <!-- Closing Topic 4 -->
+
+
+</body>
+
+</html>
