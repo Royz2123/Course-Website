@@ -5,12 +5,13 @@ function loadDoc(){
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       multi_toggle_visibility();
-      toggle_editor(this.responseText);
       toggle_viewer(this.responseText);
+      toggle_editor(this.responseText);
     }
   };
+  var name = document.getElementById('name').value;
+  xhttp.open("GET", "getfile?name="+name, true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.open("GET", "index.html", true);
   xhttp.send();
 }
 
@@ -23,8 +24,7 @@ function multi_toggle_visibility(){
 		toggle_visibility(tags_to_change[i]);
 	}
 }
-	
-	
+		
 function first_toggle_visibility(){
 	var tags_to_change = ["mainPart", "dataPart"];
 	
@@ -41,20 +41,11 @@ function toggle_visibility(id) {
   else
 	 e.style.display = 'inline-block';
 }
-  
-
-
- 
- 
  
 function toggle_editor(html){
-  document.getElementById(left_part_edit_html) = html;
+  document.getElementById("left_part_edit_html").innerHTML = html;
 }
 
-
-
-
-
-function toggle_veiwer(html){
-  document.getElementById(right_part_show_html) = html;
+function toggle_viewer(html){
+  document.getElementById("right_part_show_html").innerHTML = html;
 }

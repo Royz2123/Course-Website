@@ -15,7 +15,8 @@ http.createServer(function (req, res) {
   if(parsedUrl.pathname == '/getfile')
   {
       parms = parsedUrl.query.split('&')
-      pathname = parms[0].split('=')[1]  
+      pathname = parms[0].split('=')[1] 
+       
   }else {
       pathname = `.${parsedUrl.pathname}`;
   }
