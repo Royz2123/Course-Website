@@ -99,9 +99,10 @@ a:hover, a:active {
 
 #left_part_edit_html{
     width: 45%;
+    overflow: auto;
     margin-left: 2%;
 	margin-right: 2%;
-	background-color:gray;
+	background-color:white;
 	border:gray 3px solid;
 	height:500px;
 	text-align:center;
@@ -117,7 +118,8 @@ a:hover, a:active {
 	margin-right: 2%;
 	margin-top:1%;
 	margin-bottom:1%;
-	background-color:gray;
+    overflow: auto;
+	background-color:white;
 	border: gray 3px solid;
 	height:500px;
 	text-align:center;
