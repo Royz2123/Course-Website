@@ -1,8 +1,10 @@
 body {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(250, 250, 250);
     font-family: sans-serif;
     text-align: center;
 }
+
+
 
 
 
@@ -18,9 +20,13 @@ h1 {
 
 .nav--top {
     text-align: right;
+	position: absulute;
 }
 
 
+.nav--bottom{
+	position: absulute;
+}
 
 header, footer {
     padding: 20px;
@@ -127,16 +133,6 @@ a:hover, a:active {
 
 }
 
-body {
-    background-image: url("images/b9.png");
-    font-family: sans-serif;
-    text-align: center;
-}
-
-
-html{
-	background-image: url("images/b9.png");
-}
 
 
 #photo_of_us{
@@ -147,7 +143,6 @@ html{
 
 
 fieldset {
-	background-image: url("images/b9.png");
 	margin-bottom: 10px ;
 	align: center ;
 }
@@ -205,3 +200,34 @@ fieldset {
 .button:hover {
     background-color: #555;
 }
+
+
+
+
+/*DROP DOWN PART*/
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	padding:25px;
+	margin-left:70%
+}
+.show {display:block;}
+
+
+/*
+#login {
+	display:none;
+	margin-left:70%;
+	padding:5%;
+	background-color:black; 	
+}
+
+*/
+
+
+
