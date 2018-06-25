@@ -9,13 +9,40 @@ MongoClient.connect(url, function(err, db) {
   assert.equal(null, err);
   console.log("Connected successfully to server");
 
-  insertDocuments(db, function() {
-    updateDocument(db, function() {
+  username = "Roy";
+  password = "1234";
+  filename = "page2.html";
+  content = "<original content>";
+  
+  // Inserts a "document to the database" 
+  /*
+  insertDocument(db, {
+      name : username, 
+      page : filename,
+      content: content,
+      }, function() {
       db.close();
-    });
+  });
+  */
+  
+  // help a user find his document 
+  findDocument(db, {name : username, page : filename}, function() {
+      db.close();
   });
 });
 
+
+var login = function(db, username, callback) {
+  // Get the users collection
+  var collection = db.collection('users');
+  // Insert some documents
+  collection.find(username).toArray(function(err, docs) {
+    assert.equal(err, null);
+    console.log("Found the following records");
+    console.log(docs)
+    callback(docs);
+  });
+}
 
 var insertDocuments = function(db, callback) {
   // Get the documents collection
@@ -32,6 +59,32 @@ var insertDocuments = function(db, callback) {
   });
 }
 
+var insertDocument = function(db, doc, callback) {
+  // Get the documents collection
+  var collection = db.collection('documents');
+  // Insert some documents
+  collection.insertMany([doc], function(err, result) {
+    assert.equal(err, null);
+    assert.equal(1, result.result.n);
+    assert.equal(1, result.ops.length);
+    console.log("Inserted 3 documents into the collection");
+    callback(result);
+  });
+}
+
+
+var findDocument = function(db, key, callback) {
+  // Get the documents collection
+  var collection = db.collection('documents');
+  
+  // Find some documents
+  collection.find(key).toArray(function(err, docs) {
+    assert.equal(err, null);
+    console.log("Found the following records");
+    console.log(docs)
+    callback(docs);
+  });
+}
 
 var findDocuments = function(db, callback) {
   // Get the documents collection

@@ -13,20 +13,42 @@ function loadDoc(){
   xhttp.open("GET", "getfile?name="+name, true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send();
+  save()
+}
+
+function save(){
+    function sendToRoy() {
+        var html =document.getElementById("left_part_edit_html").value;
+        var filename = document.getElementById('name').value;
+        document.getElementById("right_part_show_html").innerHTML = html;
+        var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log("got file " + this.responseText);
+            }
+          };
+          xhttp.open("POST", "save", true);
+          xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+          xhttp.send("fname="+filename+"&html="+html);            
+    }
+
+    var count = setInterval(sendToRoy, 5000);
+
+    setTimeout(function() {
+      clearInterval(count);
+    }, 5000000000000);
 }
 
 
-
 function multi_toggle_visibility(){
-	var tags_to_change = ["mainPart", "dataPart", "right_part_show_html","left_part_edit_html"];
-	
+	var tags_to_change = ["dataPart", "right_part_show_html","left_part_edit_html"];
 	for (i = 0; i < tags_to_change.length; i++) { 
 		toggle_visibility(tags_to_change[i]);
 	}
 }
 		
 function first_toggle_visibility(){
-	var tags_to_change = ["mainPart", "dataPart"];
+	var tags_to_change = ["dataPart"];
 	
 	for (i = 0; i < tags_to_change.length; i++) { 
 		toggle_visibility(tags_to_change[i]);

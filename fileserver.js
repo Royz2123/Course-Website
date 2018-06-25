@@ -5,8 +5,6 @@ const path = require('path');
 const port = process.argv[2] || 9000;
 
 
-
-
 http.createServer(function (req, res) {
   console.log(`${req.method} ${req.url}`);
 
@@ -34,6 +32,27 @@ http.createServer(function (req, res) {
       console.log("Tried to login" + parms)  
       res.statusCode = 200;
       res.end("Login coming soon");
+      return;      
+  }
+  else if (parsedUrl.pathname == '/save') 
+  {
+      console.log("Tried to save");  
+      
+      // Get request body
+      var reqBody = '';
+      req.on('data', function(data) {
+        reqBody += data;
+        if(reqBody.length > 1e7) {
+          res.writeHead(413, 'Request Entity Too Large', {'Content-Type': 'text/html'});
+          res.end('<!doctype html><html><head><title>413</title></head><body>413: Request Entity Too Large</body></html>');
+        }
+      });
+      req.on('end', function() {
+        console.log(reqBody);
+        res.statusCode = 200;
+        res.setHeader('Content-type', 'text/plain' );
+        res.end("Saved successfully");
+      }); 
       return;      
   }
   
@@ -76,10 +95,10 @@ http.createServer(function (req, res) {
           res.end(`File ${pathname} not found!`);
           return;
         }
-
+        
         // if is a directory search for index file matching the extention
         if (fs.statSync(pathname).isDirectory()) pathname += '/index' + ext;
-
+        
         // read file from file system
         fs.readFile(pathname, function(err, data){
           if(err){
