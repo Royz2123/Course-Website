@@ -51,32 +51,19 @@
 						 <center>
 											  <table border="0" cellspacing="0" cellpadding="3">
 				   <tr><td>
-						   <label for="firstname">First name<font color="red"> *</font> :</label><td><input name="firstname" id="firstname" min="2" type="text" value=""  >
-					<br>     <tr><td>
-						   <label for="lastname">Last name<font color="red"> *</font> :    </label> <td> <input name="lastname" id="lastname" min="2" type="text" value=""  > 
-					 <br>     <tr><td>
-  
-						   <label for="mail">Email<font color="red"> *</font> :   </label> <td> <input name="mail" id="mail" type="email" value=""  >
+						   <label for="username">Username<font color="red"> *</font> :</label><td><input name="username" id="firstname" min="2" type="text" value=""  >
+					<br>     <tr><td>  
+						   <label for="email">Email<font color="red"> *</font> :   </label> <td> <input name="email" id="mail" type="email" value=""  >
 					  <br>     <tr><td>
-						   <label for="PASS">Password (6-16 characters)<font color="red"> *</font> :    </label> <td> <input name="PASS" id="PASS" type="password" min="6" maxlength="16" value=""  >
+						   <label for="password">Password (6-16 characters)<font color="red"> *</font> :  </label> <td> <input name="password" id="PASS" type="password" min="6" maxlength="16" value=""  >
 					<br>     <tr><td>
-						   <label for="REPASS">Confirm Password<font color="red"> *</font> : </label> <td> <input name="REPASS" id="REPASS" type="password" min="6" max="20" value=""  >
+						   <label for="repass">Confirm Password<font color="red"> *</font> : </label> <td> <input name="repass" id="REPASS" type="password" min="6" max="20" value=""  >
 					<br>     <tr><td>
 								 <label>Check password strength <font color="red"> *</font> : </label> <td>  <span id="PasswordStrength">
 								 
 								  </table>
 			<br>  </type>
 											 <input type="submit" id="submit" name="SEND" value="Send" />
-					 </form>
-			<form method="post" action="from.php" >
-			<input name="firstname" id="firstname" min="2" type="hidden" value="" />   
-			<input name="lastname" id="lastname" min="2" type="hidden" value="" />
-			<input name="username" id="username" min="4" type="hidden" value="" /> 
-			<input name="PASS" id="PASS" type="hidden" min="6" max="20" value="" />
-			<input name="REPASS" id="REPASS" type="hidden" min="6" max="20" />
-			<input name="mail" id="mail" type="hidden" value="" />
-			<input type="hidden" value="Submit" id="done" />
-			</form>
 					<br>    
 						  <h3><font color="red">* </font>Required fields.</h3>
 					  </center>     

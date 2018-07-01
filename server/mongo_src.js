@@ -5,31 +5,36 @@ var MongoClient = require('mongodb').MongoClient
 var url = 'mongodb://localhost:27017/myproject';
 
 // Use connect method to connect to the server
-MongoClient.connect(url, function(err, db) {
-  assert.equal(null, err);
-  console.log("Connected successfully to server");
+var conncection = function() {
+    MongoClient.connect(url, function(err, db) {
+      assert.equal(null, err);
+      console.log("Connected successfully to server");
 
-  username = "Roy";
-  password = "1234";
-  filename = "page2.html";
-  content = "<original content>";
-  
-  // Inserts a "document to the database" 
-  /*
-  insertDocument(db, {
-      name : username, 
-      page : filename,
-      content: content,
-      }, function() {
-      db.close();
-  });
-  */
-  
-  // help a user find his document 
-  findDocument(db, {name : username, page : filename}, function() {
-      db.close();
-  });
-});
+      username = "Roy";
+      password = "1234";
+      filename = "page2.html";
+      content = "<original content>";
+      
+      // Inserts a "document to the database" 
+      /*
+      insertDocument(db, {
+          name : username, 
+          page : filename,
+          content: content,
+          }, function() {
+          db.close();
+      });
+      */
+      
+      // help a user find his document 
+      findDocument(db, 'documents', {name : username, page : filename}, function() {
+          db.close();
+      });
+    });
+}
+
+conncection();
+conncection();
 
 
 var login = function(db, username, callback) {
@@ -73,14 +78,14 @@ var insertDocument = function(db, doc, callback) {
 }
 
 
-var findDocument = function(db, key, callback) {
+var findDocument = function(db, name, key, callback) {
   // Get the documents collection
-  var collection = db.collection('documents');
+  var collection = db.collection(name);
   
   // Find some documents
   collection.find(key).toArray(function(err, docs) {
     assert.equal(err, null);
-    console.log("Found the following records");
+    //console.log("Found the following records");
     console.log(docs)
     callback(docs);
   });
