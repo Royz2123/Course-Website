@@ -134,15 +134,13 @@ console.log(`Server listening on port ${port}`);
 
 //
 //
-// MONGO DB CLIENT FUNCTIONS
+// SERVICE FUNCTIONS
 //
 //
 
 var login_request = function(res, parms) {
     MongoClient.connect(mongo_url, function(err, db) {
       assert.equal(null, err);
-      console.log("Connected successfully to server");
-
       findDocument(
         db, 
         'users',
@@ -151,15 +149,11 @@ var login_request = function(res, parms) {
           var code = 200;
           var msg = "";
           
-          console.log(docs);
-          console.log(parms["password"]);
-          
           if (docs.length > 0 && docs[0]['password'] == parms["password"]) {
             msg = "Login successfully";
           } else {
             msg = "Try again";
           }
-          console.log(msg);
           
           res.statusCode = code;
           res.end(msg);
@@ -172,8 +166,7 @@ var login_request = function(res, parms) {
 var sign_up_request = function(res, parms) {
     MongoClient.connect(mongo_url, function(err, db) {
       assert.equal(null, err);
-      console.log("Connected successfully to server");
-
+      
       insertDocument(
         db, 
         'users',
@@ -181,7 +174,6 @@ var sign_up_request = function(res, parms) {
         function(docs) {
           var code = 200;
           var msg = "Sign up successfully";
-          console.log(msg);
           
           res.statusCode = code;
           res.end(msg);
@@ -192,32 +184,35 @@ var sign_up_request = function(res, parms) {
 }
 
 
-var login = function(db, username, callback) {
-  // Get the users collection
-  var collection = db.collection('users');
-  // Insert some documents
-  collection.find(username).toArray(function(err, docs) {
-    assert.equal(err, null);
-    console.log("Found the following records");
-    console.log(docs)
-    callback(docs);
-  });
+var save_request = function(res, content) {
+    MongoClient.connect(mongo_url, function(err, db) {
+      assert.equal(null, err);
+      
+      updateDocument(
+        db, 
+        'documents',
+        parms, 
+        function(docs) {
+          var code = 200;
+          var msg = "Sign up successfully";
+          
+          res.statusCode = code;
+          res.end(msg);
+          db.close();
+        }
+      );
+    });
 }
 
-var insertDocuments = function(db, callback) {
-  // Get the documents collection
-  var collection = db.collection('documents');
-  // Insert some documents
-  collection.insertMany([
-    {a : 1}, {a : 2}, {a : 3}
-  ], function(err, result) {
-    assert.equal(err, null);
-    assert.equal(3, result.result.n);
-    assert.equal(3, result.ops.length);
-    console.log("Inserted 3 documents into the collection");
-    callback(result);
-  });
-}
+
+
+
+//
+//
+// MONGO DB CLIENT FUNCTIONS
+//
+//
+
 
 var insertDocument = function(db, name, doc, callback) {
   // Get the documents collection
@@ -245,17 +240,6 @@ var findDocument = function(db, name, key, callback) {
   });
 }
 
-var findDocuments = function(db, callback) {
-  // Get the documents collection
-  var collection = db.collection('documents');
-  // Find some documents
-  collection.find({}).toArray(function(err, docs) {
-    assert.equal(err, null);
-    console.log("Found the following records");
-    console.log(docs)
-    callback(docs);
-  });
-}
 
 var updateDocument = function(db, callback) {
   // Get the documents collection
