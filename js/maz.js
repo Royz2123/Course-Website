@@ -4,7 +4,7 @@ function loadDoc(name){
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      multi_toggle_visibility();
+      toggle_visibility();
       toggle_viewer(this.responseText);
       toggle_editor(this.responseText);
       save()
@@ -28,11 +28,11 @@ function getFiles(){
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       arr = JSON.parse(this.responseText);
-      e = document.getElementById("dataPart");
+      e = document.getElementById("userFiles");
       for (var i=0; i < arr.length; i++){
           console.log(typeof arr[i].filename);
           //e.innerHTML += String(arr[i].filename);
-          e.innerHTML += '<a onclick="loadDoc(\''+ arr[i].filename +'\')"> ' + arr[i].filename + ' </a>';
+          e.innerHTML += '<li><a onclick="loadDoc(\''+ arr[i].filename +'\')"> ' + arr[i].filename + ' </a></li>';
       }
 
     }
@@ -66,35 +66,21 @@ function save(){
 }
 
 
-function multi_toggle_visibility(){
-	var tags_to_change = ["dataPart", "right_part_show_html","left_part_edit_html"];
-	for (i = 0; i < tags_to_change.length; i++) {
-		toggle_visibility(tags_to_change[i]);
-	}
-}
-
-function first_toggle_visibility(){
-	var tags_to_change = ["dataPart"];
-
-	for (i = 0; i < tags_to_change.length; i++) {
-		toggle_visibility(tags_to_change[i]);
-	}
-}
 
 function toggle_visibility(id) {
-  console.log(id);
+  id = "userInput"
   var e = document.getElementById(id);
-  if (e.style.display == 'inline-block')
-	 e.style.display = 'none';
-  else
-	 e.style.display = 'inline-block';
+	e.style.display = 'none';
 }
 
 function toggle_editor(html){
+  document.getElementById("left_part_edit_html").style.display = "inline-block";
   document.getElementById("left_part_edit_html").innerHTML = html;
 }
 
 function toggle_viewer(html){
+
+  document.getElementById("right_part_show_html").style.display = "inline-block";
   document.getElementById("right_part_show_html").innerHTML = html;
 }
 

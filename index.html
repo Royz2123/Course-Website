@@ -9,7 +9,7 @@
 
     </head>
 
-    <body onload ="first_toggle_visibility()">
+    <body onload ="getFiles()">
 
 
 		<!--Top Bar-->
@@ -56,26 +56,19 @@
 
 		<!--data part-->
     <div id ="userInput">
-  		<div id = "dataPart">
-        <p>Enter a filename to get started</p>
-  			<form method="GET"
-  			action="">
-  			<p>Name: <input type="text" id="name"></p>
-  			<p><button type="button" onclick="loadDoc()">Submit!</button></p>
-  			</form>
-
-  		</div>
-
+      <div class="list-type4">
+        <p>Browse manually through your old files... </p>
+        <ol id="userFiles">
+        </ol>
+    </div>
       <div id = "uploadPart">
-        <p id="server-msg">File not found :(</p>
         <form method="GET"
         action="">
-        <p> Upload a new file... </p>
+        <p> Or upload a new file </p>
         <p>File:<input type="file" name="file" accept="file_extension[.html]"></p>
         <p><button type="button" onclick="UploadDoc()">Upload!</button></p>
         </form>
 
-        <p>...Or browse manually through your old files </p>
         <!--maz tree-->
 
 
