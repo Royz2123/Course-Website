@@ -65,8 +65,11 @@
         <form method="GET"
         action="">
         <p> Or upload a new file </p>
-        <p>File:<input type="file" name="file" accept="file_extension[.html]"></p>
+        <p>File:<input type="file" id="fileinput" accept=".html"></p>
         <p><button type="button" onclick="UploadDoc()">Upload!</button></p>
+        <script>
+          document.getElementById('fileinput').addEventListener('change', readSingleFile, false);
+        </script>
         </form>
 
         <!--maz tree-->

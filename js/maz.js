@@ -1,6 +1,8 @@
+var content;
+var name;
 
-
-function loadDoc(name){
+function loadDoc(_name){
+  name = _name;
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -42,10 +44,29 @@ function getFiles(){
   xhttp.send();
 }
 
+function UploadDoc(){
+  var html = content;
+  var filename = name;
+  document.getElementById("right_part_show_html").innerHTML = html;
+  var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        toggle_visibility();
+        toggle_viewer(html);
+        toggle_editor(html);
+        save()
+      }
+    };
+    xhttp.open("POST", "save", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("fname="+filename+"&html="+html);
+}
+
+
 function save(){
     function sendToRoy() {
         var html =document.getElementById("left_part_edit_html").value;
-        var filename = document.getElementById('name').value;
+        var filename = name;
         document.getElementById("right_part_show_html").innerHTML = html;
         var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
@@ -83,6 +104,29 @@ function toggle_viewer(html){
   document.getElementById("right_part_show_html").style.display = "inline-block";
   document.getElementById("right_part_show_html").innerHTML = html;
 }
+
+
+
+
+
+function readSingleFile(evt) {
+  //Retrieve the first (and only!) File from the FileList object
+  var f = evt.target.files[0];
+
+  if (f) {
+    var r = new FileReader();
+    r.onload = function(e) {
+        name = f.name;
+        content = e.target.result;
+        alert("A");
+    }
+    r.readAsText(f);
+  } else {
+    alert("Failed to load file");
+  }
+}
+
+
 
 
 
