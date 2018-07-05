@@ -1,6 +1,6 @@
 
 
-function loadDoc(){
+function loadDoc(name){
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -15,11 +15,29 @@ function loadDoc(){
 
     }
   };
-  var name = document.getElementById('name').value;
+//  var name = document.getElementById('name').value;
   xhttp.open("GET", "getfile?name="+name, true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send();
 
+}
+
+
+function getFiles(){
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      arr = JSON.parse(this.responseText);
+      e = document.getElementById("dataPart")
+      for (var op in arr){
+        e.innerHTML += '<a onclick="loadDoc('+op+')"> '+op+' </a>';
+      }
+
+    }
+  };
+  xhttp.open("GET", "list", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send();
 }
 
 function save(){
