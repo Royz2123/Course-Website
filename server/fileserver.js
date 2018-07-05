@@ -11,18 +11,11 @@ var MongoClient = require('mongodb').MongoClient
 // Connection URL
 var mongo_url = 'mongodb://localhost:27017/myproject';
 
-
-http.createServer(function (req, res) {
-  console.log(`${req.method} ${req.url}`);
-
-  // parse URL
-  const parsedUrl = url.parse(req.url);
- 
-  // extract query parameters
-  var parms = null;
-  if (parsedUrl.query != null) 
+function parseParms(query)
+{
+  if (query != null) 
   {
-      parms = parsedUrl.query.split('&')   
+      parms = query.split('&');
       
       // parse parameters
       parsed_parms = {};
@@ -31,8 +24,21 @@ http.createServer(function (req, res) {
           parsed_parms[parsed_pair[0]] = parsed_pair[1];
       }
       
-      parms = parsed_parms;
+      return parsed_parms;
   }
+  return null;
+}
+
+
+http.createServer(function (req, res) {
+  console.log(`${req.method} ${req.url}`);
+
+  // parse URL
+  const parsedUrl = url.parse(req.url);
+ 
+  // extract query parameters
+  var parms = parseParms(parsedUrl.query);
+  
   
   // handle app services
   let pathname = "";
@@ -40,15 +46,16 @@ http.createServer(function (req, res) {
   {
       console.log("Tried to sign up");
       sign_up_request(res, parms);
-      return;
   }
   else if (parsedUrl.pathname == '/login') 
   {
       console.log("Tried to login");  
       login_request(res, parms);
-      return;      
   }
-  else if (parsedUrl.pathname == '/save') 
+  else if (
+    parsedUrl.pathname == '/save'
+    || parsedUrl.pathname == '/upload'
+  ) 
   {
       console.log("Tried to save");  
       
@@ -61,25 +68,28 @@ http.createServer(function (req, res) {
           res.end('<!doctype html><html><head><title>413</title></head><body>413: Request Entity Too Large</body></html>');
         }
       });
-      req.on('end', function() {
-        console.log(reqBody);
-        res.statusCode = 200;
-        res.setHeader('Content-type', 'text/plain' );
-        res.end("Saved successfully");
+      req.on('end', function() {        
+        // parse POST parameters
+        parms = parseParms(reqBody);
+        
+        save_request(
+            res, 
+            {
+                filename : parms["fname"],
+                content : parms["html"]
+            },
+            true
+        );
       }); 
-      return;      
   }
-  
-  // this case means the user want a file
-  else{
-      if(parsedUrl.pathname == '/getfile')
-      {
-          pathname = "/" + parms["name"];
-      }else 
-      {
-          pathname = parsedUrl.pathname;
-      }
+  else if (parsedUrl.pathname == '/getfile') 
+  {   
+      load_request(res, {filename : parms["name"]})
+  }
 
+  // this case means the user want a regular html page
+  else{
+      pathname = parsedUrl.pathname;
       pathname = `./..${pathname}`;
       console.log(pathname);
 
@@ -184,17 +194,90 @@ var sign_up_request = function(res, parms) {
 }
 
 
-var save_request = function(res, content) {
+var save_request = function(res, parms, create) {
     MongoClient.connect(mongo_url, function(err, db) {
       assert.equal(null, err);
       
-      updateDocument(
+      // check if file exists:
+      findDocument(
         db, 
         'documents',
-        parms, 
+        {
+            filename : parms['filename']
+        }, 
         function(docs) {
           var code = 200;
-          var msg = "Sign up successfully";
+          var msg = "";
+          
+          if (docs.length == 0 && create) {      
+            insertDocument(
+                db, 
+                "documents",
+                {
+                    //TODO: add username based filtering -- 'username' : parms['username'],
+                    filename : parms['filename'],
+                    content : "New Document"
+                },
+                function(docs) {
+                  var code = 200;
+                  var msg = "Save successfully";
+                  
+                  res.statusCode = code;
+                  res.end(msg);
+                  db.close();
+                }
+            );
+          } else {
+            updateDocument(
+                db, 
+                'documents',
+                {
+                    //TODO: add username based filtering -- 'username' : parms['username'],
+                    filename : parms['filename']
+                },
+                {
+                    content : parms['content']
+                },
+                function(docs) {
+                  var code = 200;
+                  var msg = "Save successfully";
+                  
+                  res.statusCode = code;
+                  res.end(msg);
+                  db.close();
+                }
+            );
+          }
+        }
+      );
+      
+      
+    });
+}
+
+
+var load_request = function(res, parms) {
+    MongoClient.connect(mongo_url, function(err, db) {
+      assert.equal(null, err);
+      
+      findDocument(
+        db, 
+        'documents',
+        {
+            filename : parms['filename']
+        }, 
+        function(docs) {
+          var code = 200;
+          var msg = "Load successfully";
+          
+          console.log(docs);
+          
+          if (docs.length > 0) {
+            msg = docs[0]["content"];
+          } else {
+            code = 404;
+            msg = "File not found";
+          }
           
           res.statusCode = code;
           res.end(msg);
@@ -204,6 +287,26 @@ var save_request = function(res, content) {
     });
 }
 
+
+var upload_request = function(res, parms) {
+    MongoClient.connect(mongo_url, function(err, db) {
+      assert.equal(null, err);
+      
+      insertDocument(
+        db, 
+        'documents',
+        parms, 
+        function(docs) {
+          var code = 200;
+          var msg = "Uploaded file successfully";
+          
+          res.statusCode = code;
+          res.end(msg);
+          db.close();
+        }
+      );
+    });
+}
 
 
 
@@ -230,7 +333,7 @@ var insertDocument = function(db, name, doc, callback) {
 var findDocument = function(db, name, key, callback) {
   // Get the documents collection
   var collection = db.collection(name);
-  
+    
   // Find some documents
   collection.find(key).toArray(function(err, docs) {
     assert.equal(err, null);
@@ -241,20 +344,24 @@ var findDocument = function(db, name, key, callback) {
 }
 
 
-var updateDocument = function(db, callback) {
+var updateDocument = function(db, name, key, new_key, callback) {
   // Get the documents collection
-  var collection = db.collection('documents');
-  // Update document where a is 2, set b equal to 1
-  collection.updateOne({ a : 2 }
-    , { $set: { b : 1 } }, function(err, result) {
-    assert.equal(err, null);
-    assert.equal(1, result.result.n);
-    console.log("Updated the document with the field a equal to 2");
-    callback(result);
-  });  
+  var collection = db.collection(name);
+  
+  // Update document with new key
+  collection.updateOne(
+    key,
+    { $set: new_key }, 
+    function(err, result) {
+        assert.equal(err, null);
+        assert.equal(1, result.result.n);
+        console.log("Updated the document with the field a equal to " + new_key);
+        callback(result);
+    }
+  );  
 }
 
-
+/*
 var removeDocument = function(db, callback) {
   // Get the documents collection
   var collection = db.collection('documents');
@@ -278,3 +385,4 @@ var indexCollection = function(db, callback) {
     }
   );
 };
+*/

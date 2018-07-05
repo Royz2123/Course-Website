@@ -10,31 +10,29 @@ var conncection = function() {
       assert.equal(null, err);
       console.log("Connected successfully to server");
 
-      username = "Roy";
+      username = "Royz";
       password = "1234";
-      filename = "page2.html";
-      content = "<original content>";
+      filename1 = "index.html";
+      content1 = "The page we want to edit";
       
       // Inserts a "document to the database" 
-      /*
-      insertDocument(db, {
-          name : username, 
-          page : filename,
-          content: content,
-          }, function() {
+      
+      insertDocument(db, {name : username, filename : filename1}, function() {
           db.close();
       });
-      */
       
       // help a user find his document 
-      findDocument(db, 'documents', {name : username, page : filename}, function() {
+      updateDocument(db, 'documents', {name : username, filename : filename1}, {content: content1}, function() {
+          db.close();
+      });
+      findDocument(db, 'documents', {filename : filename1}, function() {
           db.close();
       });
     });
 }
 
 conncection();
-conncection();
+//conncection();
 
 
 var login = function(db, username, callback) {
@@ -103,12 +101,14 @@ var findDocuments = function(db, callback) {
   });
 }
 
-var updateDocument = function(db, callback) {
+var updateDocument = function(db, name, key, new_data, callback) {
   // Get the documents collection
   var collection = db.collection('documents');
   // Update document where a is 2, set b equal to 1
-  collection.updateOne({ a : 2 }
-    , { $set: { b : 1 } }, function(err, result) {
+  collection.updateOne(
+    key,
+    { $set: new_data }, 
+    function(err, result) {
     assert.equal(err, null);
     assert.equal(1, result.result.n);
     console.log("Updated the document with the field a equal to 2");
