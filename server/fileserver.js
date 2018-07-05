@@ -4,6 +4,8 @@ const fs = require('fs');
 const path = require('path');
 const port = process.argv[2] || 9000;
 
+var maxParms = 10;
+
 // MongoDb variables
 var MongoClient = require('mongodb').MongoClient
   , assert = require('assert');
@@ -11,18 +13,19 @@ var MongoClient = require('mongodb').MongoClient
 // Connection URL
 var mongo_url = 'mongodb://localhost:27017/myproject';
 
-function parseParms(query)
+function parseParms(query, num=maxParms)
 {
   if (query != null) 
   {
-      parms = query.split('&');
+      parms = query.split('&', maxParms);
       
       // parse parameters
       parsed_parms = {};
       for (var i = 0; i < parms.length; i ++) {
           parsed_pair = parms[i].split('=');
-          parsed_parms[parsed_pair[0]] = parsed_pair[1];
-      }
+          content = parsed_pair.slice(1, parsed_pair.length).join('=');
+          parsed_parms[parsed_pair[0]] = content;
+      } 
       
       return parsed_parms;
   }
@@ -39,7 +42,6 @@ http.createServer(function (req, res) {
   // extract query parameters
   var parms = parseParms(parsedUrl.query);
   
-  
   // handle app services
   let pathname = "";
   if (parsedUrl.pathname == '/register') 
@@ -55,6 +57,7 @@ http.createServer(function (req, res) {
   else if (
     parsedUrl.pathname == '/save'
     || parsedUrl.pathname == '/upload'
+    || parsedUrl.pathname == '/create'
   ) 
   {
       console.log("Tried to save");  
@@ -70,7 +73,7 @@ http.createServer(function (req, res) {
       });
       req.on('end', function() {        
         // parse POST parameters
-        parms = parseParms(reqBody);
+        parms = parseParms(reqBody, 2);
         
         save_request(
             res, 
