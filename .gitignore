@@ -5,6 +5,7 @@ __pycache__/
 
 # MongoDB stuff
 server/mongodb
+server/data
 server/node_modules
 
 # C extensions

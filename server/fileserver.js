@@ -13,20 +13,20 @@ var MongoClient = require('mongodb').MongoClient
 // Connection URL
 var mongo_url = 'mongodb://localhost:27017/myproject';
 
-function parseParms(query, num=maxParms)
+function parseParms(query)
 {
-  if (query != null) 
+  if (query != null)
   {
       parms = query.split('&', maxParms);
-      
+
       // parse parameters
       parsed_parms = {};
       for (var i = 0; i < parms.length; i ++) {
           parsed_pair = parms[i].split('=');
           content = parsed_pair.slice(1, parsed_pair.length).join('=');
           parsed_parms[parsed_pair[0]] = content;
-      } 
-      
+      }
+
       return parsed_parms;
   }
   return null;
@@ -38,30 +38,30 @@ http.createServer(function (req, res) {
 
   // parse URL
   const parsedUrl = url.parse(req.url);
- 
+
   // extract query parameters
   var parms = parseParms(parsedUrl.query);
-  
+
   // handle app services
-  let pathname = "";
-  if (parsedUrl.pathname == '/register') 
+  var pathname = "";
+  if (parsedUrl.pathname == '/register')
   {
       console.log("Tried to sign up");
       sign_up_request(res, parms);
   }
-  else if (parsedUrl.pathname == '/login') 
+  else if (parsedUrl.pathname == '/login')
   {
-      console.log("Tried to login");  
+      console.log("Tried to login");
       login_request(res, parms);
   }
   else if (
     parsedUrl.pathname == '/save'
     || parsedUrl.pathname == '/upload'
     || parsedUrl.pathname == '/create'
-  ) 
+  )
   {
-      console.log("Tried to save");  
-      
+      console.log("Tried to save");
+
       // Get request body
       var reqBody = '';
       req.on('data', function(data) {
@@ -71,22 +71,22 @@ http.createServer(function (req, res) {
           res.end('<!doctype html><html><head><title>413</title></head><body>413: Request Entity Too Large</body></html>');
         }
       });
-      req.on('end', function() {        
+      req.on('end', function() {
         // parse POST parameters
         parms = parseParms(reqBody, 2);
-        
+
         save_request(
-            res, 
+            res,
             {
                 filename : parms["fname"],
                 content : parms["html"]
             },
             true
         );
-      }); 
+      });
   }
-  else if (parsedUrl.pathname == '/getfile') 
-  {   
+  else if (parsedUrl.pathname == '/getfile')
+  {
       load_request(res, {filename : parms["name"]})
   }
 
@@ -97,7 +97,7 @@ http.createServer(function (req, res) {
       console.log(pathname);
 
       // extract URL path
-      
+
       // based on the URL path, extract the file extention. e.g. .js, .doc, ...
       const ext = path.parse(pathname).ext;
       // maps file extention to MIME typere
@@ -123,10 +123,10 @@ http.createServer(function (req, res) {
           res.end(`File ${pathname} not found!`);
           return;
         }
-        
+
         // if is a directory search for index file matching the extention
         if (fs.statSync(pathname).isDirectory()) pathname += '/index' + ext;
-        
+
         // read file from file system
         fs.readFile(pathname, function(err, data){
           if(err){
@@ -155,19 +155,19 @@ var login_request = function(res, parms) {
     MongoClient.connect(mongo_url, function(err, db) {
       assert.equal(null, err);
       findDocument(
-        db, 
+        db,
         'users',
-        {username: parms["username"]}, 
+        {username: parms["username"]},
         function(docs) {
           var code = 200;
           var msg = "";
-          
+
           if (docs.length > 0 && docs[0]['password'] == parms["password"]) {
             msg = "Login successfully";
           } else {
             msg = "Try again";
           }
-          
+
           res.statusCode = code;
           res.end(msg);
           db.close();
@@ -179,15 +179,15 @@ var login_request = function(res, parms) {
 var sign_up_request = function(res, parms) {
     MongoClient.connect(mongo_url, function(err, db) {
       assert.equal(null, err);
-      
+
       insertDocument(
-        db, 
+        db,
         'users',
-        parms, 
+        parms,
         function(docs) {
           var code = 200;
           var msg = "Sign up successfully";
-          
+
           res.statusCode = code;
           res.end(msg);
           db.close();
@@ -200,21 +200,21 @@ var sign_up_request = function(res, parms) {
 var save_request = function(res, parms, create) {
     MongoClient.connect(mongo_url, function(err, db) {
       assert.equal(null, err);
-      
+
       // check if file exists:
       findDocument(
-        db, 
+        db,
         'documents',
         {
             filename : parms['filename']
-        }, 
+        },
         function(docs) {
           var code = 200;
           var msg = "";
-          
-          if (docs.length == 0 && create) {      
+
+          if (docs.length == 0 && create) {
             insertDocument(
-                db, 
+                db,
                 "documents",
                 {
                     //TODO: add username based filtering -- 'username' : parms['username'],
@@ -224,7 +224,7 @@ var save_request = function(res, parms, create) {
                 function(docs) {
                   var code = 200;
                   var msg = "Save successfully";
-                  
+
                   res.statusCode = code;
                   res.end(msg);
                   db.close();
@@ -232,7 +232,7 @@ var save_request = function(res, parms, create) {
             );
           } else {
             updateDocument(
-                db, 
+                db,
                 'documents',
                 {
                     //TODO: add username based filtering -- 'username' : parms['username'],
@@ -244,7 +244,7 @@ var save_request = function(res, parms, create) {
                 function(docs) {
                   var code = 200;
                   var msg = "Save successfully";
-                  
+
                   res.statusCode = code;
                   res.end(msg);
                   db.close();
@@ -253,8 +253,8 @@ var save_request = function(res, parms, create) {
           }
         }
       );
-      
-      
+
+
     });
 }
 
@@ -262,26 +262,26 @@ var save_request = function(res, parms, create) {
 var load_request = function(res, parms) {
     MongoClient.connect(mongo_url, function(err, db) {
       assert.equal(null, err);
-      
+
       findDocument(
-        db, 
+        db,
         'documents',
         {
             filename : parms['filename']
-        }, 
+        },
         function(docs) {
           var code = 200;
           var msg = "Load successfully";
-          
+
           console.log(docs);
-          
+
           if (docs.length > 0) {
             msg = docs[0]["content"];
           } else {
             code = 404;
             msg = "File not found";
           }
-          
+
           res.statusCode = code;
           res.end(msg);
           db.close();
@@ -294,15 +294,15 @@ var load_request = function(res, parms) {
 var upload_request = function(res, parms) {
     MongoClient.connect(mongo_url, function(err, db) {
       assert.equal(null, err);
-      
+
       insertDocument(
-        db, 
+        db,
         'documents',
-        parms, 
+        parms,
         function(docs) {
           var code = 200;
           var msg = "Uploaded file successfully";
-          
+
           res.statusCode = code;
           res.end(msg);
           db.close();
@@ -336,7 +336,7 @@ var insertDocument = function(db, name, doc, callback) {
 var findDocument = function(db, name, key, callback) {
   // Get the documents collection
   var collection = db.collection(name);
-    
+
   // Find some documents
   collection.find(key).toArray(function(err, docs) {
     assert.equal(err, null);
@@ -350,18 +350,18 @@ var findDocument = function(db, name, key, callback) {
 var updateDocument = function(db, name, key, new_key, callback) {
   // Get the documents collection
   var collection = db.collection(name);
-  
+
   // Update document with new key
   collection.updateOne(
     key,
-    { $set: new_key }, 
+    { $set: new_key },
     function(err, result) {
         assert.equal(err, null);
         assert.equal(1, result.result.n);
         console.log("Updated the document with the field a equal to " + new_key);
         callback(result);
     }
-  );  
+  );
 }
 
 /*
@@ -374,7 +374,7 @@ var removeDocument = function(db, callback) {
     assert.equal(1, result.result.n);
     console.log("Removed the document with the field a equal to 3");
     callback(result);
-  });    
+  });
 }
 
 

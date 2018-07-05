@@ -8,10 +8,10 @@
 		<script src="js/maz.js"></script>
 
     </head>
-	
+
     <body onload ="first_toggle_visibility()">
-       
-		
+
+
 		<!--Top Bar-->
         <header>
             <div>
@@ -31,7 +31,7 @@
 
 
 		<!--Login-->
-		
+
 		<div class="dropdown">
 		  <div id="myDropdown" class="dropdown-content">
 			<form action="/login">
@@ -41,47 +41,65 @@
                 </form>
           </div>
 		</div>
-					
-		
-<!--		
+
+
+<!--
 		<div id ="login" >
 			<form method="GET" action="">
 			<p>UserName: <input type="text" id="username"></p>
 			<p>password: <input type="text" id="password"></p>
 			<p><button type="button" onclick="loadDoc()">Submit!</button></p>
 			</form>
-			
-		</div>
--->		
-		
-		<!--data part-->
-		<div id = "dataPart">
-			<form method="GET" 
-			action="">
-			<p>Name: <input type="text" id="name"></p>
-			<p><button type="button" onclick="loadDoc()">Submit!</button></p>
-			</form>
 
 		</div>
-		
-		
-		
+-->
+
+		<!--data part-->
+    <div id ="userInput">
+  		<div id = "dataPart">
+        <p>Enter a filename to get started</p>
+  			<form method="GET"
+  			action="">
+  			<p>Name: <input type="text" id="name"></p>
+  			<p><button type="button" onclick="loadDoc()">Submit!</button></p>
+  			</form>
+
+  		</div>
+
+      <div id = "uploadPart">
+        <p id="server-msg">File not found :(</p>
+        <form method="GET"
+        action="">
+        <p> Upload a new file... </p>
+        <p>File:<input type="file" name="file" accept="file_extension[.html]"></p>
+        <p><button type="button" onclick="UploadDoc()">Upload!</button></p>
+        </form>
+
+        <p>...Or browse manually through your old files </p>
+        <!--maz tree-->
+
+
+      </div>
+    </div>
+
+
+
 		<!--left part-->
 		<textarea id="left_part_edit_html">
 			<h1>left part</h1>
 
 		</textarea>
-		
-		
-		<!--right part-->			
+
+
+		<!--right part-->
 		<div id="right_part_show_html">
 			<h1>right part</h1>
 		</div>
-		
-		
-		
-		
-		
+
+
+
+
+
         <!--Page Footer-->
         <footer>
             <small>
@@ -148,5 +166,3 @@
         </main>
 
 		-->
-
-
