@@ -89,7 +89,10 @@ http.createServer(function (req, res) {
   {
       load_request(res, {filename : parms["name"]})
   }
-
+  else if (parsedUrl.pathname == '/list')
+  {
+      list_request(res, parms);
+  }  
   // this case means the user want a regular html page
   else{
       pathname = parsedUrl.pathname;
@@ -289,6 +292,28 @@ var load_request = function(res, parms) {
       );
     });
 }
+
+
+var list_request = function(res, parms) {
+    MongoClient.connect(mongo_url, function(err, db) {
+      assert.equal(null, err);
+
+      findDocument(
+        db,
+        'documents',
+        {},
+        function(docs) {
+          var code = 200;
+          var msg = JSON.stringify(docs);
+
+          res.statusCode = code;
+          res.end(msg);
+          db.close();
+        }
+      );
+    });
+}
+
 
 
 var upload_request = function(res, parms) {

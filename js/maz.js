@@ -28,9 +28,11 @@ function getFiles(){
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       arr = JSON.parse(this.responseText);
-      e = document.getElementById("dataPart")
-      for (var op in arr){
-        e.innerHTML += '<a onclick="loadDoc('+op+')"> '+op+' </a>';
+      e = document.getElementById("dataPart");
+      for (var i=0; i < arr.length; i++){
+          console.log(typeof arr[i].filename);
+          //e.innerHTML += String(arr[i].filename);
+          e.innerHTML += '<a onclick="loadDoc(\''+ arr[i].filename +'\')"> ' + arr[i].filename + ' </a>';
       }
 
     }
