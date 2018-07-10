@@ -43,6 +43,7 @@ http.createServer(function (req, res) {
   }
   else if (parsedUrl.pathname == '/logout')
   {
+	console.log("YO");
       services.logout_request(res, parms, cookies);
   }
   else if (

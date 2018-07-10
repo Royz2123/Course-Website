@@ -101,9 +101,9 @@ exports.login_request = function(res, parms) {
           var msg = "";
 
           if (docs.length > 0 && docs[0]['password'] == parms["password"]) {
-            msg = "Login successfully";
+            msg = "1";
           } else {
-            msg = "Try again";
+            msg = "0";
           }
 
           res.statusCode = code;
@@ -111,7 +111,12 @@ exports.login_request = function(res, parms) {
           // set cookie for future communication
           var cookie = http_util.createCookie();
           users[cookie] = parms["username"];
-          res.setHeader('Set-Cookie', 'usr_cookie=' + cookie);
+          res.setHeader(
+		'Set-Cookie', [
+			'usr_cookie=' + cookie,
+			'username=' + parms["username"]
+		]
+	);
           
           res.end(msg);
           db.close();
@@ -122,6 +127,26 @@ exports.login_request = function(res, parms) {
 
 exports.logout_request = function(res, parms, cookies) {
     delete users[cookies["usr_cookie"]];
+
+	// redirect to homepage
+          fs.readFile("../index.html", function(err, data){
+              if(err){
+                res.statusCode = 500;
+                res.end(`Error getting the file: ${err}.`);
+              } else {
+                // if the file is found, set Content-type and send data
+                res.statusCode = 200;
+                res.setHeader('Content-type', 'text/html');
+                res.setHeader(
+			'Set-Cookie', [
+				'usr_cookie=deleted; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT', 
+				'username=deleted; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT', 
+			]		
+		);
+                res.end(data);
+              }
+
+          });
 }
 
 exports.sign_up_request = function(res, parms) {
@@ -146,7 +171,12 @@ exports.sign_up_request = function(res, parms) {
                 // if the file is found, set Content-type and send data
                 res.statusCode = 200;
                 res.setHeader('Content-type', 'text/html');
-                res.setHeader('Set-Cookie', 'usr_cookie=' + cookie);
+                res.setHeader(
+		'Set-Cookie', [
+			'usr_cookie=' + cookie,
+			'username=' + parms["username"]
+		]
+	);
                 res.end(data);
               }
             db.close();

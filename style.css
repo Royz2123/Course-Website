@@ -92,6 +92,10 @@ a:hover, a:active {
 	background-image: url("images/b9.png");
 }
 
+#not-login{
+  display:none
+}
+
 #server-msg{
   color: rgb(251,0,0);
 }

@@ -5,13 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>The Site</title>
         <link rel="stylesheet" href="style.css">
-		<script src="js/maz.js"></script>
-		<script src="js/dani.js"></script>
+		<script src="js/ajax.js"></script>
+		<script src="js/utils.js"></script>
+    <script src="js/tree.js"></script>
 
 
     </head>
 
-    <body onload ="getFiles(),daniTheKingNotForMazAllOnMyDickArachArachArach2()">
+    <body onload ="checkIn()">
 
 
 		<!--Top Bar-->
@@ -24,8 +25,8 @@
             <div>
                 <nav class="nav--top">
 				    <a href="index.html">Home</a>
-					<a id = "logout" style = "display:none" href="/Logout">Logout</a>
-                    <a id = "login" style = "display:none" onclick="openLogin()">Login</a>
+					<a id = "logout" style = "display:none" onclick="logout()">Logout</a>
+                    <a id = "login" style = "display:none" onclick="toggleLogin()">Login</a>
                     <a id = "signUp" style = "display:none" href="register.html">Sign Up</a>
                     <a href="AboutUs.html">About Us</a>
 
@@ -37,10 +38,11 @@
 		<!--Login-->
 		<div class="dropdown">
 		  <div id="myDropdown" class="dropdown-content">
-			<form action="/login">
-				<p>UserName: <input type="text" name="username"></p>
-				<p>password: <input type="text" name="password"></p>
-				<p><input type="submit" value="Submit"></p>
+			<form>
+				<p>username: <input type="text" name="username" id="username"></p>
+				<p>password: <input type="password" name="password" id="password"></p>
+				<p style="color:red;" id="error" ></p>
+				<p><button type="button" onclick="loginHandler()">submit</button></p>
                 </form>
           </div>
 		</div>
@@ -59,6 +61,10 @@
 
 		<!--data part-->
     <div id ="userInput">
+	<div id ="login!">
+	    login to get started
+	</div>
+<div id ="not-login">
       <div class="list-type4">
         <h2>Browse Your Files - </h2>
         <ol id="userFiles">
@@ -67,9 +73,12 @@
       <div id = "uploadPart">
         <form method="GET"
         action="">
+        <h2>Create New Folder - </h2>
+        <center>	<p>Name<input type="text" id="folderinput"></p>	</center>
+        <button type="button" onclick="createFolder()">Create!</button>
         <h2>Upload New File - </h2>
         <center>	<p>File:<input type="file" id="fileinput" accept=".html"></p>	</center>
-		
+
 
         <center><button type="button" onclick="UploadDoc()">Upload!</button></center>
         <script>
@@ -77,7 +86,7 @@
         </script>
         </form>
         <!--maz tree-->
-
+</div>
 
       </div>
     </div>
