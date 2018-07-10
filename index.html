@@ -6,10 +6,12 @@
         <title>The Site</title>
         <link rel="stylesheet" href="style.css">
 		<script src="js/maz.js"></script>
+		<script src="js/dani.js"></script>
+
 
     </head>
 
-    <body onload ="getFiles()">
+    <body onload ="getFiles(),daniTheKingNotForMazAllOnMyDickArachArachArach2()">
 
 
 		<!--Top Bar-->
@@ -22,16 +24,17 @@
             <div>
                 <nav class="nav--top">
 				    <a href="index.html">Home</a>
-				    <a onclick="openLogin()">Login</a>
-                    <a href="register.html">Sign Up</a>
+					<a id = "logout" style = "display:none" href="/Logout">Logout</a>
+                    <a id = "login" style = "display:none" onclick="openLogin()">Login</a>
+                    <a id = "signUp" style = "display:none" href="register.html">Sign Up</a>
                     <a href="AboutUs.html">About Us</a>
+
                 </nav>
             </div>
         </header>
 
 
 		<!--Login-->
-
 		<div class="dropdown">
 		  <div id="myDropdown" class="dropdown-content">
 			<form action="/login">

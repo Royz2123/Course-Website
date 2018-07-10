@@ -25,6 +25,12 @@ function loadDoc(_name){
 }
 
 
+
+
+
+
+
+
 function getFiles(){
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
