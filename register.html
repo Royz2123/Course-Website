@@ -6,16 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Sign</title>
         <link rel="stylesheet" href="style.css">
-		<script src="js/maz.js"></script>
-		<script src="js/dani.js"></script>
+		<script src="js/ajax.js"></script>
+		<script src="js/utils.js"></script>
 
 
     </head>
-    <body onload ="daniTheKingNotForMazAllOnMyDickArachArachArach()">
+    <body onload ="checkIn()">
 
-	
-	
-	<!--Top Bar-->
+		<!--Top Bar-->
         <header>
             <div>
                 <h1>
@@ -25,26 +23,26 @@
             <div>
                 <nav class="nav--top">
 				    <a href="index.html">Home</a>
-					<a id = "logout" href="/Logout">Logout</a>
-                    <a id = "login" onclick="openLogin()">Login</a>
-                    <a id = "signUp" href="register.html">Sign Up</a>
+					<a id = "logout" style = "display:none" onclick="logout()">Logout</a>
+                    <a id = "login" style = "display:none" onclick="toggleLogin()">Login</a>
+                    <a id = "signUp" style = "display:none" href="register.html">Sign Up</a>
                     <a href="AboutUs.html">About Us</a>
+
                 </nav>
             </div>
         </header>
 	
 	<!--Login-->
-		
 		<div class="dropdown">
 		  <div id="myDropdown" class="dropdown-content">
-			<form method="GET" action="">
-				<p>UserName: <input type="text" id="username"></p>
-				<p>password: <input type="text" id="password"></p>
-				<p><button type="button" onclick="loadDoc()">Submit!</button></p>
-			</form>
-			</div>
+			<form>
+				<p>username: <input type="text" name="username" id="username"></p>
+				<p>password: <input type="password" name="password" id="password"></p>
+				<p style="color:red;" id="error" ></p>
+				<p><button type="button" onclick="loginHandler()">submit</button></p>
+                </form>
+          </div>
 		</div>
-				
 	
 	<!--register part-->
 	

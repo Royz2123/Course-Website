@@ -48,16 +48,15 @@ function setTreeHTML(path)
 
 function getCurrentDir(path, list)
 {
-            console.log("path"+path)
-            console.log("list"+list)
     var splitPath = path.split("/");
     var parentDepth = splitPath.length - 1;
     var newList = {
         "files" : [],
         "folders" : []
     };
+    var visitedFolders = [];
 
-    for(var i =0; i < list.length; i++)
+    for(var i = 0; i < list.length; i++)
     {
         //console.log(list[i]);
         // check if this file/folder belongs in the current parent folder
@@ -82,9 +81,21 @@ function getCurrentDir(path, list)
             // this is a folder at this depth
             else if(currentDepth > parentDepth)
             {
-                newList["folders"].push(fullItem);
+                // only add one folder 
+                if (!visitedFolders.includes(itemName))
+                {
+                    newList["folders"].push(fullItem);
+                    visitedFolders.push(itemName);
+                }
             }
         }
     }
     return newList;
+}
+
+
+// remove duplicates from a list
+function removeDuplicates(arr){
+    let unique_array = Array.from(new Set(arr))
+    return unique_array
 }

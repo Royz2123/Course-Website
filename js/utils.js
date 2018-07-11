@@ -2,15 +2,14 @@
 
 function showOut(){
 	document.getElementById("login").style.display = 'none';
-  document.getElementById("signUp").style.display = 'none';
-  document.getElementById("logout").style.display = 'inline-block';
+    document.getElementById("signUp").style.display = 'none';
+    document.getElementById("logout").style.display = 'inline-block';
 }
 
 function showIn(){
 	document.getElementById("login").style.display = 'inline-block';
-  document.getElementById("signUp").style.display = 'inline-block';
-  document.getElementById("logout").style.display = 'none';
-
+    document.getElementById("signUp").style.display = 'inline-block';
+    document.getElementById("logout").style.display = 'none';
 }
 
 function sayHello(){
@@ -20,11 +19,14 @@ function sayHello(){
 function checkIn() {
     if (document.cookie != "") {
         showOut();
-				uploadPartShow();
+        uploadPartShow();
     } else {
-      showIn();
+        showIn();
     }
+}
 
+function checkIn2() {
+    window.location.assign("/index.html");
 }
 
 function uploadPartShow(){
