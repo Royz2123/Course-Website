@@ -52,7 +52,6 @@ function getFiles() {
 
             // display current directory
             setTreeHTML("");
-
         }
     };
     xhttp.open("GET", "list", true);
